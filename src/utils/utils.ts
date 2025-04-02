@@ -1,6 +1,6 @@
 import moment from "moment";
 
-export const formateDate = (date: string | Date, customFormat?: string = "DD-MM-YYYY") => {
+export const formateDate = (date: string | Date, customFormat: string = "DD-MM-YYYY") => {
   return moment(date).format(customFormat);
 };
 
