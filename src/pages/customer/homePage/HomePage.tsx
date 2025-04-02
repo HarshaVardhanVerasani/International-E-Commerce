@@ -6,7 +6,6 @@ import { homePageStyles } from "./homePageStyles";
 const HomePage = () => {
   const { colors, changeTheme } = useContext(ThemeContext);
   const style = homePageStyles(colors);
-
   return (
     <Box sx={style.container}>
       <Typography variant="h2" sx={style.title}>

@@ -2,6 +2,7 @@ import { createTheme } from "@mui/material";
 
 export type ColorScheme = {
   black: string;
+  white: string;
 };
 
 const lightTheme: ColorScheme = {

@@ -7,6 +7,6 @@ const endpoints = {
   GET_CATEGORIES: "products/get-categories",
 };
 
-const encryptionSalt = "4910474157405c535f5710081053565f";
+const encryptionSalt = "4910474157405c535";
 
 export { baseURL, encryptionSalt, endpoints };
