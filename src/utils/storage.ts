@@ -25,7 +25,7 @@ const get = (key: string) => {
     const data = localStorage.getItem(key);
     if (typeof data === "string") {
       const decryptedData = decryption(data);
-      const result = JSON.parse(decryptedData);
+      const result = JSON.parse(decryptedData as string);
       return result;
     } else {
       return data;
