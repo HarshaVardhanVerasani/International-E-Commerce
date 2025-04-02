@@ -23,9 +23,14 @@ const decryption = (encoded: string) => {
 const get = (key: string) => {
   try {
     const data = localStorage.getItem(key);
-    const decryptedData = data && decryption(data);
-    const result = typeof decryptedData === "object" ? JSON.parse(decryptedData) : decryptedData;
-    return result;
+    if (typeof data === "string") {
+      const decryptedData = decryption(data);
+      console.log(decryptedData, "kolo");
+      const result = typeof decryptedData === "object" ? JSON.parse(decryptedData) : decryptedData;
+      return result;
+    } else {
+      return data;
+    }
   } catch {
     return undefined;
   }

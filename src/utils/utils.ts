@@ -47,7 +47,7 @@ export const checkPasswordMinOneSpecialCharacter = (password: string) => {
 };
 
 export const handleCardLayoutPlaceHolder = (event: React.SyntheticEvent<HTMLImageElement, Event>) =>
-  (event.currentTarget.src = `${cardLayoutPlacedHolderImage}`);
+  (event.currentTarget.src = `${"add fallback image here"}`);
 
 export const hex2rgba = (hex: string, alpha: number = 1) => {
   const matches = hex.match(/\w\w/g);
