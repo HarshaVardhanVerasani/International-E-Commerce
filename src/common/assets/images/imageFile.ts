@@ -1,5 +1,3 @@
-import sampleImage from "./sample.jpeg";
-
 const stellaMcCartney =
   "https://hrd-live.cdn.scayle.cloud/images/ac65e8826d836a704ea585786728df44.jpg?brightness=1&width=960&height=1280&quality=75&bg=ffffff";
 const bottegaVeneta =
@@ -34,7 +32,6 @@ export {
   leoLin,
   lieStudio,
   retori,
-  sampleImage,
   sir,
   stellaMcCartney,
   valentinoGaravani,
