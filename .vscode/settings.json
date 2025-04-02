@@ -1,0 +1,13 @@
+{
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "files.autoSave": "off",
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "always"
+  },
+  "cSpell.words": ["tseslint"],
+  "typescript.validate.enable": false,
+  "explorer.compactFolders": false
+}
