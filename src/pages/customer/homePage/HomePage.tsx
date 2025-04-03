@@ -12,6 +12,7 @@ const HomePage = () => {
   return (
     <Box sx={style.container}>
       <Header />
+      <LandingPage/>
       <Footer />
     </Box>
   );
