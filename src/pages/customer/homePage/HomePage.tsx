@@ -1,6 +1,7 @@
 import { Box, Button, Typography } from "@mui/material";
 import { useContext } from "react";
 import { ThemeContext } from "../../../context/ThemeWrapper";
+import Footer from "../footer/Footer";
 import { homePageStyles } from "./homePageStyles";
 
 const HomePage = () => {
@@ -14,6 +15,7 @@ const HomePage = () => {
       <Button variant="contained" onClick={changeTheme}>
         change theme
       </Button>
+      <Footer />
     </Box>
   );
 };
