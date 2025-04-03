@@ -26,6 +26,11 @@ import bannerImg from "./bannerImg.jpg";
 import logo from "./logo.png";
 import mobileBannerImg from "./mobileBannerImg.jpg";
 
+import imageOne from '../images/imageOne.jpg'
+import imageTwo from '../images/imageTwo.jpg'
+
+
+
 export {
   bannerImg,
   bottegaVeneta,
@@ -42,4 +47,5 @@ export {
   stellaMcCartney,
   valentinoGaravani,
   vivienneWestwood,
+  imageOne,imageTwo
 };
