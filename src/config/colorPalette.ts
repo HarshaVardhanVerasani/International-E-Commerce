@@ -1,17 +1,27 @@
 import { createTheme } from "@mui/material";
 
 export type ColorScheme = {
-  black: string;
+  black: string,
+  white:string,
+  lightGreen:string,
+  lightBrown: string,
+  darkBrown:string
 };
 
 const lightTheme: ColorScheme = {
   black: "#000000",
   white: "#ffffff",
+  lightGreen: "#304835",
+  lightBrown: "#ab8e66",
+  darkBrown:'#8a7252'
 };
 
 const darkTheme: ColorScheme = {
   black: "#ffffff",
   white: "#000000",
+  lightGreen: "#304835",
+  lightBrown: "#ab8e66",
+  darkBrown:'#8a7252'
 };
 
 const fonts = {

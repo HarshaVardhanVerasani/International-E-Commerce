@@ -2,6 +2,7 @@ import { Box, Button, Typography } from "@mui/material";
 import { useContext } from "react";
 import { ThemeContext } from "../../../context/ThemeWrapper";
 import { homePageStyles } from "./homePageStyles";
+import LandingPage from "../../landing/LandingPage";
 
 const HomePage = () => {
   const { colors, changeTheme } = useContext(ThemeContext);
@@ -9,12 +10,10 @@ const HomePage = () => {
 
   return (
     <Box sx={style.container}>
-      <Typography variant="h2" sx={style.title}>
-        Home Page
-      </Typography>
-      <Button variant="contained" onClick={changeTheme}>
+      <LandingPage/>
+      {/* <Button variant="contained" onClick={changeTheme}>
         change theme
-      </Button>
+      </Button> */}
     </Box>
   );
 };

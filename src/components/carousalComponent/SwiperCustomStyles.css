@@ -1,0 +1,54 @@
+
+.swiper-button-next, .swiper-button-prev {
+    width: 50px; 
+    height: 50px;
+    background-size: 20px 20px; 
+    border-radius: 50%; 
+    opacity: 0.7; 
+    background-color: white;
+    box-shadow: 1px 2px #ccc;
+    padding-top: 5px;
+  }
+  
+  .swiper-button-next:after, .swiper-button-prev:after {
+    font-size: 20px; 
+    color: black; 
+  }
+  
+  .swiper-button-next:hover, .swiper-button-prev:hover {
+    opacity: 1; 
+  }
+  
+
+
+/* Ensure the pagination is in a horizontal line */
+.swiper-pagination {
+    display: flex; 
+    justify-content: center;
+    
+  }
+  
+  /* Style for each pagination bullet */
+  .swiper-pagination-bullet {
+    width: 60px; 
+    height: 4px; 
+    background-color: rgba(0, 0, 0, 0.3); 
+ 
+  
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+ 
+  .swiper-pagination-bullet-active {
+    background-color: #8a7252;
+   
+  }
+  
+
+  .swiper-pagination-bullet:hover {
+    background-color: #666; 
+  }
+  
+  
+  
+  
