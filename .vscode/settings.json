@@ -8,6 +8,5 @@
     "source.organizeImports": "always"
   },
   "cSpell.words": ["tseslint"],
-  "typescript.validate.enable": false,
   "explorer.compactFolders": false
 }

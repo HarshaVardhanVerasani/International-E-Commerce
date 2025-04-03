@@ -1,6 +1,2 @@
-import common from "../../components/common/locales/en.json";
-
-const en = {
-  common,
-};
+const en = {};
 export default en;
