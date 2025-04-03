@@ -107,5 +107,97 @@ const fashionItems: SimplifiedFashionItem[] = [
     price: "$1050.0",
   },
 ];
+const products = {
+  name: "strawberry whine",
+  image: "https//",
+  price: 234,
+  currency: "gbp",
+};
 
-export { fashionItems, SimplifiedFashionItem };
+export const designersData = [
+  {
+    id: 0,
+    title: "Featured Brands",
+    subNames: ["Shop All Brands", "Bottega Veneta", "Burberry", "Christian Louboutin", "Jimmy Choo", "Loewe", "Max Mara"],
+  },
+  {
+    id: 1,
+    title: "Trending Brands",
+    subNames: ["Alaia", "AMI Paris"],
+  },
+  {
+    id: 2,
+    title: "Fine Jewellery",
+    subNames: ["Bvlgari", "Chopard"],
+  },
+  {
+    id: 3,
+    title: "Fine Watches",
+    subNames: ["Rolex", "Tudor", "Audemars Piguet", "Patek Philippe", "Vacheron Constantin", "Omega", "Panerai", "Piaget", "Cartier"],
+  },
+  {
+    id: 4,
+    title: "Beauty",
+    subNames: ["CHANEL", "Clé De Peau Beauté", "Estée Lauder", "La Prairie", "La Roche-Posay", "Lancôme", "Sephora Collection", "TOM FORD"],
+  },
+];
+
+export const womenData = [
+  { id: 3, title: "Clothing", subNames: ["Dresses", "Tops", "Skirts"] },
+  { id: 4, title: "Shoes", subNames: ["Heels", "Sneakers", "Boots"] },
+];
+
+export const menData = [
+  { id: 5, title: "Apparel", subNames: ["T-Shirts", "Jeans", "Suits"] },
+  { id: 6, title: "Accessories", subNames: ["Watches", "Wallets", "Hats"] },
+];
+
+export const beautyData = [
+  { id: 7, title: "Skincare", subNames: ["Moisturizers", "Serums", "Sunscreen"] },
+  { id: 8, title: "Makeup", subNames: ["Foundation", "Lipstick", "Mascara"] },
+];
+
+export const jewelleryData = [
+  { id: 9, title: "Jewellery", subNames: ["Necklaces", "Earrings", "Bracelets"] },
+  { id: 10, title: "Watches", subNames: ["Luxury", "Casual", "Smart Watches"] },
+];
+
+export const kidsData = [
+  { id: 11, title: "Clothing", subNames: ["T-Shirts", "Dresses", "Shorts"] },
+  { id: 12, title: "Toys", subNames: ["Educational", "Plush Toys", "Action Figures"] },
+];
+
+export const homeData = [
+  { id: 13, title: "Furniture", subNames: ["Sofas", "Tables", "Beds"] },
+  { id: 14, title: "Decor", subNames: ["Vases", "Lamps", "Wall Art"] },
+];
+
+export const foodData = [
+  { id: 15, title: "Gourmet", subNames: ["Chocolates", "Cheese", "Caviar"] },
+  { id: 16, title: "Wines", subNames: ["Red Wine", "White Wine", "Champagne"] },
+];
+
+export const giftsData = [
+  { id: 17, title: "For Him", subNames: ["Watches", "Tech Gadgets", "Cufflinks"] },
+  { id: 18, title: "For Her", subNames: ["Perfumes", "Jewellery", "Luxury Bags"] },
+];
+
+export const storesData = [
+  { id: 19, title: "Physical Stores", subNames: ["London", "New York", "Paris"] },
+  { id: 20, title: "Virtual Stores", subNames: ["Online Exclusive", "Live Shopping"] },
+];
+
+const dataMap = {
+  Designers: designersData,
+  Women: womenData,
+  Men: menData,
+  Beauty: beautyData,
+  "Jewellery & Watches": jewelleryData,
+  Kids: kidsData,
+  "Home & Furniture": homeData,
+  "Food & Wine": foodData,
+  Gifts: giftsData,
+  "Visit Our Stores": storesData,
+};
+
+export { dataMap, designerData, fashionItems, products, SimplifiedFashionItem };

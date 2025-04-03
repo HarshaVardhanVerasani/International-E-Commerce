@@ -8,11 +8,16 @@ export type ColorScheme = {
 const lightTheme: ColorScheme = {
   black: "#000000",
   white: "#ffffff",
+  darkBeige:"#ab8e66",
+  gray:"#757575"
 };
 
 const darkTheme: ColorScheme = {
   black: "#ffffff",
   white: "#000000",
+  darkBeige:"#ab8e66",
+  gray:"#757575"
+
 };
 
 const fonts = {
