@@ -1,8 +1,8 @@
-export const CommonButtonStyles=(color:string,bgColor:string)=>({
+export const CommonButtonStyles=(color:string,bgColor:string,authButton:boolean|undefined,mainBgColor:string)=>({
     buttonContainer:{
         border: `1px solid ${color}`,
         color: color,
-        backgroundColor: "transparent",
+        backgroundColor: !authButton ? "transparent" : mainBgColor,
         "&:hover": {
           backgroundColor: bgColor,
           color: "#ffffff",

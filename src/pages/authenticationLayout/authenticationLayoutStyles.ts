@@ -11,7 +11,7 @@ export const authenticationPageStyles = (color: ColorScheme) => {
       alignItems: "center",
       flexDirection: "column",
       overflow: "scrollY",
-      gap: "3vh",
+      gap: "4vh",
      paddingBottom:"10vh"
     },
     loginHeadContainer: {
@@ -20,7 +20,7 @@ export const authenticationPageStyles = (color: ColorScheme) => {
       justifyContent: "center",
       alignItems: "center",
       boxSizing: "border-box",
-      height: "15vh",
+      height: "14vh",
       background: color.white,
       borderTop: `4px solid ${color.darkBrown}`,
     },
@@ -34,7 +34,7 @@ export const authenticationPageStyles = (color: ColorScheme) => {
       display: "flex",
       justifyContent: "flex-start",
       alignItems: "center",
-      width:{xs:"90%",sm:"62%",lg:"38%"},
+      width:{xs:"90%",sm:"62%",lg:"37%"},
       color: color.darkBrown,
       gap:"5px"
     },
@@ -57,8 +57,15 @@ export const authenticationPageStyles = (color: ColorScheme) => {
     cookies:{
         textAlign:"center",textDecoration:"1px solid underline",
         fontSize: "13px",
-        color: color.label,
-        fontWeight:600
+        color: color.black,
+        fontWeight:400
       },
+      cookiesContainer:{
+        display:"flex",
+        justifyContent:"center",
+        gap:"30px",
+        alignItems:"center",
+        flexDirection:{xs:"column",sm:"row"},
+      }
   };
 };
