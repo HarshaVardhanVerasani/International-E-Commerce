@@ -23,6 +23,7 @@ import { dataMap } from "../../../../common/sampleData/sampleData";
 import CountrySelector from "../../../../components/countrySelector/CountrySelector";
 import { ThemeContext } from "../../../../context/ThemeWrapper";
 import { headerStyles } from "./headerStyles";
+import TopBar from "../../../../components/topBar/TopBar";
 
 const Header = () => {
   const { colors } = useContext(ThemeContext);
@@ -53,7 +54,8 @@ const Header = () => {
     <>
       {isDesktop ? (
         <Box>
-          <Divider sx={styles.hr} />
+          <TopBar />
+         
           <Box sx={styles.bannerImageStyles}>
             <Box sx={styles.bannerImageBox}>
               <CountrySelector />

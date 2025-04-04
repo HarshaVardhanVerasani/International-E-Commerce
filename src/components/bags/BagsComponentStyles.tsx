@@ -36,12 +36,12 @@ export const BagsComponentStyles = (colors: ColorScheme) => ({
    
     marginTop: "12px",
     textAlign: "center",
-    color: colors.primaryText, 
+    color: colors.mediumBlack, 
   },
   description: {
     fontSize: "14px",
     textAlign: "center",
-    color: colors.secondaryText,
+    color: colors.lightBlack,
     
   },
 });

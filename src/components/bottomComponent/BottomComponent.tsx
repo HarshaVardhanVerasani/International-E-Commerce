@@ -7,6 +7,7 @@ import CarousalComponent from "../carousalComponent/CarousalComponent";
 import BagsComponent from "../bags/BagsComponent";
 import TrendingComponent from "../trending/TrendingComponent";
 import MainComponent from "../../fasion/MainComponent";
+import ShopNewComponent from "../shop_new/ShopNewComponent";
 
 const BottomComponent = () => {
   const { colors, changeTheme } = useContext(ThemeContext);
@@ -29,19 +30,11 @@ const BottomComponent = () => {
   const carousalTwoProducts = products.slice(10, 20);
   return (
     <Box
-      sx={{
-        display: "flex",               
-        justifyContent: "center",      
-        alignItems: "center",          
-                     
-        backgroundColor: "white",     
-        
-        flexDirection:'column'             
-      }}
+      sx={style.mainComponent}
     >
-      <Box sx={{display:'flex',flexDirection:'column',gap:2 ,justifyContent: "center",  alignItems:'center',}}>
-        <Typography variant="h4" sx={{ fontSize: {xs:'30px',sm:"40px"},color:'#0f0f0f' }}>Spring Awakening</Typography>
-        <Typography variant="body1" sx={{ fontSize: "20px",width:'95%',textAlign:'center',color:'#424242' }}>
+      <Box sx={style.contentContainer}>
+        <Typography variant="h4" sx={style.heading}>Spring Awakening</Typography>
+        <Typography variant="body1" sx={style.subText}>
           See in the season with lighter dresses for brighter days, care of Jacquemus, Stella McCartney, Sir. and more.
         </Typography>
         <CommonButton title="Shop Dresses" color={colors.darkBrown} bgColor={colors.darkBrown} />
@@ -49,7 +42,9 @@ const BottomComponent = () => {
       <CarousalComponent products={carousalProducts} isDescriptionHas isIconHas isPriceHas />
       <BagsComponent/>
       <TrendingComponent products={carousalTwoProducts} isBgActive isTitleHasUnderline />
+      <ShopNewComponent/>
       <MainComponent products={carousalTwoProducts}/>
+     
     </Box>
   );
 };

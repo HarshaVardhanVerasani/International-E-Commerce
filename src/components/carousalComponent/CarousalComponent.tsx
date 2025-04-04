@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState, useRef } from "react";
 import { Box } from "@mui/material";
-import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
+import { Navigation, Pagination, Scrollbar, A11y, Mousewheel } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
+
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -9,6 +10,7 @@ import "swiper/css/scrollbar";
 import "./SwiperCustomStyles.css"; 
 
 import CommonCardComponent from "../commonCard/CommonCardComponent";
+import { SwiperRef } from 'swiper/react';
 
 interface Product {
   id: number;
@@ -20,25 +22,43 @@ interface Product {
 
 interface CarousalComponentProps {
   products: Product[]; 
-  isDescriptionHas?:boolean,
-  isIconHas?:boolean,
-  isPriceHas?:boolean,
-  isBgActive?:boolean,
-  isTitleHasUnderline?:boolean
+  isDescriptionHas?: boolean;
+  isIconHas?: boolean;
+  isPriceHas?: boolean;
+  isBgActive?: boolean;
+  isTitleHasUnderline?: boolean;
 }
 
-const CarousalComponent: React.FC<CarousalComponentProps> = ({ products,isDescriptionHas ,isIconHas,isPriceHas,isBgActive,isTitleHasUnderline}) => {
+const CarousalComponent: React.FC<CarousalComponentProps> = ({ products, isDescriptionHas, isIconHas, isPriceHas, isBgActive, isTitleHasUnderline }) => {
+  
+  const [progress, setProgress] = useState(0);
+  const swiperRef = useRef<SwiperRef | null>(null);
+
+  const handleProgressBarClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    const progressBarWidth = e.currentTarget.offsetWidth;
+    const clickPosition = e.clientX - e.currentTarget.getBoundingClientRect().left;
+    const newProgress = (clickPosition / progressBarWidth) * 100;
+    setProgress(newProgress);
+
+    if (swiperRef.current) {
+      const totalSlides = swiperRef.current.swiper.slides.length;
+      const slideIndex = Math.floor((newProgress / 100) * totalSlides);
+      swiperRef.current.swiper.slideTo(slideIndex);
+    }
+  };
+
   return (
     <Box sx={{ width: "100%", maxWidth: "1200px", margin: "auto" }}>
+    
       <Swiper
+        ref={swiperRef}
         spaceBetween={20}
         slidesPerView={5}
         loop={true}
-        pagination={{
-          type: "bullets",
-        }}
         navigation={true}
         autoplay={{ delay: 2500 }}
+        mousewheel={true}
+        freeMode={true} 
         breakpoints={{
           1024: {
             slidesPerView: 5,
@@ -57,8 +77,12 @@ const CarousalComponent: React.FC<CarousalComponentProps> = ({ products,isDescri
             spaceBetween: 5,
           },
         }}
-        modules={[Navigation, Pagination, Scrollbar, A11y]}
+        modules={[Navigation, Pagination, Scrollbar, A11y, Mousewheel]} 
         style={{ padding: "20px" }}
+        onSlideChange={(swiper) => {
+          setProgress(((swiper.realIndex + 1) / swiper.slides.length) * 100);
+        }}
+       
       >
         {products.map((product) => (
           <SwiperSlide key={product.id}>
@@ -77,6 +101,33 @@ const CarousalComponent: React.FC<CarousalComponentProps> = ({ products,isDescri
           </SwiperSlide>
         ))}
       </Swiper>
+
+      <Box
+        sx={{
+          width: "30%",
+          height: "4px",
+          backgroundColor: "grey", 
+          borderRadius: "2px",
+          marginTop: "10px",
+          marginLeft: "auto",
+          marginRight: "auto",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          cursor: "pointer",
+        }}
+        onClick={handleProgressBarClick}
+      >
+        <Box
+          sx={{
+            height: "100%",
+            width: `${progress}%`,
+            backgroundColor: "#ab8e66",
+            borderRadius: "2px",
+            transition: "width 0.3s ease",
+          }}
+        />
+      </Box>
     </Box>
   );
 };

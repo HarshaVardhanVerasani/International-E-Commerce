@@ -2,7 +2,7 @@ import { Search as SearchIcon } from "@mui/icons-material";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { Box, List, ListItem, ListItemText, TextField, Typography } from "@mui/material";
 import React, { useContext, useEffect, useRef, useState } from "react";
-import "react-phone-input-2/lib/bootstrap.css";
+
 import { ThemeContext } from "../../context/ThemeWrapper";
 import { headerStyles } from "../../pages/customer/homePage/Header/headerStyles";
 
