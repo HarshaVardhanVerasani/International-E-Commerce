@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { ThemeContext } from "../../context/ThemeWrapper";
 import { authenticationPageStyles } from "./authenticationLayoutStyles";
-import { authenticationLogo } from "../../common/assets/images/imageFile";
+import { logo } from "../../common/assets/images/imageFile";
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import { authenticationLayoutPageData } from "../../common/sampleData/sampleData";
 const AuthenticationLayout = () => {
@@ -31,7 +31,7 @@ const AuthenticationLayout = () => {
     return (
         <Box sx={styles.container}>
             <Box sx={styles.loginHeadContainer}>
-                <Box sx={styles.logo} component={'img'} src={authenticationLogo} />
+                <Box sx={styles.logo} component={'img'} src={logo} />
             </Box>
             <Box sx={!isBtn ? styles.backContainer : styles.backContainer1} onClick={handleBack}>
                 <ArrowBackIosIcon sx={styles.icon} />

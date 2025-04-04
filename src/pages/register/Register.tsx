@@ -8,25 +8,26 @@ const CommonInputField = lazy(() => import("./../../components/commonInputField/
 const Register = () => {
     const { colors } = useContext(ThemeContext);
     const styles = RegisterPageStyles(colors);
+    const {communication,communicationDescription,register,joinHarrods,earnAndRedeem,benefitsAndDiscounts,tiers,rewards} = authenticationLayoutPageData;
     return (
         <Box sx={styles.container}>
             <Stack sx={styles.rewardsContainer}>
-                <Typography sx={styles.title}>{authenticationLayoutPageData.joinHarrods} {authenticationLayoutPageData.rewards}</Typography>
+                <Typography sx={styles.title}>{joinHarrods} {rewards}</Typography>
                 <Box sx={styles.markContainer}>
                     <DoneIcon />
-                    <Typography sx={styles.subTittles}>{authenticationLayoutPageData.earnAndRedeem}</Typography>
+                    <Typography sx={styles.subTittles}>{earnAndRedeem}</Typography>
                 </Box>
                 <Box sx={styles.markContainer}>
                     <DoneIcon />
-                    <Typography sx={styles.subTittles}>{authenticationLayoutPageData.benefitsAndDiscounts}</Typography>
+                    <Typography sx={styles.subTittles}>{benefitsAndDiscounts}</Typography>
                 </Box>
                 <Box sx={styles.markContainer}>
                     <DoneIcon />
-                    <Typography sx={styles.subTittles}>{authenticationLayoutPageData.tiers}</Typography>
+                    <Typography sx={styles.subTittles}>{tiers}</Typography>
                 </Box>
             </Stack>
             <Stack sx={styles.registerContainer} gap={'20px'}>
-                <Typography>{authenticationLayoutPageData.register}</Typography>
+                <Typography>{register}</Typography>
                 <Stack gap={"10px"}>
                     <FormControl
                         sx={styles.dropDown}
@@ -53,8 +54,8 @@ const Register = () => {
                     <CommonInputField label="Confirm Password" />
                 </Stack>
                 <Stack>
-                    <Typography sx={styles.communication}>{authenticationLayoutPageData.communication}</Typography>
-                    <Typography>{authenticationLayoutPageData.communicationDescription}</Typography>
+                    <Typography sx={styles.communication}>{communication}</Typography>
+                    <Typography>{communicationDescription}</Typography>
                 </Stack>
             </Stack>
         </Box>
