@@ -6,33 +6,45 @@ import "react-phone-input-2/lib/bootstrap.css";
 import { ThemeContext } from "../../context/ThemeWrapper";
 import { headerStyles } from "../../pages/customer/homePage/Header/headerStyles";
 
-const CountrySelector = () => {
+interface Country {
+  name: string;
+  iso2: string;
+  currency: string;
+}
+
+const CountrySelector: React.FC = () => {
   const { colors } = useContext(ThemeContext);
   const styles = headerStyles(colors);
-  const [search, setSearch] = useState("");
-  const [selectedCountry, setSelectedCountry] = useState("India");
-  const [open, setOpen] = useState(false);
-  const dropdownRef = useRef(null);
-  const [countries, setCountries] = useState([]);
+
+  const [search, setSearch] = useState<string>("");
+  const [selectedCountry, setSelectedCountry] = useState<string>("India");
+  const [open, setOpen] = useState<boolean>(false);
+  const dropdownRef = useRef<HTMLDivElement | null>(null);
+  const [countries, setCountries] = useState<Country[]>([]);
 
   useEffect(() => {
     fetch("https://countriesnow.space/api/v0.1/countries/currency")
       .then(response => response.json())
       .then(data => {
-        setCountries(data.data);
+        if (data && data.data) {
+          setCountries(data.data);
+        }
       })
       .catch(error => console.error("Error fetching countries:", error));
-    const handleClickOutside = event => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
         setOpen(false);
       }
     };
+
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
-  const sortedCountries = countries.sort((a, b) => a.name.localeCompare(b.name));
+
+  const sortedCountries = [...countries].sort((a, b) => a.name.localeCompare(b.name));
   const filteredCountries = sortedCountries.filter(country => country.name.toLowerCase().includes(search.toLowerCase()));
 
   return (

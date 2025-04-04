@@ -37,8 +37,8 @@ export const loginPageStyles = (color: ColorScheme) => {
       remember:{
         fontSize: "14px",
         color: color.gray,
-        fontWeight:"500"
       },
+    
       link:{
         textAlign:"center",textDecoration:"1px solid underline",
         fontSize: "13px",

@@ -8,7 +8,7 @@ const CommonInputField = lazy(() => import("./../../components/commonInputField/
 const Register = () => {
     const { colors } = useContext(ThemeContext);
     const styles = RegisterPageStyles(colors);
-    const {communication,communicationDescription,register,joinHarrods,earnAndRedeem,earnAndRedeem,benefitsAndDiscounts,tiers,rewards} = authenticationLayoutPageData;
+    const {communication,communicationDescription,register,joinHarrods,earnAndRedeem,benefitsAndDiscounts,tiers,rewards} = authenticationLayoutPageData;
     return (
         <Box sx={styles.container}>
             <Stack sx={styles.rewardsContainer}>

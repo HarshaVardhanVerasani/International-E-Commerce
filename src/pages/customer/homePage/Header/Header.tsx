@@ -23,17 +23,21 @@ import { dataMap } from "../../../../common/sampleData/sampleData";
 import CountrySelector from "../../../../components/countrySelector/CountrySelector";
 import { ThemeContext } from "../../../../context/ThemeWrapper";
 import { headerStyles } from "./headerStyles";
+import TopBar from "../../../../components/topBar/TopBar";
 
-const Header = () => {
+type MenuKey = keyof typeof dataMap;
+
+const Header: React.FC = () => {
   const { colors } = useContext(ThemeContext);
   const styles = headerStyles(colors);
-  const [showContent, setShowContent] = useState(false);
-  const [selectedMenu, setSelectedMenu] = useState("");
-  const [drawerOpen, setDrawerOpen] = useState(false);
-  const isDesktop = useMediaQuery("(min-width:1023px)");
-  let closeTimeout;
 
-  const handleMouseEnter = item => {
+  const [showContent, setShowContent] = useState<boolean>(false);
+  const [selectedMenu, setSelectedMenu] = useState<MenuKey | "">("");
+  const [drawerOpen, setDrawerOpen] = useState<boolean>(false);
+
+  let closeTimeout: ReturnType<typeof setTimeout>;
+
+  const handleMouseEnter = (item: MenuKey) => {
     clearTimeout(closeTimeout);
     setSelectedMenu(item);
     setShowContent(true);
@@ -45,15 +49,17 @@ const Header = () => {
     }, 300);
   };
 
-  const toggleDrawer = open => () => {
+  const toggleDrawer = (open: boolean) => () => {
     setDrawerOpen(open);
   };
+
+  const isDesktop = useMediaQuery("(min-width:1023px)");
 
   return (
     <>
       {isDesktop ? (
         <Box>
-          <Divider sx={styles.hr} />
+          <TopBar />
           <Box sx={styles.bannerImageStyles}>
             <Box sx={styles.bannerImageBox}>
               <CountrySelector />
@@ -73,7 +79,7 @@ const Header = () => {
             </Box>
             <Box sx={styles.menuContainer}>
               {Object.keys(dataMap).map(item => (
-                <Box key={item} onMouseEnter={() => handleMouseEnter(item)} onMouseLeave={handleMouseLeave}>
+                <Box key={item} onMouseEnter={() => handleMouseEnter(item as MenuKey)} onMouseLeave={handleMouseLeave}>
                   <Typography variant="body1" sx={styles.menuStyle}>
                     {item}
                   </Typography>
@@ -86,6 +92,7 @@ const Header = () => {
             <Box sx={styles.drawerStyle} onMouseEnter={() => clearTimeout(closeTimeout)} onMouseLeave={handleMouseLeave}>
               <Grid container spacing={4} sx={styles.drawerContainer}>
                 {dataMap[selectedMenu].map((category, index) => (
+                  // @ts-expect-error: Grid type mismatch in MUI, workaround applied
                   <Grid item xs={12} sm={6} md={3} key={index}>
                     <Typography variant="h6" sx={styles.drawerTitle}>
                       {category.title}
@@ -132,7 +139,9 @@ const Header = () => {
               <Box sx={styles.mobileLogoStyles}>
                 <img src={logo} alt="Logo" style={{ height: 80 }} />
               </Box>
-              <CloseIcon sx={styles.closeIocnStyle} pr={4} onClick={toggleDrawer(false)} />
+              <IconButton onClick={toggleDrawer(false)}>
+                <CloseIcon sx={styles.closeIocnStyle} />
+              </IconButton>
             </Box>
             <Box sx={styles.mobileDrawerList}>
               <Typography variant="h6" mb={2}>
@@ -140,7 +149,7 @@ const Header = () => {
               </Typography>
               <List>
                 {Object.keys(dataMap).map((text, index) => (
-                  <ListItem button key={index}>
+                  <ListItem key={index}>
                     <ListItemText primary={text} />
                   </ListItem>
                 ))}
