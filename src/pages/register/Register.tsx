@@ -1,9 +1,9 @@
-import { Box, Stack, Typography, FormControl, Select, MenuItem } from "@mui/material"
+import DoneIcon from '@mui/icons-material/Done';
+import { Box, FormControl, MenuItem, Select, Stack, Typography } from "@mui/material";
 import { lazy, useContext } from "react";
+import { authenticationLayoutPageData } from "../../common/sampleData/sampleData";
 import { ThemeContext } from "../../context/ThemeWrapper";
 import { RegisterPageStyles } from "./RegisterPageStyles";
-import { authenticationLayoutPageData } from "../../common/sampleData/sampleData";
-import DoneIcon from '@mui/icons-material/Done';
 const CommonInputField = lazy(() => import("./../../components/commonInputField/CommonInputField"))
 const Register = () => {
     const { colors } = useContext(ThemeContext);

@@ -1,3 +1,9 @@
+import imageOne from "../images/imageOne.jpg";
+import imageTwo from "../images/imageTwo.jpg";
+import bannerImg from "./bannerImg.jpg";
+import logo from "./logo.png";
+import mobileBannerImg from "./mobileBannerImg.jpg";
+
 const stellaMcCartney =
   "https://hrd-live.cdn.scayle.cloud/images/ac65e8826d836a704ea585786728df44.jpg?brightness=1&width=960&height=1280&quality=75&bg=ffffff";
 const bottegaVeneta =
@@ -22,20 +28,14 @@ const vivienneWestwood =
   "https://hrd-live.cdn.scayle.cloud/images/87e4fd023b237f3cd96676255d0669f3.jpg?brightness=1&width=960&height=1280&quality=75&bg=ffffff";
 const chole =
   "https://hrd-live.cdn.scayle.cloud/images/40b25465416dd811479dd09f58693e5b.jpg?brightness=1&width=960&height=1280&quality=75&bg=ffffff";
-import bannerImg from "./bannerImg.jpg";
-import logo from "./logo.png";
-import mobileBannerImg from "./mobileBannerImg.jpg";
-
-import imageOne from '../images/imageOne.jpg'
-import imageTwo from '../images/imageTwo.jpg'
-
-
 
 export {
   bannerImg,
   bottegaVeneta,
   chole,
   christianLouboutin,
+  imageOne,
+  imageTwo,
   jackuemus,
   leMondeBeryl,
   leoLin,
@@ -47,5 +47,4 @@ export {
   stellaMcCartney,
   valentinoGaravani,
   vivienneWestwood,
-  imageOne,imageTwo
 };

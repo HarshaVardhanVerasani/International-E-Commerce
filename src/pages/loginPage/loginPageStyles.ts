@@ -1,4 +1,4 @@
-import { ColorScheme, fonts } from "../../config/colorPalette";
+import { ColorScheme } from "../../config/colorPalette";
 
 export const loginPageStyles = (color: ColorScheme) => {
   return {
@@ -16,7 +16,7 @@ export const loginPageStyles = (color: ColorScheme) => {
           fontWeight:300,
           margin:"0px",
           padding:"0px",
-          fontFamily:fonts.primary,
+          fontFamily:"grotesk-light",
           color:"#32333a",
         },
         inputContainer:{

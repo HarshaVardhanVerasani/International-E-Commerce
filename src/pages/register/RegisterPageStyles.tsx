@@ -1,4 +1,4 @@
-import { ColorScheme, fonts } from "../../config/colorPalette"
+import { ColorScheme } from "../../config/colorPalette"
 
 export const RegisterPageStyles = (color: ColorScheme) => {
   return {
@@ -27,20 +27,20 @@ export const RegisterPageStyles = (color: ColorScheme) => {
       boxSizing: "border-box"
     },
     markContainer: {
-      display: "flex", justifyContent: "flex-start", alignItems: "start", width: "100%", gap: "5px", fontFamily: fonts.primary,
+      display: "flex", justifyContent: "flex-start", alignItems: "start", width: "100%", gap: "5px", fontFamily: 'grotesk-light',
       fontWeight: 300,
       fontSize: "12px",
       color: color.label
     },
     title: {
-      fontFamily: fonts.primary,
+      fontFamily: 'grotesk-regular"',
       fontWeight: 300,
       fontSize: "28px",
       width: "90%",
       lineHeight: "30px"
     },
     subTittles: {
-      fontFamily: fonts.primary,
+      fontFamily: "grotesk-light",
       fontWeight: 300,
       fontSize: "16px",
       color: color.label,
@@ -63,7 +63,7 @@ export const RegisterPageStyles = (color: ColorScheme) => {
       },
     },
     communication: {
-      fontFamily: fonts.primary,
+      fontFamily: 'grotesk-medium',
       fontWeight: 300,
       fontSize: "28px",
     }
