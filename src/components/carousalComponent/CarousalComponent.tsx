@@ -1,4 +1,4 @@
-import React from "react";
+import {FC} from "react";
 import { Box } from "@mui/material";
 import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -27,7 +27,7 @@ interface CarousalComponentProps {
   isTitleHasUnderline?:boolean
 }
 
-const CarousalComponent: React.FC<CarousalComponentProps> = ({ products,isDescriptionHas ,isIconHas,isPriceHas,isBgActive,isTitleHasUnderline}) => {
+const CarousalComponent: FC<CarousalComponentProps> = ({ products,isDescriptionHas ,isIconHas,isPriceHas,isBgActive,isTitleHasUnderline}) => {
   return (
     <Box sx={{ width: "100%", maxWidth: "1200px", margin: "auto" }}>
       <Swiper
