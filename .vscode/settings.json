@@ -4,9 +4,11 @@
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
   "files.autoSave": "afterDelay",
+  "files.autoSave": "afterDelay",
   "editor.codeActionsOnSave": {
     "source.organizeImports": "always"
   },
   "cSpell.words": ["tseslint"],
+
   "explorer.compactFolders": false
 }
