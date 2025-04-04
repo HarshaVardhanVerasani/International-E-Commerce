@@ -200,4 +200,4 @@ const dataMap = {
   "Visit Our Stores": storesData,
 };
 
-export { dataMap, designerData, fashionItems, products, SimplifiedFashionItem };
+export { dataMap, fashionItems, products };
