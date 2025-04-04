@@ -22,8 +22,16 @@ const vivienneWestwood =
   "https://hrd-live.cdn.scayle.cloud/images/87e4fd023b237f3cd96676255d0669f3.jpg?brightness=1&width=960&height=1280&quality=75&bg=ffffff";
 const chole =
   "https://hrd-live.cdn.scayle.cloud/images/40b25465416dd811479dd09f58693e5b.jpg?brightness=1&width=960&height=1280&quality=75&bg=ffffff";
+import bannerImg from "./bannerImg.jpg";
+import logo from "./logo.png";
+import mobileBannerImg from "./mobileBannerImg.jpg";
+import imageOne from '../images/imageOne.jpg'
+import imageTwo from '../images/imageTwo.jpg'
+
+
 
 export {
+  bannerImg,
   bottegaVeneta,
   chole,
   christianLouboutin,
@@ -31,9 +39,12 @@ export {
   leMondeBeryl,
   leoLin,
   lieStudio,
+  logo,
+  mobileBannerImg,
   retori,
   sir,
   stellaMcCartney,
   valentinoGaravani,
   vivienneWestwood,
+  imageOne,imageTwo
 };

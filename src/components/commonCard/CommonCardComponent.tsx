@@ -1,0 +1,92 @@
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import { Box, IconButton, Typography } from "@mui/material";
+import { useContext, useState } from "react";
+
+import { ThemeContext } from "../../context/ThemeWrapper";
+import { CommonCardComponentStyles } from "./CommonCardComponentStyles";
+
+interface CommonCardProps {
+  title: string;
+  description: string;
+  price: number;
+  images: string[];
+  onClick?: () => void;
+  isDescriptionHas?: boolean;
+  isIconHas?: boolean;
+  isPriceHas?: boolean;
+  isBgActive?: boolean;
+  isTitleHasUnderline?: boolean;
+}
+
+const CommonCardComponent = ({
+  title,
+  description,
+  price,
+  images,
+  onClick,
+  isDescriptionHas,
+  isIconHas,
+  isPriceHas,
+  isBgActive,
+  isTitleHasUnderline,
+}: CommonCardProps) => {
+  const [hovered, setHovered] = useState(false);
+  const { colors, changeTheme } = useContext(ThemeContext);
+  const style = CommonCardComponentStyles(colors);
+  
+  const handleMouseEnter = () => setHovered(true);
+  const handleMouseLeave = () => setHovered(false);
+
+  const currentImage = hovered ? images[1] : images[0];
+console.log(isBgActive,'aASasASs')
+  return (
+    <Box
+      sx={style.mainContainer}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      onClick={onClick}
+    >
+      {isIconHas && (
+        <Box sx={style.iconContainer}>
+          <IconButton>
+            <FavoriteBorderIcon sx={style.icon} />
+          </IconButton>
+        </Box>
+      )}
+
+      <Box sx={[style.imageContainer, isBgActive ? { backgroundColor: '#f5f5f5' ,height: "350px", width: "80%",}:{}]}>
+        <Box
+          component="img"
+          src={currentImage}
+          alt={title}
+          sx={{ width: "100%", height: "100%", objectFit: "cover" }}
+        />
+      </Box>
+
+      <Box sx={style.textContainer}>
+        <Typography
+          sx={[
+            style.titleText,
+            isTitleHasUnderline ? { textDecoration: 'underline',color:colors.darkBrown }:{},
+          ]}
+        >
+          {title.toLocaleUpperCase()}
+        </Typography>
+
+        {isDescriptionHas && (
+          <Typography variant="body2" sx={style.descriptionText}>
+            {description}
+          </Typography>
+        )}
+
+        {isPriceHas && (
+          <Typography sx={style.priceText}>
+            ${price.toFixed(2)}
+          </Typography>
+        )}
+      </Box>
+    </Box>
+  );
+};
+
+export default CommonCardComponent;
