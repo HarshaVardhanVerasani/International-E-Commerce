@@ -17,7 +17,7 @@ const AuthenticationLayout = () => {
         navigate(-1)
     }
     const checkPath = (loc: string) => {
-        if (loc === "/Register") {
+        if (loc === "/auth/Register") {
             setIsBtn(true)
         }
         else {
@@ -38,10 +38,10 @@ const AuthenticationLayout = () => {
                 <Typography sx={styles.backBtn}>BACK</Typography>
             </Box>
             <Outlet />
-            <Stack gap={"20px"}>
+            <Stack sx={styles.cookiesContainer}>
                 <Typography sx={styles.cookies}>{cookies}</Typography>
                 <Typography sx={styles.cookies}>{termsAndConditions}</Typography>
-                <Typography sx={styles.cookies}>{securityAndPrivacyPolicy}</Typography>
+                <Typography sx={styles.cookies}>{securityAndPrivacyPolicy}.</Typography>
             </Stack>
         </Box>
     )

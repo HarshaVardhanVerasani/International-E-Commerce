@@ -3,13 +3,15 @@ import { ColorScheme, fonts } from "../../config/colorPalette";
 export const loginPageStyles = (color: ColorScheme) => {
   return {
         container: {
-            width:{xs:"90%",sm:"62%",lg:"38%"},
+            width:{xs:"90%",sm:"62%",lg:"37.5%"},
             boxSizing: "border-box",
             background:color.white,
             borderRadius:"10px",
             padding:{xs:"30px",sm:'50px 60px'},
             marginBottom:"30px",
-            gap:"20px"
+            gap:"20px",
+            display:"flex",
+            alignItems:"center"
         },
         title:{
           fontSize:"24px",
@@ -18,17 +20,20 @@ export const loginPageStyles = (color: ColorScheme) => {
           padding:"0px",
           fontFamily:fonts.primary,
           color:"#32333a",
+          width:"100%"
         },
         inputContainer:{
           display:"flex",
           flexDirection:"column",
-          gap:"10px"
+          gap:"10px",
+          width:"100%"
         },
         rememberContainer:{
           display:"flex",
           justifyContent:"start",
           alignItems:"center",
-          marginLeft:"-10px"
+          marginLeft:"-10px",
+          width:"100%"
         },
         label: {
           fontSize: "16px",

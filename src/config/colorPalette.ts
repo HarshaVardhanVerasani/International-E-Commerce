@@ -8,6 +8,7 @@ export type ColorScheme = {
   darkBrown:string,
   darkBeige:string,
   gray:string,
+  lightYellow:string
 
 };
 
@@ -19,6 +20,7 @@ const lightTheme: ColorScheme = {
   lightGreen: "#304835",
   lightBrown: "#ab8e66",
   darkBrown:'#8a7252',
+  lightYellow:"#FBF9F7"
 };
 
 const darkTheme: ColorScheme = {
@@ -28,7 +30,8 @@ const darkTheme: ColorScheme = {
   gray:"#757575",
   lightGreen: "#304835",
   lightBrown: "#ab8e66",
-  darkBrown:'#8a7252'
+  darkBrown:'#8a7252',
+  lightYellow:"#FBF9F7"
 };
 
 const fonts = {
