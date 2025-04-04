@@ -199,5 +199,23 @@ const dataMap = {
   Gifts: giftsData,
   "Visit Our Stores": storesData,
 };
+const authenticationLayoutPageData = {
+  register: "Register",
+  cookies: "Cookies",
+  securityAndPrivacyPolicy: "Terms & Conditions",
+  termsAndConditions: "Security & Privacy Policy",
+  signin: "Sign In",
+  emailAddress: "Email Address",
+  password: "Password",
+  rememberMe: "Remember me",
+  forgottenYourPassword: "Forgotten your password?",
+  doNotHaveAccount: "Don’t have an online account?",
+  registerNow: "Register now",
+  communication:"Communication",
+  communicationDescription:"If you would like to hear from Harrods regarding your Rewards membership benefits and the latest events, products and services, please tick below to receive marketing communications.",
+  joinHarrods:"Join Harrods",
+  earnAndRedeem:"Earn and redeem points when you spend",
+  benefitsAndDiscounts:"Exclusive benefits, events and discounts",tiers:"Your perks grow as you move through the tiers",rewards:"Rewards"
+};
 
-export { dataMap, fashionItems, products };
+export { dataMap, fashionItems, products, authenticationLayoutPageData };

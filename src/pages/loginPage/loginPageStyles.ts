@@ -32,23 +32,23 @@ export const loginPageStyles = (color: ColorScheme) => {
         },
         label: {
           fontSize: "16px",
-          color: color.label
+          color: color.gray
       },
       remember:{
         fontSize: "14px",
-        color: color.label,
-        fontWeight:"500"
+        color: color.gray,
       },
+    
       link:{
         textAlign:"center",textDecoration:"1px solid underline",
         fontSize: "13px",
-        color: color.label,
+        color: color.gray,
         fontWeight:600
       },
    noAccount:{
         textAlign:"center",
         fontSize: "16px",
-        color: color.label,
+        color: color.gray,
         marginTop:"15px"
       }
   };
