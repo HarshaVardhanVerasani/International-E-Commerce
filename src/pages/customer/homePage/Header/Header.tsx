@@ -28,6 +28,7 @@ import { headerStyles } from "./headerStyles";
 
 type MenuKey = keyof typeof dataMap;
 
+
 const Header: React.FC = () => {
   const { colors } = useContext(ThemeContext);
   const navigate = useNavigate();

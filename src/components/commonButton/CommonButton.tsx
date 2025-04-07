@@ -4,11 +4,11 @@ interface IProps {
   title: string;
   color: string;
   bgColor: string;
-  authButton?:boolean|undefined,
-  mainBgColor:string,
   handleSubmit? : () => void
+  authButton?:boolean | undefined,
+  mainBgColor:string 
 }
-const CommonButton = ({ title, color, bgColor,authButton,mainBgColor,handleSubmit }: IProps) => {
+const CommonButton = ({ title, color, bgColor,handleSubmit,authButton,mainBgColor }: IProps) => {
   const style=CommonButtonStyles(color,bgColor,authButton,mainBgColor)
   return (
     <Button
