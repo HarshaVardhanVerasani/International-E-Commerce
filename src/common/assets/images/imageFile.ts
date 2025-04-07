@@ -1,3 +1,6 @@
+
+import favoriteIcon from "./favoriteIcon.png"
+
 const stellaMcCartney =
   "https://hrd-live.cdn.scayle.cloud/images/ac65e8826d836a704ea585786728df44.jpg?brightness=1&width=960&height=1280&quality=75&bg=ffffff";
 const bottegaVeneta =
@@ -25,9 +28,12 @@ const chole =
 import bannerImg from "./bannerImg.jpg";
 import logo from "./logo.png";
 import mobileBannerImg from "./mobileBannerImg.jpg";
+import imageThree from "./imageThree.jpg"
 import imageOne from '../images/imageOne.jpg'
 import imageTwo from '../images/imageTwo.jpg'
 
+import imageFour from '../images/imgFour.jpg'
+import imageFive from '../images/imgFive.jpg'
 
 
 export {
@@ -46,5 +52,6 @@ export {
   stellaMcCartney,
   valentinoGaravani,
   vivienneWestwood,
-  imageOne,imageTwo
+  imageOne,imageTwo,imageThree,imageFour,imageFive,
+  favoriteIcon
 };

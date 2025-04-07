@@ -3,7 +3,6 @@ import { useContext } from "react";
 import AppRoutes from "./common/routes/AppRoutes";
 import { muiGlobalTheme } from "./config/colorPalette";
 import { ThemeContext } from "./context/ThemeWrapper";
-import LandingPage from "./pages/landing/LandingPage";
 
 const App = () => {
   const { colors } = useContext(ThemeContext);
@@ -11,7 +10,7 @@ const App = () => {
 
   return (
     <ThemeProvider theme={baseTheme}>
-      <AppRoutes />
+      <AppRoutes />  {/* No need to pass Layout here */}
     </ThemeProvider>
   );
 };
