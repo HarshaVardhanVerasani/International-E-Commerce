@@ -1,4 +1,4 @@
-import { bannerImg, mobileBannerImg } from "../../../../common/assets/images/imageFile";
+import { mobileBannerImg } from "../../../../common/assets/images/imageFile";
 import { ColorScheme } from "../../../../config/colorPalette";
 
 export const headerStyles = (color: ColorScheme) => {
@@ -9,10 +9,9 @@ export const headerStyles = (color: ColorScheme) => {
       borderStyle: "solid",
     },
     bannerImageStyles: {
-      backgroundImage: `url(${bannerImg})`,
       backgroundSize: "cover",
       backgroundPosition: "center",
-      height: "100vh",
+
       boxShadow: "none",
       padding: { md: "0px 10px", lg: "0px 125px" },
     },
@@ -35,7 +34,6 @@ export const headerStyles = (color: ColorScheme) => {
       pt: 1.5,
     },
     signStyles: {
-      color: color.white,
       fontSize: "12px",
       cursor: "pointer",
     },
@@ -55,7 +53,6 @@ export const headerStyles = (color: ColorScheme) => {
       },
     },
     iconStyles: {
-      color: color.white,
       mt: -5,
       cursor: "pointer",
     },
@@ -63,6 +60,7 @@ export const headerStyles = (color: ColorScheme) => {
       display: "flex",
       justifyContent: "center",
       mt: -5,
+      cursor: "pointer",
     },
     logo: {
       height: "75px",
@@ -95,6 +93,7 @@ export const headerStyles = (color: ColorScheme) => {
       boxShadow: "0px -2px 10px rgba(0,0,0,0.1)",
       padding: 2,
       transition: "opacity 0.3s ease-in-out",
+      zIndex: 10,
     },
     drawerContainer: {
       padding: "0px 120px",
