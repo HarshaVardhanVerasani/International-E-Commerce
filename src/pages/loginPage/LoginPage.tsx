@@ -8,6 +8,7 @@ import { loginPageStyles } from "./loginPageStyles";
 import { authenticationLayoutPageData } from "../../common/sampleData/sampleData";
 
 import CommonButton from "../../components/commonButton/CommonButton";
+import { useNavigate } from "react-router-dom";
 const CommonInputField = lazy(() => import("../../components/commonInputField/CommonInputField"));
 
 interface UserDetails {
@@ -39,7 +40,7 @@ const loginFieldsData: LoginFieldsData[] = [
 const LoginPage = () => {
   const { colors } = useContext(ThemeContext);
   const styles = loginPageStyles(colors);
-
+  const navigate = useNavigate();
   const [user, setUser] = useState<UserDetails>({ email: "", password: "" });
   const [remember, setRemember] = useState(false);
 
@@ -50,13 +51,17 @@ const LoginPage = () => {
     setUser(prev => ({ ...prev, [name]: value }));
   };
   const handleSubmit = () => {
-    localStorage.setItem("userDetails",JSON.stringify(user))
-    setUser({email:"",password:""})
+    localStorage.setItem("userDetails", JSON.stringify(user))
+    navigate(-1);
+    setUser({ email: "", password: "" })
   }
 
   const handleCheckboxChange = (event: ChangeEvent<HTMLInputElement>) => {
     setRemember(event.target.checked);
   };
+  const handleRegister = () => {
+    navigate("/auth/Register")
+  }
 
   return (
     <Stack sx={styles.container}>
@@ -82,11 +87,11 @@ const LoginPage = () => {
         <Typography sx={styles.remember}>{rememberMe}</Typography>
       </Box>
 
-      <CommonButton bgColor="black" color="White" title="Sign in" authButton mainBgColor="#304835" handleSubmit={handleSubmit}/>
+      <CommonButton bgColor="black" color="White" title="Sign in" authButton mainBgColor="#304835" handleSubmit={handleSubmit} />
 
       <Typography sx={styles.link}>{forgottenYourPassword}</Typography>
       <Typography sx={styles.noAccount}>{doNotHaveAccount}</Typography>
-      <Typography sx={styles.link}>{registerNow}</Typography>
+      <Typography sx={styles.link} onClick={handleRegister}>{registerNow}</Typography>
     </Stack>
   );
 };
