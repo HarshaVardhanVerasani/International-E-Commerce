@@ -6,9 +6,8 @@ import ProductListingPage from "./ProductListingPage"
 const ClothingLayout = () => {
   return (
     <>
-      <Header/>
+    
       <ProductListingPage/>
-      <Footer/>
     </>
   )
 }
