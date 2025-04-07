@@ -10,6 +10,7 @@ const CommonInputField = lazy(() => import("./../../components/commonInputField/
 interface UserDetails {
     name: string,
     lastName: string,
+    
     email: string,
     password: string;
     confirmPassword: string

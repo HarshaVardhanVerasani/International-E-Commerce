@@ -10,31 +10,44 @@ export const CommonCardComponentStyles = (colors: ColorScheme) => ({
     "&:hover": {
       cursor: "pointer",
     },
+   
   },
   iconContainer: { position: "absolute", right: 5, top: 5 },
   icon: {
     color: colors.lightBrown,
   },
-  imageContainer: { width: "100%", height: "200px" },
-  textContainer:{ padding: "16px", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center",lineHeight:10 },
-titleText:{
+  imageContainer: { width: "100%", height: "200px", },
+  textContainer: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    width: "100%",
+  },
+  titleText: {
     WebkitBoxOrient: "vertical",
     overflow: "hidden",
     WebkitLineClamp: 1,
     textOverflow: "ellipsis",
     fontSize: "14px",
     textAlign: "center",
-},
-descriptionText:{
+  },
+  descriptionText: {
     color: "text.secondary",
     marginBottom: "10px",
     display: "-webkit-box",
     WebkitBoxOrient: "vertical",
     overflow: "hidden",
-    WebkitLineClamp: 2,
+    WebkitLineClamp: 1,
     textOverflow: "ellipsis",
-    fontSize: "14px",
+    fontSize: "12px",
     textAlign: "center",
+    padding:2
   },
-  priceText:{ marginBottom: "16px",fontSize: "14px", }
+  priceText: { marginBottom: "16px", fontSize: "14px" },
+  linkText: {
+    fontSize: { xs: ".8rem", sm: "1rem" },
+    color: colors.darkBrown,
+    textDecoration: "underline",
+  },
 });

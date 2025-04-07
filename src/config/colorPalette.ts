@@ -8,12 +8,15 @@ export type ColorScheme = {
   darkBrown:string,
   darkBeige:string,
   gray:string,
+  mediumBlack:string,
+  lightBlack:string
   lightYellow:string
-
 };
 
-const lightTheme: ColorScheme = {
+ const lightTheme: ColorScheme = {
   black: "#000000",
+  mediumBlack:'#0f0f0f',
+  lightBlack:'#424242',
   white: "#ffffff",
   darkBeige: "#ab8e66",
   gray: "#757575",
@@ -25,6 +28,8 @@ const lightTheme: ColorScheme = {
 
 const darkTheme: ColorScheme = {
   black: "#ffffff",
+  mediumBlack:'#0f0f0f',
+  lightBlack:'#424242',
   white: "#000000",
   darkBeige: "#ab8e66",
   gray: "#757575",
