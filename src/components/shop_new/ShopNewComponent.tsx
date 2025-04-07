@@ -1,6 +1,5 @@
 import { Box, Typography, Link } from "@mui/material";
 import { imageThree } from "../../common/assets/images/imageFile";
-import { CommonCardComponentStyles } from "../commonCard/CommonCardComponentStyles";
 import { useContext } from "react";
 import { ThemeContext } from "../../context/ThemeWrapper";
 import { ShopNewComponentStyles } from "./ShopNewComponentStyles";

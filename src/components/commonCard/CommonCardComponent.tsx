@@ -1,5 +1,5 @@
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import { Box, IconButton, Typography } from "@mui/material";
+import { Box, IconButton, Typography ,Link} from "@mui/material";
 import { useContext, useState } from "react";
 
 import { ThemeContext } from "../../context/ThemeWrapper";
@@ -16,6 +16,8 @@ interface CommonCardProps {
   isPriceHas?: boolean;
   isBgActive?: boolean;
   isTitleHasUnderline?: boolean;
+  isLargeText?: boolean,
+  isDescHasLink?: boolean,
 }
 
 const CommonCardComponent = ({
@@ -29,6 +31,8 @@ const CommonCardComponent = ({
   isPriceHas,
   isBgActive,
   isTitleHasUnderline,
+  isLargeText,
+  isDescHasLink
 }: CommonCardProps) => {
   const [hovered, setHovered] = useState(false);
   const { colors, changeTheme } = useContext(ThemeContext);
@@ -37,7 +41,7 @@ const CommonCardComponent = ({
   const handleMouseEnter = () => setHovered(true);
   const handleMouseLeave = () => setHovered(false);
 
-  const currentImage = hovered ? images[1] : images[0];
+  // const currentImage = hovered ? images[1] : images[0];
 console.log(isBgActive,'aASasASs')
   return (
     <Box
@@ -54,10 +58,10 @@ console.log(isBgActive,'aASasASs')
         </Box>
       )}
 
-      <Box sx={[style.imageContainer, isBgActive ? { backgroundColor: '#f5f5f5' ,height: "350px", width: "80%",}:{}]}>
+      <Box sx={[style.imageContainer, isBgActive ? { backgroundColor: '#f5f5f5' ,height: "350px", width: "80%",margin:'0 auto'}:{}]}>
         <Box
           component="img"
-          src={currentImage}
+          src={images[0]}
           alt={title}
           sx={{ width: "100%", height: "100%", objectFit: "cover" }}
         />
@@ -68,11 +72,17 @@ console.log(isBgActive,'aASasASs')
           sx={[
             style.titleText,
             isTitleHasUnderline ? { textDecoration: 'underline',color:colors.darkBrown }:{},
+            isLargeText?{textTransform:'uppercase',fontSize:'1.5rem', textAlign: "center",fontFamily:'miller-light'}:{}
           ]}
         >
           {title.toLocaleUpperCase()}
         </Typography>
-
+        {isDescHasLink&&<Typography
+       
+         sx={style.linkText}
+        >
+         Read & Shop
+        </Typography>}
         {isDescriptionHas && (
           <Typography variant="body2" sx={style.descriptionText}>
             {description}
@@ -84,6 +94,7 @@ console.log(isBgActive,'aASasASs')
             ${price.toFixed(2)}
           </Typography>
         )}
+        
       </Box>
     </Box>
   );

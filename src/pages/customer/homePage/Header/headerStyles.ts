@@ -1,5 +1,5 @@
 import { bannerImg, mobileBannerImg } from "../../../../common/assets/images/imageFile";
-import { ColorScheme } from "../../../config/colorPalette";
+import { ColorScheme } from "../../../../config/colorPalette";
 
 export const headerStyles = (color: ColorScheme) => {
   return {
@@ -89,7 +89,7 @@ export const headerStyles = (color: ColorScheme) => {
       position: "fixed",
       bottom: 0,
       left: 0,
-      height: "67%",
+      height: "57%",
       width: "100%",
       backgroundColor: color.white,
       boxShadow: "0px -2px 10px rgba(0,0,0,0.1)",
@@ -141,6 +141,6 @@ export const headerStyles = (color: ColorScheme) => {
       alignItems: "center",
     },
     mobileDrawerList: { mt: "100px", overflowY: "auto", height: "calc(100vh - 100px)", backgroundColor: color.white, p: 2 },
-    closreIconStyle: { color: color.darkBeige, pr: 4 },
+    closeIocnStyle: { color: color.darkBeige, pr: 4 },
   };
 };

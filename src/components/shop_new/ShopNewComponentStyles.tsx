@@ -38,6 +38,7 @@ export const ShopNewComponentStyles = (colors: ColorScheme) => ({
     fontSize: { xs: "1rem", sm: "2.5rem" },
     color: colors.black,
     lineHeight: 1.2,
+   fontFamily:'miller-light'
   },
   subText: {
     fontSize: { xs: ".8rem", sm: "1rem" },
