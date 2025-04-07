@@ -52,6 +52,6 @@ export {
   stellaMcCartney,
   valentinoGaravani,
   vivienneWestwood,
-  imageOne,imageTwo,imageThree,imageFour,imageFive,
+  imageOne,imageTwo,imageThree,imageFour,imageFive
   favoriteIcon
 };
