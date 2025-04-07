@@ -8,14 +8,16 @@ export const InStoreComponentStyles = (colors: ColorScheme) => ({
     justifyContent: "center", 
     width: "100%",
   flexDirection:'column',
-    alignItems:'center'
+    alignItems:'center',
+    marginBottom:2
   },
   cardContainer: {
     display: "flex",
     justifyContent: "center", 
     flexWrap: "wrap",
-    gap:4,marginTop:4,
-   
+    gap:4,
+    marginTop:4,
+    marginBottom:3
   },
   cardItem: {
     width: {xs:"280px",sm:"300px",md:"350px"}, 

@@ -108,7 +108,7 @@ const CountrySelector: React.FC = () => {
                   width={25}
                   height={25}
                   style={{ borderRadius: "100%" }}
-                />{" "}
+                />
                 <ListItemText primary={country.name} sx={{ ml: 2 }} />
                 <Typography variant="body2" color="textSecondary">
                   {country.currency}

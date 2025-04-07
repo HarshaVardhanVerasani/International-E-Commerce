@@ -1,7 +1,6 @@
 import { Box, Typography } from "@mui/material";
 import { useContext, useEffect, useState } from "react";
 import { ThemeContext } from "../../context/ThemeWrapper";
-import MainComponent from "../../fashion/MainComponent";
 import BagsComponent from "../bags/BagsComponent";
 import CarousalComponent from "../carousalComponent/CarousalComponent";
 import CommonButton from "../commonButton/CommonButton";
@@ -13,8 +12,9 @@ import SpotlightComponent from "../spotlight/SpotlightComponent";
 import HarrodsStoriesComponent from "../harrods/HarrodsStoriesComponent";
 import InStoreComponent from "../in_store/InStoreComponent";
 
+
 const BottomComponent = () => {
-  const { colors, changeTheme } = useContext(ThemeContext);
+  const { colors } = useContext(ThemeContext);
   const style = BottomComponentStyles(colors);
   const [products, setProducts] = useState([]);
 
@@ -51,8 +51,6 @@ const BottomComponent = () => {
       <SpotlightComponent products={carousalThreeProducts} isDescriptionHas isIconHas isPriceHas/>
       <HarrodsStoriesComponent products={carousalFourProducts} isBgActive  isLargeText isDescHasLink/>
       <InStoreComponent/>
-      <MainComponent products={carousalTwoProducts}/>
-     
     </Box>
   );
 };

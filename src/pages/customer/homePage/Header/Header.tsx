@@ -32,7 +32,7 @@ type MenuKey = keyof typeof dataMap;
 const Header: React.FC = () => {
   const { colors } = useContext(ThemeContext);
   const navigate = useNavigate();
-  const location = useLocation(); // Get current route
+  const location = useLocation(); 
 
   const styles = headerStyles(colors);
 
@@ -78,6 +78,7 @@ const Header: React.FC = () => {
         <Box>
           <TopBar />
           <Box
+          //@ts-ignore
             sx={{
               ...styles.bannerImageStyles,
               backgroundImage: `url(${location.pathname === "/" && bannerImg})`,

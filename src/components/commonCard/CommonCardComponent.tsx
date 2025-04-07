@@ -4,6 +4,7 @@ import { useContext, useState } from "react";
 
 import { ThemeContext } from "../../context/ThemeWrapper";
 import { CommonCardComponentStyles } from "./CommonCardComponentStyles";
+import { Link } from "react-router-dom";
 
 interface CommonCardProps {
   title: string;
@@ -48,7 +49,7 @@ console.log(isBgActive,'aASasASs')
       sx={style.mainContainer}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      onClick={onClick}
+      // onClick={onClick}
     >
       {isIconHas && (
         <Box sx={style.iconContainer}>
@@ -75,7 +76,9 @@ console.log(isBgActive,'aASasASs')
             isLargeText?{textTransform:'uppercase',fontSize:'1.5rem', textAlign: "center",fontFamily:'miller-light'}:{}
           ]}
         >
-          {title.toLocaleUpperCase()}
+          {isTitleHasUnderline? <Link to='women-clothing' style={{ textDecoration: 'underline',color:colors.darkBrown }}>{title.toLocaleUpperCase()}</Link>:title.toLocaleUpperCase()}
+         
+         
         </Typography>
         {isDescHasLink&&<Typography
        
