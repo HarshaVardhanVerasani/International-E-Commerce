@@ -36,15 +36,14 @@ const MainComponent = ({ products }: IProps) => {
   const toggleBrand = (brand: string) => {
     setSelectedBrands((prev) =>
       prev.includes(brand)
-        ? prev.filter((b) => b !== brand) // Remove brand if it is already selected
-        : [...prev, brand] // Add brand if not selected
+        ? prev.filter((b) => b !== brand)
+        : [...prev, brand] 
     );
   };
 
   useEffect(() => {
     let result = [...products];
 
-    // Apply search filter
     if (searchTerm) {
       const lowerCaseSearch = searchTerm.toLowerCase();
       result = result.filter(
@@ -55,14 +54,12 @@ const MainComponent = ({ products }: IProps) => {
       );
     }
 
-    // Apply brand filter
     if (selectedBrands.length > 0) {
       result = result.filter((product) =>
         selectedBrands.includes(product.brand)
       );
     }
 
-    // Apply sorting
     switch (sortBy) {
       case "priceLowToHigh":
         result.sort((a, b) => a.price - b.price);
@@ -86,11 +83,11 @@ const MainComponent = ({ products }: IProps) => {
   return (
     <Box sx={{ minHeight: "100vh", bgcolor: "background.default" }}>
       <Box sx={{ py: 10, px: { xs: 4, sm: 6, md: 12 }, textAlign: "center", borderBottom: 1 }}>
-        <Typography variant="h3" sx={{ fontWeight: "bold", letterSpacing: -0.5 }}>
+        <Typography variant="h5" sx={{  letterSpacing: -0.5, fontFamily:'miller-light' }}>
           WOMEN'S TRENDING NOW
         </Typography>
-        <Button variant="text" sx={{ mt: 4, display: "flex", mx: "auto" }}>
-          <Typography variant="body2">Read more</Typography>
+        <Button sx={{ mt: 4, display: "flex", mx: "auto" }}>
+          <Typography variant="h6">Read more</Typography>
           <Typography variant="h6" sx={{ ml: 1 }}>+</Typography>
         </Button>
       </Box>
@@ -115,7 +112,6 @@ const MainComponent = ({ products }: IProps) => {
             <ColorFilter />
           </Box>
 
-          {/* Main Content */}
           <Box sx={{ width: { xs: "100%", md: "75%" } }}>
             <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", mb: 6 }}>
               <ResultsCount count={filteredProducts.length} />
@@ -126,7 +122,6 @@ const MainComponent = ({ products }: IProps) => {
               />
             </Box>
 
-            {/* Products Grid */}
             {filteredProducts.length > 0 ? (
               <Box display="flex" flexWrap="wrap" justifyContent="space-between" gap={4}>
                 {filteredProducts.map((product) => (

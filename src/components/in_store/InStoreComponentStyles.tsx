@@ -1,18 +1,21 @@
+
+
 import { ColorScheme } from "../../config/colorPalette";
 
-export const BagsComponentStyles = (colors: ColorScheme) => ({
+export const InStoreComponentStyles = (colors: ColorScheme) => ({
   mainContainer: {
     display: "flex",
     justifyContent: "center", 
     width: "100%",
-    flexWrap: "wrap", 
-    
+  flexDirection:'column',
+    alignItems:'center'
   },
   cardContainer: {
     display: "flex",
     justifyContent: "center", 
     flexWrap: "wrap",
-    gap:4,marginTop:4
+    gap:4,marginTop:4,
+   
   },
   cardItem: {
     width: {xs:"280px",sm:"300px",md:"350px"}, 
@@ -40,7 +43,7 @@ export const BagsComponentStyles = (colors: ColorScheme) => ({
   },
   description: {
     fontSize: "14px",
-    textAlign: "center",
+    
     color: colors.lightBlack,
     
   },
