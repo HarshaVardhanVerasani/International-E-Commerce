@@ -46,7 +46,7 @@ const InStoreComponent = () => {
         ))}
          
       </Box>
-      <CommonButton title="Plan Your Visit" color={colors.darkBrown} bgColor={colors.darkBrown} authButton mainBgColor='#304835' />
+      <CommonButton title="Plan Your Visit" color={colors.darkBrown} bgColor={colors.black} authButton mainBgColor='#304835' />
    </Box>
      
   

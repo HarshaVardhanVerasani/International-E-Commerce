@@ -1,5 +1,5 @@
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import { Box, IconButton, Typography ,Link} from "@mui/material";
+import { Box, IconButton, Typography } from "@mui/material";
 import { useContext, useState } from "react";
 
 import { ThemeContext } from "../../context/ThemeWrapper";
@@ -35,7 +35,7 @@ const CommonCardComponent = ({
   isDescHasLink
 }: CommonCardProps) => {
   const [hovered, setHovered] = useState(false);
-  const { colors, changeTheme } = useContext(ThemeContext);
+  const { colors } = useContext(ThemeContext);
   const style = CommonCardComponentStyles(colors);
   
   const handleMouseEnter = () => setHovered(true);
@@ -84,7 +84,7 @@ console.log(isBgActive,'aASasASs')
          Read & Shop
         </Typography>}
         {isDescriptionHas && (
-          <Typography variant="body2" sx={style.descriptionText}>
+          <Typography  sx={style.descriptionText}>
             {description}
           </Typography>
         )}

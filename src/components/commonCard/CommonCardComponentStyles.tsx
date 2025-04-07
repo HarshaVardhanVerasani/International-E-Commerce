@@ -38,11 +38,11 @@ export const CommonCardComponentStyles = (colors: ColorScheme) => ({
     display: "-webkit-box",
     WebkitBoxOrient: "vertical",
     overflow: "hidden",
-    WebkitLineClamp: 2,
+    WebkitLineClamp: 1,
     textOverflow: "ellipsis",
-    fontSize: "14px",
+    fontSize: "12px",
     textAlign: "center",
-    padding:5
+    padding:2
   },
   priceText: { marginBottom: "16px", fontSize: "14px" },
   linkText: {

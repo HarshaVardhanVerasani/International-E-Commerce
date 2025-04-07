@@ -1,11 +1,11 @@
 import { lightTheme } from "../../config/colorPalette";
 
-export const CommonButtonStyles=(color:string,bgColor:string,authButton:boolean | undefined,mainBgColor:string
- )=>({
+export const CommonButtonStyles=(color:string,bgColor:string
+ ,authButton:boolean|undefined,mainBgColor:string)=>({
     buttonContainer:{
         border: `1px solid ${color}`,
         color: !authButton?color:lightTheme.white,
-        backgroundColor:!authButton? "transparent":mainBgColor,
+        backgroundColor:!authButton? !authButton ? "transparent":mainBgColor : mainBgColor,
         "&:hover": {
           backgroundColor: bgColor,
           color: lightTheme.white,

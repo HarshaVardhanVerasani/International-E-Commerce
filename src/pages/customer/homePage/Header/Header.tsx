@@ -24,12 +24,14 @@ import CountrySelector from "../../../../components/countrySelector/CountrySelec
 import { ThemeContext } from "../../../../context/ThemeWrapper";
 import { headerStyles } from "./headerStyles";
 import TopBar from "../../../../components/topBar/TopBar";
+import { useNavigate } from "react-router-dom";
 
 type MenuKey = keyof typeof dataMap;
 
 
 const Header: React.FC = () => {
   const { colors } = useContext(ThemeContext);
+  const navigate = useNavigate();
   const styles = headerStyles(colors);
 
   const [showContent, setShowContent] = useState<boolean>(false);
@@ -53,6 +55,14 @@ const Header: React.FC = () => {
   const toggleDrawer = (open: boolean) => () => {
     setDrawerOpen(open);
   };
+  const handleNavigate = (path: string) => {
+    if (path === "LoginPage") {
+      navigate(`auth/${path}`);
+    }
+    if (path === "Register") {
+      navigate(`auth/${path}`);
+    }
+  }
 
   const isDesktop = useMediaQuery("(min-width:1023px)");
 
@@ -65,9 +75,9 @@ const Header: React.FC = () => {
             <Box sx={styles.bannerImageBox}>
               <CountrySelector />
               <Box sx={styles.signContainer}>
-                <Typography sx={styles.signStyles}>Sign In</Typography>
+                <Typography sx={styles.signStyles} onClick={() => handleNavigate("LoginPage")}>Sign In</Typography>
                 <Typography sx={styles.signStyle}>/</Typography>
-                <Typography sx={styles.signStyles}>Register</Typography>
+                <Typography sx={styles.signStyles} onClick={() => handleNavigate("Register")}>Register</Typography>
               </Box>
             </Box>
             <Box sx={styles.logoContainer}>
