@@ -1,5 +1,6 @@
 import { Box } from "@mui/material";
 import { useContext } from "react";
+import DetailsCarousel from "../../../common/components/DetailsCarousel/DetailsCarousel";
 import { ThemeContext } from "../../../context/ThemeWrapper";
 import Footer from "../footer/Footer";
 import Header from "./Header/Header";
@@ -14,6 +15,7 @@ const HomePage = () => {
       <Header />
       <LandingPage/>
       <Footer />
+      <DetailsCarousel />
     </Box>
   );
 };
