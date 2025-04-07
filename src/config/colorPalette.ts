@@ -1,14 +1,14 @@
 import { createTheme } from "@mui/material";
 
 export type ColorScheme = {
-  black: string,
-  white:string,
-  lightGreen:string,
-  lightBrown: string,
-  darkBrown:string,
-  darkBeige:string,
-  gray:string,
-
+  black: string;
+  white: string;
+  lightGreen: string;
+  lightBrown: string;
+  darkBrown: string;
+  darkBeige: string;
+  gray: string;
+  textGrey: string;
 };
 
 const lightTheme: ColorScheme = {
@@ -18,17 +18,19 @@ const lightTheme: ColorScheme = {
   gray: "#757575",
   lightGreen: "#304835",
   lightBrown: "#ab8e66",
-  darkBrown:'#8a7252',
+  darkBrown: "#8a7252",
+  textGrey: "#424242",
 };
 
 const darkTheme: ColorScheme = {
   black: "#ffffff",
   white: "#000000",
-  darkBeige:"#ab8e66",
-  gray:"#757575",
+  darkBeige: "#ab8e66",
+  gray: "#757575",
   lightGreen: "#304835",
   lightBrown: "#ab8e66",
-  darkBrown:'#8a7252'
+  darkBrown: "#8a7252",
+  textGrey: "#424242",
 };
 
 const fonts = {

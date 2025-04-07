@@ -1,5 +1,7 @@
-import { Box, Button, Container, styled, Typography, useMediaQuery, useTheme } from "@mui/material";
-import React from "react";
+import { Box, Button, Container, Link, styled, Typography, useMediaQuery, useTheme } from "@mui/material";
+import React, { useContext } from "react";
+import { ThemeContext } from "../../../context/ThemeWrapper";
+import { planYourVisitStyles } from "./PlanYourVisitStyles";
 
 // Styled components
 const StoreImage = styled("img")(({ theme }) => ({
@@ -27,8 +29,27 @@ const GuideButton = styled(Button)(({ theme }) => ({
   },
 }));
 
-const PlanYourVisitPage: React.FC = () => {
+const openingHoursList: string[] = [
+  "Monday: 10am - 9pm",
+  "Tuesday: 10am - 9pm",
+  "Wednesday: 10am - 9pm",
+  "Thursday: 10am - 9pm",
+  "Friday: 10am - 9pm",
+  "Saturday: 10am - 9pm",
+  "Sunday: 11:30am - 6pm",
+  "*browsing only 11:30am-12pm",
+];
+
+const storeDetails: string[] = ["87-135 Brompton Road", "Knightsbridge", "London", " SW1X 7XL"];
+
+const webThumbnail = "https://d2wd7685k000to.cloudfront.net/image/306683987547/image_6ad1sde9bl4f3babc8qou3pc1o/-S1280x2560-FJPG";
+const mobileThumbnail =
+  "https://d1c96hlcey6qkb.cloudfront.net/b460d838-2f28-4ead-8832-f90e7ce67346/w-555b3704694245d8acd06f08a19c9152/da460a6201e4405f96673ee5e6e9f816?response-content-disposition=inline%3B%20filename%2A%3DUTF-8%27%27m-contact-us-plan-your-visit.jpg&response-content-type=image%2Fjpeg%3B%20time%3D20250407093226&Expires=1744113600&Signature=K4FgpQbfyMBk2IIBhnEd1mZvuugwE2oPJFtikokY2onKVO4PttzQ9lR3SdOBLROfpTEhIpx1IE3gv91y0WLkdu7SEmhlRs8ccpEuSys9e-BxPm7D31S7WIcz3hajYCMdCXcL6CGzu-pQVx47gbEUXT3T4N5RYcX4u3Pos7IuQa0CvUyAo6Oij~ktciH772ivu5Cte19YRiQWDz1e7s0fZ-UmxNEiDxz5vhi45eH-zhVguoRqOkZtrXTosntbM7YIXgyv2fKNPzfFTyviHVZo45botj~pofSVkVLd8Wx2Bgna2faVUaHG4Vz2tPEhjf12lPKnonf98PijQvNKzu3skA__&Key-Pair-Id=APKAI33AGAEAYCXFBDTA";
+
+export const PlanYourVisitPage: React.FC = () => {
   const theme = useTheme();
+  const { colors } = useContext(ThemeContext);
+  const style = planYourVisitStyles(colors);
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const isTablet = useMediaQuery(theme.breakpoints.down("md"));
 
@@ -73,7 +94,7 @@ const PlanYourVisitPage: React.FC = () => {
           variant="body2"
           sx={{
             mb: 3,
-            color: "#444",
+            color: style.paragraph,
             flex: "1",
           }}>
           {text}
@@ -96,10 +117,38 @@ const PlanYourVisitPage: React.FC = () => {
       </Box>
     );
   };
-
   return (
     <>
+      <Box
+        style={{
+          display: "flex",
+          alignItems: "flex-end",
+          height: 250,
+          width: "100%",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "auto",
+          backgroundImage: `url(
+            ${isTablet ? mobileThumbnail : webThumbnail}
+            )`,
+        }}>
+        <Typography
+          sx={{
+            fontFamily: "Miller Banner, serif",
+            color: "white",
+            paddingBottom: "10px",
+            fontSize: "40px",
+            fontWeight: "100",
+            paddingLeft: "20px",
+          }}>
+          Plan Your Visit
+        </Typography>
+      </Box>
       <Container maxWidth="md" sx={{ py: 2 }}>
+        <Box sx={{ display: "flex", flexDirection: "column", mb: 4, alignItems: "center", padding: "20px 1px 30px 1px " }}>
+          <Typography sx={{ color: style.paragraph, textAlign: "center" }}>
+            With every visit to Harrods, you can expect outstanding personal service and a truly unique sense of magic.
+          </Typography>
+        </Box>
         <Box
           sx={{
             display: "flex",
@@ -129,36 +178,19 @@ const PlanYourVisitPage: React.FC = () => {
               component="h2"
               sx={{
                 fontWeight: "bold",
-                mb: 3,
+                mb: 1,
+                fontSize: "16px",
+                color: style.paragraph,
               }}>
               OPENING HOURS
             </Typography>
 
-            <Box sx={{ mb: 3 }}>
-              <Typography variant="body1" sx={{ mb: 1 }}>
-                Monday: 10am - 9pm
-              </Typography>
-              <Typography variant="body1" sx={{ mb: 1 }}>
-                Tuesday: 10am - 9pm
-              </Typography>
-              <Typography variant="body1" sx={{ mb: 1 }}>
-                Wednesday: 10am - 9pm
-              </Typography>
-              <Typography variant="body1" sx={{ mb: 1 }}>
-                Thursday: 10am - 9pm
-              </Typography>
-              <Typography variant="body1" sx={{ mb: 1 }}>
-                Friday: 10am - 9pm
-              </Typography>
-              <Typography variant="body1" sx={{ mb: 1 }}>
-                Saturday: 10am - 9pm
-              </Typography>
-              <Typography variant="body1" sx={{ mb: 1 }}>
-                Sunday: 11:30am - 6pm*
-              </Typography>
-              <Typography variant="body2" sx={{ mb: 1, fontStyle: "italic" }}>
-                *browsing only 11:30am-12pm
-              </Typography>
+            <Box sx={{ mb: 1 }}>
+              {openingHoursList.map((times, index) => (
+                <Typography variant="body1" key={index} sx={{ mb: 0, color: style.paragraph, fontSize: "16px", fontWeight: 100 }}>
+                  {times}
+                </Typography>
+              ))}
             </Box>
 
             <Typography
@@ -166,24 +198,18 @@ const PlanYourVisitPage: React.FC = () => {
               component="h2"
               sx={{
                 fontWeight: "bold",
-                mb: 2,
+                mb: 1,
                 mt: 2,
+                fontSize: "16px",
+                color: style.paragraph,
               }}>
               THE STORE
             </Typography>
-
-            <Typography variant="body1" sx={{ mb: 0.5 }}>
-              87-135 Brompton Road
-            </Typography>
-            <Typography variant="body1" sx={{ mb: 0.5 }}>
-              Knightsbridge
-            </Typography>
-            <Typography variant="body1" sx={{ mb: 2 }}>
-              London
-            </Typography>
-            <Typography variant="body1" sx={{ mb: 3 }}>
-              SW1X 7XL
-            </Typography>
+            {storeDetails.map((times, index) => (
+              <Typography variant="body1" key={index} sx={{ mb: index, color: style.paragraph, fontSize: "16px", fontWeight: 100 }}>
+                {times}
+              </Typography>
+            ))}
 
             <GuideButton disableElevation disableRipple disableFocusRipple disableTouchRipple variant="outlined">
               View Store Guide
@@ -210,7 +236,7 @@ const PlanYourVisitPage: React.FC = () => {
           sx={{
             textAlign: "center",
             mb: 4,
-            color: "#444",
+            color: style.paragraph,
             maxWidth: "800px",
             mx: "auto",
           }}>
@@ -249,6 +275,7 @@ const PlanYourVisitPage: React.FC = () => {
             display: "flex",
             justifyContent: "center",
             mt: 4,
+            mb: 4,
           }}>
           <Button
             variant="contained"
@@ -290,9 +317,115 @@ const PlanYourVisitPage: React.FC = () => {
             "Discover All Restaurants"
           )}
         </Box>
+
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: { xs: "column", md: "row" },
+            gap: 1,
+            justifyContent: "space-between",
+            mb: 6,
+          }}>
+          <Box sx={{ position: "relative", flex: 1 }}>
+            <Box
+              component="img"
+              src="https://d2wd7685k000to.cloudfront.net/rendition/306683987547/image_fr781jgb4h0j5b45u17qaiih5a/-S1536x3072-FJPG"
+              alt="People shopping with Harrods bags"
+              sx={{
+                width: "100%",
+                height: "auto",
+                borderRadius: 1,
+              }}
+            />
+          </Box>
+          <Box
+            sx={{
+              flex: 1,
+              display: "flex",
+              flexDirection: { xs: "column", md: "row" },
+              alignItems: "center",
+              justifyContent: "flex-end",
+              boxSizing: "border-box",
+            }}>
+            <Box sx={{ width: { md: "80%", xs: "100%" } }}>
+              <Typography variant="overline" sx={{ color: "#666", fontWeight: 500 }}>
+                SPEND, EARN, REDEEM
+              </Typography>
+              <Typography variant="h3" component="h1" sx={{ fontFamily: "serif", mb: 2, fontSize: 30 }}>
+                Join Harrods Rewards
+              </Typography>
+              <Typography sx={{ mb: 2, color: "#333", maxWidth: 600, fontSize: 10 }}>
+                Our loyalty programme is about more than earning points (which are always fun to spend), it's also your key to unlocking the
+                best of Harrods – think member discounts, product pre-orders and more.
+              </Typography>
+              <Button
+                variant="outlined"
+                sx={{
+                  border: "none",
+                  padding: 0,
+                  textDecoration: "underline",
+                  color: colors.darkBrown,
+                  fontSize: "16px",
+                  "&:hover": { backgroundColor: "transparent", textDecoration: "underline" },
+                  textTransform: "none",
+                  mt: 2,
+                }}>
+                Join Rewards
+              </Button>
+            </Box>
+          </Box>
+        </Box>
+
+        {/* Getting to the store section */}
+        <Box sx={{ paddingLeft: { sm: 5, xs: 0 }, mb: 6 }}>
+          <Typography variant="h4" component="h2" sx={{ fontFamily: "serif", mb: 4, fontSize: 30 }}>
+            Getting to the store
+          </Typography>
+
+          {/* Parking */}
+          <Box sx={{ mb: 4 }}>
+            <Typography variant="h6" component="h3" sx={{ color: style.paragraph, mb: 1, fontWeight: "bold", fontSize: 15 }}>
+              Parking:
+            </Typography>
+            <Typography sx={{ mb: 1, fontSize: 13, fontWeight: 300, color: style.paragraph }}>
+              Parking & Valet Parking is available on Brompton Place, a two-minute walk from the store. Use the postal code SW3 1QE for
+              directions to the car park.
+            </Typography>
+            <Typography sx={{ mb: 1, fontSize: 13, fontWeight: 300, color: style.paragraph }}>
+              Charges apply. Disabled parking is available for permit holders on Basil Street, to the rear of the store. To find Basil
+              Street, please use the postal code SW3 1BA. For more information, please view our{" "}
+              <Link href="#" sx={{ color: style.linkButton, textDecoration: "underline" }}>
+                Visiting the Store FAQs
+              </Link>
+              .
+            </Typography>
+          </Box>
+
+          {/* Taxi */}
+          <Box sx={{ mb: 4 }}>
+            <Typography variant="h6" component="h3" sx={{ color: style.paragraph, mb: 1, fontWeight: "bold", fontSize: 15 }}>
+              Taxi:
+            </Typography>
+            <Typography sx={{ color: style.paragraph, mb: 1, fontSize: 13, fontWeight: 300 }}>
+              Taxi pick-up/drop-off is available on Basil Street (directly outside Door 3).
+            </Typography>
+          </Box>
+
+          {/* Public Transport */}
+          <Box sx={{ mb: 4 }}>
+            <Typography variant="h6" component="h3" sx={{ color: style.paragraph, mb: 1, fontWeight: "bold", fontSize: 15 }}>
+              Public transport:
+            </Typography>
+            <Typography sx={{ mb: 1, fontSize: 13, fontWeight: 300, color: style.paragraph }}>
+              The nearest tube station is Knightsbridge. Plan your route on{" "}
+              <Link href="#" sx={{ color: style.linkButton, textDecoration: "underline", fontSize: 13, fontWeight: 300 }}>
+                TFL Journey Planner
+              </Link>
+              .
+            </Typography>
+          </Box>
+        </Box>
       </Container>
     </>
   );
 };
-
-export default PlanYourVisitPage;
