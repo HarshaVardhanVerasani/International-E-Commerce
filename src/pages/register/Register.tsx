@@ -9,8 +9,8 @@ import { darkTheme } from '../../config/colorPalette';
 const CommonInputField = lazy(() => import("./../../components/commonInputField/CommonInputField"))
 interface UserDetails {
     name: string,
-    lastName: string
-    email: string;
+    lastName: string,
+    email: string,
     password: string;
     confirmPassword: string
 }
