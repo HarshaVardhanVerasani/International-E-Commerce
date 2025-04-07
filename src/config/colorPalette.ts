@@ -1,18 +1,37 @@
 import { createTheme } from "@mui/material";
 
 export type ColorScheme = {
-  black: string;
-  white: string;
+  black: string,
+  white:string,
+  lightGreen:string,
+  lightBrown: string,
+  darkBrown:string,
+  darkBeige:string,
+  gray:string,
+  lightYellow:string
+
 };
 
 const lightTheme: ColorScheme = {
   black: "#000000",
   white: "#ffffff",
+  darkBeige: "#ab8e66",
+  gray: "#757575",
+  lightGreen: "#304835",
+  lightBrown: "#ab8e66",
+  darkBrown:'#8a7252',
+  lightYellow:"#FBF9F7"
 };
 
 const darkTheme: ColorScheme = {
   black: "#ffffff",
   white: "#000000",
+  darkBeige: "#ab8e66",
+  gray: "#757575",
+  lightGreen: "#304835",
+  lightBrown: "#ab8e66",
+  darkBrown:'#8a7252',
+  lightYellow:"#FBF9F7"
 };
 
 const fonts = {
@@ -52,4 +71,4 @@ export const muiGlobalTheme = (colors: ColorScheme) =>
     },
   });
 
-export { darkTheme, fonts, lightTheme };
+export { darkTheme, lightTheme };
