@@ -7,13 +7,13 @@ import AuthenticationLayout from "../../pages/authenticationLayout/Authenticatio
 import HomePage from "../../pages/customer/homePage/HomePage";
 import LoginPage from "../../pages/loginPage/LoginPage";
 import Register from "../../pages/register/Register";
-import { lazy } from "react";
-const ClothingLayout = lazy(() => import("../../components/clothing/ClothingLayout"));
+import ProductListingPage from "../../components/clothing/ProductListingPage";
+
 const AppRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
-      <Route path="women-clothing" element={<ClothingLayout />} />
+      <Route path="women-clothing" element={<ProductListingPage />} />
         <Route index element={<HomePage />} />
         <Route path="favorite" element={<FavoritePage />} />
         <Route path="cart" element={<CartPage />} />
