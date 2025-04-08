@@ -10,7 +10,7 @@ export type ColorScheme = {
   gray:string,
   mediumBlack:string,
   lightBlack:string
-  lightYellow:string
+  lightYellow:string,
 };
 
  const lightTheme: ColorScheme = {
@@ -23,7 +23,7 @@ export type ColorScheme = {
   lightGreen: "#304835",
   lightBrown: "#ab8e66",
   darkBrown:'#8a7252',
-  lightYellow:"#FBF9F7"
+  lightYellow:"#FBF9F7",
 };
 
 const darkTheme: ColorScheme = {

@@ -25,6 +25,7 @@ import { ThemeContext } from "../../../../context/ThemeWrapper";
 import { headerStyles } from "./headerStyles";
 import TopBar from "../../../../components/topBar/TopBar";
 import { useNavigate } from "react-router-dom";
+import CommonSearch from "../../../../components/commonSearch/CommonSearch";
 
 type MenuKey = keyof typeof dataMap;
 
@@ -37,7 +38,7 @@ const Header: React.FC = () => {
   const [showContent, setShowContent] = useState<boolean>(false);
   const [selectedMenu, setSelectedMenu] = useState<MenuKey | "">("");
   const [drawerOpen, setDrawerOpen] = useState<boolean>(false);
-
+  const [searchDrawer,setSearchDrawer] = useState<boolean>(false)
   let closeTimeout: ReturnType<typeof setTimeout>;
 
   const handleMouseEnter = (item: MenuKey) => {
@@ -63,6 +64,12 @@ const Header: React.FC = () => {
       navigate(`auth/${path}`);
     }
   }
+  const handleOpen = () => {
+    setSearchDrawer(true)
+  }
+  const handleClose = () => {
+    setSearchDrawer(false)
+  }
 
   const isDesktop = useMediaQuery("(min-width:1023px)");
 
@@ -71,6 +78,7 @@ const Header: React.FC = () => {
       {isDesktop ? (
         <Box>
           <TopBar />
+      <CommonSearch searchDrawer={searchDrawer} handleClose={handleClose}/>
           <Box sx={styles.bannerImageStyles}>
             <Box sx={styles.bannerImageBox}>
               <CountrySelector />
@@ -84,7 +92,7 @@ const Header: React.FC = () => {
               <Box component="img" src={logo} sx={styles.logo} />
             </Box>
             <Box sx={styles.iconContainer}>
-              <SearchIcon sx={styles.iconStyles} />
+              <SearchIcon sx={styles.iconStyles} onClick= {handleOpen}/>
               <FavoriteBorderIcon sx={styles.iconStyles} />
               <ShoppingBagOutlinedIcon sx={styles.iconStyles} />
             </Box>
