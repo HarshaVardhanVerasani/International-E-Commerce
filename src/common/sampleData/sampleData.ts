@@ -2,6 +2,12 @@ import {
   bottegaVeneta,
   chole,
   christianLouboutin,
+  detailsCarouselFive,
+  detailsCarouselFour,
+  detailsCarouselOne,
+  detailsCarouselSix,
+  detailsCarouselThree,
+  detailsCarouselTwo,
   jackuemus,
   leMondeBeryl,
   leoLin,
@@ -107,6 +113,20 @@ const fashionItems: SimplifiedFashionItem[] = [
     price: "$1050.0",
   },
 ];
+
+interface detailsCarouselInterface {
+  id: number;
+  imageUrl: string;
+}
+
+interface SimplifiedFashionItem {
+  id: number;
+  imageUrl: string;
+  name: string;
+  type: string;
+  price: string;
+}
+
 const products = {
   name: "strawberry whine",
   image: "https//",
@@ -312,4 +332,15 @@ const initialFavorites = [
   },
 ];
 
-export { authenticationLayoutPageData, dataMap, fashionItems, initialFavorites, products };
+const detailsCarousel: detailsCarouselInterface[] = [
+  { id: 1, imageUrl: detailsCarouselOne },
+  { id: 2, imageUrl: detailsCarouselTwo },
+  { id: 3, imageUrl: detailsCarouselThree },
+  { id: 4, imageUrl: detailsCarouselFour },
+  { id: 5, imageUrl: detailsCarouselFive },
+  { id: 6, imageUrl: detailsCarouselSix },
+];
+export {};
+export type { detailsCarouselInterface, SimplifiedFashionItem };
+
+export { authenticationLayoutPageData, dataMap, detailsCarousel, fashionItems, initialFavorites, products };
