@@ -211,11 +211,105 @@ const authenticationLayoutPageData = {
   forgottenYourPassword: "Forgotten your password?",
   doNotHaveAccount: "Don’t have an online account?",
   registerNow: "Register now",
-  communication:"Communication",
-  communicationDescription:"If you would like to hear from Harrods regarding your Rewards membership benefits and the latest events, products and services, please tick below to receive marketing communications.",
-  joinHarrods:"Join Harrods",
-  earnAndRedeem:"Earn and redeem points when you spend",
-  benefitsAndDiscounts:"Exclusive benefits, events and discounts",tiers:"Your perks grow as you move through the tiers",rewards:"Rewards"
+  communication: "Communication",
+  communicationDescription:
+    "If you would like to hear from Harrods regarding your Rewards membership benefits and the latest events, products and services, please tick below to receive marketing communications.",
+  joinHarrods: "Join Harrods",
+  earnAndRedeem: "Earn and redeem points when you spend",
+  benefitsAndDiscounts: "Exclusive benefits, events and discounts",
+  tiers: "Your perks grow as you move through the tiers",
+  rewards: "Rewards",
 };
 
-export { dataMap, fashionItems, products, authenticationLayoutPageData };
+const initialFavorites = [
+  {
+    id: 1,
+    brand: "BOTTEGA VENETA",
+    name: "Aviator Sunglasses",
+    price: 460.0,
+    color: "2600D1",
+    size: "OS",
+    image:
+      "https://hrd-live.cdn.scayle.cloud/images/6412e0ecd0479babeb4968e8bdb1ab3d.jpg?brightness=1&width=1280&height=1707&quality=75&bg=ffffff",
+    isNew: false,
+  },
+  {
+    id: 2,
+    brand: "STELLA MCCARTNEY",
+    name: "Organic Silk Layered Midi Dress",
+    price: 2100.0,
+    color: "4702 WATER LILY",
+    size: "36 IT",
+    image:
+      "https://hrd-live.cdn.scayle.cloud/images/92a71f89e8fd9a133564aae42c21fd31.jpg?brightness=1&width=1280&height=1707&quality=75&bg=ffffff",
+    isNew: true,
+  },
+  {
+    id: 3,
+    brand: "BOTTEGA VENETA",
+    name: "Aviator Sunglasses",
+    price: 460.0,
+    color: "2600D1",
+    size: "OS",
+    image:
+      "https://hrd-live.cdn.scayle.cloud/images/399a9dd2873113d63b7b476b01032f9d.jpg?brightness=1&width=1280&height=1707&quality=75&bg=ffffff",
+    isNew: false,
+  },
+  {
+    id: 4,
+    brand: "STELLA MCCARTNEY",
+    name: "Organic Silk Layered Midi Dress",
+    price: 2100.0,
+    color: "4702 WATER LILY",
+    size: "36 IT",
+    image:
+      "https://hrd-live.cdn.scayle.cloud/images/4c4ee85fa0ae55b8c366f8af745555a4.jpg?brightness=1&width=1280&height=1707&quality=75&bg=ffffff",
+    isNew: true,
+  },
+  {
+    id: 5,
+    brand: "BOTTEGA VENETA",
+    name: "Aviator Sunglasses",
+    price: 460.0,
+    color: "2600D1",
+    size: "OS",
+    image:
+      "https://hrd-live.cdn.scayle.cloud/images/e31139347d210b998da4979d9f85ae5d.jpg?brightness=1&width=1280&height=1707&quality=75&bg=ffffff",
+    isNew: false,
+  },
+  {
+    id: 6,
+    brand: "STELLA MCCARTNEY",
+    name: "Organic Silk Layered Midi Dress",
+    price: 2100.0,
+    color: "4702 WATER LILY",
+    size: "36 IT",
+    image:
+      "https://hrd-live.cdn.scayle.cloud/images/4c98024e9217ede09d3dd27f7055e63c.jpg?brightness=1&width=1280&height=1707&quality=75&bg=ffffff",
+    isNew: true,
+  },
+  {
+    id: 7,
+    brand: "BOTTEGA VENETA",
+    name: "Aviator Sunglasses",
+    price: 460.0,
+    color: "2600D1",
+    size: "OS",
+    image:
+      "https://hrd-live.cdn.scayle.cloud/images/3d2ac7d2049e644e44819c081dc68bd0.jpg?brightness=1&width=1280&height=1707&quality=75&bg=ffffff",
+    isNew: false,
+  },
+  {
+    id: 8,
+    brand: "STELLA MCCARTNEY",
+    name: "Organic Silk Layered Midi Dress",
+    price: 2100.0,
+    color: "4702 WATER LILY",
+    size: "36 IT",
+    image:
+      "https://hrd-live.cdn.scayle.cloud/images/4805ca67211dead021f8325d7cf93508.jpg?brightness=1&width=1280&height=1707&quality=75&bg=ffffff",
+    isNew: true,
+  },
+];
+
+export { authenticationLayoutPageData, dataMap, fashionItems, initialFavorites, products };
