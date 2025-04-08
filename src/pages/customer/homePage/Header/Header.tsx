@@ -78,7 +78,7 @@ const Header: React.FC = () => {
         <Box>
           <TopBar />
           <Box
-          //@ts-ignore
+         // @ts-expect-error: TS2339: Property 'sx' does not exist on type 'IntrinsicAttributes & { children?: ReactNode; }'.
             sx={{
               ...styles.bannerImageStyles,
               backgroundImage: `url(${location.pathname === "/" && bannerImg})`,
