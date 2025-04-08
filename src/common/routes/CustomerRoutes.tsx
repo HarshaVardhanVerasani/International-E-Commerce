@@ -10,12 +10,14 @@ import ProductListingPage from "../../components/clothing/ProductListingPage";
 import ShoppingBag from "../../pages/customer/cart/Cart";
 import { PlanYourVisitPage } from "../../pages/customer/planYourVisit/PlanYourVisit";
 import CheckoutLayout from "../../pages/checkoutLayout/CheckoutLayout";
+import CheckoutSelection from "../../components/checkoutSelection/CheckoutSelection";
+import CheckoutDetails from "../../components/checkoutDetails/CheckoutDetails";
 
 const AppRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
-      <Route path="women-clothing" element={<ProductListingPage />} />
+        <Route path="women-clothing" element={<ProductListingPage />} />
         <Route index element={<HomePage />} />
         <Route path="favorite" element={<FavoritePage />} />
         <Route path="cart" element={<ShoppingBag />} />
@@ -26,8 +28,10 @@ const AppRoutes = () => {
         <Route path="LoginPage" element={<LoginPage />} />
         <Route path="Register" element={<Register />} />
       </Route>
-     <Route path="/checkout" element={<CheckoutLayout/>}>
-     </Route>
+      <Route path="/checkout" element={<CheckoutLayout />}>
+        <Route path="selection" element={<CheckoutSelection />} />
+        <Route path="details" element={<CheckoutDetails />} />
+      </Route>
     </Routes>
   );
 };
