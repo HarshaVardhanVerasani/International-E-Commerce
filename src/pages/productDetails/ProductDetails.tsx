@@ -6,13 +6,11 @@ import QuantityDropdown from "../../common/components/QuantityDropdown/QuantityD
 import SizeDropdown from "../../common/components/SizeDropdown/SizeDropdown";
 import AccordionDetails from "../../components/customAccordion/CustomAccordion";
 import Footer from "../customer/footer/Footer";
-import Header from "../customer/homePage/Header/Header";
 import productDetailsStyles from "./ProductDetailsStyles";
 
 const ProductDetails = () => {
   return (
     <>
-      <Header />
       <Box sx={productDetailsStyles.bodyCont}>
         <Box sx={productDetailsStyles.commonCont}>
           <Box sx={productDetailsStyles.container}>
