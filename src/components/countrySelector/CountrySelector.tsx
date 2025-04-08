@@ -56,9 +56,7 @@ const CountrySelector: React.FC = () => {
               <img
                 src={`https://flagcdn.com/w40/${country.iso2.toLowerCase()}.png`}
                 alt={country.name}
-                width={25}
-                height={25}
-                style={{ borderRadius: "100%" }}
+                style={{ borderRadius: "100%", width: "25px", height: "25px" }}
               />
             )}
           </React.Fragment>
@@ -105,9 +103,7 @@ const CountrySelector: React.FC = () => {
                 <img
                   src={`https://flagcdn.com/w40/${country.iso2.toLowerCase()}.png`}
                   alt={country.name}
-                  width={25}
-                  height={25}
-                  style={{ borderRadius: "100%" }}
+                  style={{ borderRadius: "100%", width: 25, height: 25 }}
                 />
                 <ListItemText primary={country.name} sx={{ ml: 2 }} />
                 <Typography variant="body2" color="textSecondary">

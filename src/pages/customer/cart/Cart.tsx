@@ -18,6 +18,7 @@ import {
   useTheme,
 } from "@mui/material";
 import React, { useState } from "react";
+import CartPage from "../../../components/cartPage/CartPage";
 
 // Types
 interface ProductItem {
@@ -83,7 +84,9 @@ const ShoppingBag: React.FC = () => {
     });
   };
 
-  return (
+  return product === null ? (
+    <CartPage />
+  ) : (
     <Container maxWidth="md">
       <Typography variant="h4" component="h1" align="center" gutterBottom sx={{ mb: 4 }}>
         Shopping Bag
