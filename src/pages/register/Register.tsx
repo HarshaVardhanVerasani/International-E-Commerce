@@ -1,14 +1,50 @@
 import DoneIcon from '@mui/icons-material/Done';
 import { Box, FormControl, MenuItem, Select, Stack, Typography } from "@mui/material";
-import { lazy, useContext } from "react";
+import { ChangeEvent, lazy, useContext, useState } from "react";
 import { authenticationLayoutPageData } from "../../common/sampleData/sampleData";
 import { ThemeContext } from "../../context/ThemeWrapper";
 import { RegisterPageStyles } from "./RegisterPageStyles";
+import CommonButton from '../../components/commonButton/CommonButton';
+import { darkTheme } from '../../config/colorPalette';
 const CommonInputField = lazy(() => import("./../../components/commonInputField/CommonInputField"))
+interface UserDetails {
+    name: string,
+    lastName: string,
+    
+    email: string,
+    password: string;
+    confirmPassword: string
+}
+
+interface RegisterFieldsData {
+    id: number;
+    name: keyof UserDetails;
+    value: string;
+    label: string;
+}
+
+const registerFieldsData: RegisterFieldsData[] = [
+    { id: 1, name: "name", value: "", label: "First Name" },
+    { id: 2, name: "lastName", value: "", label: "Last Name" },
+    { id: 3, name: "email", value: "", label: "Email Address" },
+    { id: 4, name: "password", value: "", label: "Password" },
+    { id: 5, name: "confirmPassword", value: "", label: "Confirm Password" },
+];
 const Register = () => {
     const { colors } = useContext(ThemeContext);
     const styles = RegisterPageStyles(colors);
-    const {communication,communicationDescription,register,joinHarrods,earnAndRedeem,benefitsAndDiscounts,tiers,rewards} = authenticationLayoutPageData;
+    const { communication, communicationDescription, register, joinHarrods, earnAndRedeem, benefitsAndDiscounts, tiers, rewards } = authenticationLayoutPageData;
+    const [user, setUser] = useState<UserDetails>({
+        name: '',
+        lastName: '',
+        email: '',
+        password: '',
+        confirmPassword: ''
+    });
+    const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = event.target;
+        setUser(prev => ({ ...prev, [name]: value }));
+    };
     return (
         <Box sx={styles.container}>
             <Stack sx={styles.rewardsContainer}>
@@ -47,17 +83,28 @@ const Register = () => {
                             <MenuItem value={"Mrs"}>Mrs.</MenuItem>
                         </Select>
                     </FormControl>
-                    <CommonInputField label="First Name" />
-                    <CommonInputField label="Last Name" />
-                    <CommonInputField label="Email Address" />
-                    <CommonInputField label="Password" />
-                    <CommonInputField label="Confirm Password" />
+                    {registerFieldsData.map((field) => (
+                        <CommonInputField
+                            key={field.id}
+                            label={field.label}
+                            name={field.name}
+                            value={user[field.name] || ""}
+                            handleChange={handleChange}
+                        />
+                    ))}
+
                 </Stack>
-                <Stack>
+                <Stack gap={"15px"}>
                     <Typography sx={styles.communication}>{communication}</Typography>
-                    <Typography>{communicationDescription}</Typography>
+                    <Typography sx={styles.communicationText}>{communicationDescription}</Typography>
+                    <Stack>
+                    Yes, contact me via email
+                    </Stack>
+                    <CommonButton bgColor={darkTheme.lightGreen} color='white' mainBgColor={darkTheme.lightGreen} title='Complete Registration' authButton={true}/>
+                    <Typography sx={styles.communicationText}>{communicationDescription}</Typography>
                 </Stack>
             </Stack>
+
         </Box>
     )
 }
