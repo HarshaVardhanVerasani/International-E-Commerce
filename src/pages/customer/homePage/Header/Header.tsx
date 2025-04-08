@@ -18,13 +18,13 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import { useContext, useState } from "react";
-import { logo } from "../../../../common/assets/images/imageFile";
+import { useLocation, useNavigate } from "react-router-dom";
+import { bannerImg, logo } from "../../../../common/assets/images/imageFile";
 import { dataMap } from "../../../../common/sampleData/sampleData";
 import CountrySelector from "../../../../components/countrySelector/CountrySelector";
+import TopBar from "../../../../components/topBar/TopBar";
 import { ThemeContext } from "../../../../context/ThemeWrapper";
 import { headerStyles } from "./headerStyles";
-import TopBar from "../../../../components/topBar/TopBar";
-import { useNavigate } from "react-router-dom";
 import CommonSearch from "../../../../components/commonSearch/CommonSearch";
 
 type MenuKey = keyof typeof dataMap;
@@ -33,6 +33,8 @@ type MenuKey = keyof typeof dataMap;
 const Header: React.FC = () => {
   const { colors } = useContext(ThemeContext);
   const navigate = useNavigate();
+  const location = useLocation(); 
+
   const styles = headerStyles(colors);
 
   const [showContent, setShowContent] = useState<boolean>(false);
@@ -63,7 +65,11 @@ const Header: React.FC = () => {
     if (path === "Register") {
       navigate(`auth/${path}`);
     }
-  }
+  };
+
+  const handleNavigateHome = () => {
+    navigate("/");
+  };
   const handleOpen = () => {
     setSearchDrawer(true)
   }
@@ -79,27 +85,47 @@ const Header: React.FC = () => {
         <Box>
           <TopBar />
       <CommonSearch searchDrawer={searchDrawer} handleClose={handleClose}/>
-          <Box sx={styles.bannerImageStyles}>
+          <Box
+          //@ts-ignore
+            sx={{
+              ...styles.bannerImageStyles,
+              backgroundImage: `url(${location.pathname === "/" && bannerImg})`,
+              height: location.pathname === "/" && "100vh",
+            }}>
             <Box sx={styles.bannerImageBox}>
               <CountrySelector />
               <Box sx={styles.signContainer}>
-                <Typography sx={styles.signStyles} onClick={() => handleNavigate("LoginPage")}>Sign In</Typography>
-                <Typography sx={styles.signStyle}>/</Typography>
-                <Typography sx={styles.signStyles} onClick={() => handleNavigate("Register")}>Register</Typography>
+                <Typography
+                  sx={{ ...styles.signStyles, color: location.pathname === "/" ? colors.white : colors.black }}
+                  onClick={() => handleNavigate("LoginPage")}>
+                  Sign In
+                </Typography>
+                <Typography sx={{ ...styles.signStyles, color: location.pathname === "/" ? colors.white : colors.black }}>/</Typography>
+                <Typography
+                  sx={{ ...styles.signStyles, color: location.pathname === "/" ? colors.white : colors.black }}
+                  onClick={() => handleNavigate("Register")}>
+                  Register
+                </Typography>
               </Box>
             </Box>
             <Box sx={styles.logoContainer}>
-              <Box component="img" src={logo} sx={styles.logo} />
+              <Box component="img" src={logo} sx={styles.logo} onClick={handleNavigateHome} />
             </Box>
             <Box sx={styles.iconContainer}>
-              <SearchIcon sx={styles.iconStyles} onClick= {handleOpen}/>
-              <FavoriteBorderIcon sx={styles.iconStyles} />
-              <ShoppingBagOutlinedIcon sx={styles.iconStyles} />
+              <SearchIcon sx={{ ...styles.iconStyles, color: location.pathname === "/" ? colors.white : colors.darkBeige }} onClick= {handleOpen}/>
+              <FavoriteBorderIcon
+                sx={{ ...styles.iconStyles, color: location.pathname === "/" ? colors.white : colors.darkBeige }}
+                onClick={() => navigate("/favorite")}
+              />
+              <ShoppingBagOutlinedIcon
+                sx={{ ...styles.iconStyles, color: location.pathname === "/" ? colors.white : colors.darkBeige }}
+                onClick={() => navigate("/cart")}
+              />
             </Box>
             <Box sx={styles.menuContainer}>
               {Object.keys(dataMap).map(item => (
                 <Box key={item} onMouseEnter={() => handleMouseEnter(item as MenuKey)} onMouseLeave={handleMouseLeave}>
-                  <Typography variant="body1" sx={styles.menuStyle}>
+                  <Typography variant="body1" sx={{ ...styles.menuStyle, color: location.pathname === "/" ? colors.white : colors.black }}>
                     {item}
                   </Typography>
                   <Divider sx={styles.itemHr} />
@@ -107,6 +133,7 @@ const Header: React.FC = () => {
               ))}
             </Box>
           </Box>
+          <Divider sx={{ width: "100%", display: "" }} />
           {showContent && selectedMenu && dataMap[selectedMenu] && (
             <Box sx={styles.drawerStyle} onMouseEnter={() => clearTimeout(closeTimeout)} onMouseLeave={handleMouseLeave}>
               <Grid container spacing={4} sx={styles.drawerContainer}>
@@ -145,7 +172,7 @@ const Header: React.FC = () => {
               </Box>
               <Box sx={styles.mobileIconContainer}>
                 <IconButton>
-                  <FavoriteBorderIcon sx={styles.menuIcon} />
+                  <FavoriteBorderIcon sx={styles.menuIcon} onClick={() => navigate("/favorite")} />
                 </IconButton>
                 <IconButton>
                   <ShoppingBagOutlinedIcon sx={styles.menuIcon} />
