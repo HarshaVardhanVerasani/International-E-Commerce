@@ -9,6 +9,7 @@ import Register from "../../pages/register/Register";
 import ProductListingPage from "../../components/clothing/ProductListingPage";
 import ShoppingBag from "../../pages/customer/cart/Cart";
 import { PlanYourVisitPage } from "../../pages/customer/planYourVisit/PlanYourVisit";
+import CheckoutLayout from "../../pages/checkoutLayout/CheckoutLayout";
 
 const AppRoutes = () => {
   return (
@@ -25,7 +26,8 @@ const AppRoutes = () => {
         <Route path="LoginPage" element={<LoginPage />} />
         <Route path="Register" element={<Register />} />
       </Route>
-  
+     <Route path="/checkout" element={<CheckoutLayout/>}>
+     </Route>
     </Routes>
   );
 };

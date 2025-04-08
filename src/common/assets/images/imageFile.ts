@@ -34,6 +34,7 @@ import imageTwo from '../images/imageTwo.jpg'
 
 import imageFour from '../images/imgFour.jpg'
 import imageFive from '../images/imgFive.jpg'
+import checkoutIcon from '../images/checkouticon.png'
 
 
 export {
@@ -53,5 +54,6 @@ export {
   valentinoGaravani,
   vivienneWestwood,
   imageOne,imageTwo,imageThree,imageFour,imageFive,
-  favoriteIcon
+  favoriteIcon,
+  checkoutIcon
 };
