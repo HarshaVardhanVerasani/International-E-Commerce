@@ -42,10 +42,13 @@ const Carousel = () => {
     });
   };
 
-  const updateArrows = React.useCallback((index: number) => {
-    setShowPrevArrow(index !== 0);
-    setShowNextArrow(index !== items.length - 1);
-  }, [items.length]);
+  const updateArrows = React.useCallback(
+    (index: number) => {
+      setShowPrevArrow(index !== 0);
+      setShowNextArrow(index !== items.length - 1);
+    },
+    [items.length]
+  );
 
   const goToNext = React.useCallback(() => {
     setActiveIndex(prevIndex => {
@@ -84,75 +87,73 @@ const Carousel = () => {
   };
 
   return (
-    <Box sx={carouselStyles.outerContainer}>
-      <Box sx={carouselStyles.container}>
-        <Box sx={carouselStyles.carouselContainer}>
-          <FavoriteBorderIcon sx={carouselStyles.favoriteIconStyles} />
-          <Box sx={carouselStyles.newBtn}>NEW</Box>
-          {!isMobile && showPrevArrow && (
-            <IconButton sx={carouselStyles.circleNavButton} onClick={goToPrevious} style={{ left: "20px" }}>
-              <NavigateBeforeIcon />
-            </IconButton>
-          )}
-          {!isMobile && showNextArrow && (
-            <IconButton sx={carouselStyles.circleNavButton} onClick={goToNext} style={{ right: "20px" }}>
-              <NavigateNextIcon />
-            </IconButton>
-          )}
-          <Box
-            ref={trackRef}
-            sx={isMobile ? carouselStyles.mobileTrack : carouselStyles.track}
-            style={{
-              transform: calculateTransform(),
-              width: isMobile ? `${items.length * 100}%` : `${items.length * 75}%`,
-            }}
-            onTouchStart={handleTouchStart}
-            onTouchMove={handleTouchMove}
-            onTouchEnd={handleTouchEnd}>
-            {items.map((item, index) => (
-              <Box
-                key={`${item.id}-${index}`}
-                sx={isMobile ? carouselStyles.mobileItemWrapper : carouselStyles.itemWrapper}
-                style={{
-                  minWidth: isMobile ? "100%" : "75%",
-                  width: isMobile ? "100%" : "75%",
-                }}>
-                <Box sx={carouselStyles.itemContent}>
-                  <img
-                    src={item.imageUrl}
-                    alt={`Carousel item ${item.id}`}
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                      objectFit: "cover",
-                    }}
-                  />
-                </Box>
-              </Box>
-            ))}
-          </Box>
-          {isDesktop && (
-            <Box sx={carouselStyles.pageIndicator}>
-              <Box sx={carouselStyles.pageIndicatorText}>
-                {activeIndex + 1} / {items.length}
+    <>
+      <Box sx={carouselStyles.carouselContainer}>
+        <FavoriteBorderIcon sx={carouselStyles.favoriteIconStyles} />
+        <Box sx={carouselStyles.newBtn}>NEW</Box>
+        {!isMobile && showPrevArrow && (
+          <IconButton sx={carouselStyles.circleNavButton} onClick={goToPrevious} style={{ left: "20px" }}>
+            <NavigateBeforeIcon />
+          </IconButton>
+        )}
+        {!isMobile && showNextArrow && (
+          <IconButton sx={carouselStyles.circleNavButton} onClick={goToNext} style={{ right: "20px" }}>
+            <NavigateNextIcon />
+          </IconButton>
+        )}
+        <Box
+          ref={trackRef}
+          sx={isMobile ? carouselStyles.mobileTrack : carouselStyles.track}
+          style={{
+            transform: calculateTransform(),
+            width: isMobile ? `${items.length * 100}%` : `${items.length * 75}%`,
+          }}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}>
+          {items.map((item, index) => (
+            <Box
+              key={`${item.id}-${index}`}
+              sx={isMobile ? carouselStyles.mobileItemWrapper : carouselStyles.itemWrapper}
+              style={{
+                minWidth: isMobile ? "100%" : "75%",
+                width: isMobile ? "100%" : "75%",
+              }}>
+              <Box sx={carouselStyles.itemContent}>
+                <img
+                  src={item.imageUrl}
+                  alt={`Carousel item ${item.id}`}
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                  }}
+                />
               </Box>
             </Box>
-          )}
+          ))}
         </Box>
-        {!isDesktop && (
-          <Box sx={carouselStyles.pagination}>
-            {items.map((_, index) => (
-              <Box
-                key={index}
-                sx={carouselStyles.paginationDot}
-                className={index === activeIndex ? "active" : ""}
-                onClick={() => goToIndex(index)}
-              />
-            ))}
+        {isDesktop && (
+          <Box sx={carouselStyles.pageIndicator}>
+            <Box sx={carouselStyles.pageIndicatorText}>
+              {activeIndex + 1} / {items.length}
+            </Box>
           </Box>
         )}
       </Box>
-    </Box>
+      {!isDesktop && (
+        <Box sx={carouselStyles.pagination}>
+          {items.map((_, index) => (
+            <Box
+              key={index}
+              sx={carouselStyles.paginationDot}
+              className={index === activeIndex ? "active" : ""}
+              onClick={() => goToIndex(index)}
+            />
+          ))}
+        </Box>
+      )}
+    </>
   );
 };
 

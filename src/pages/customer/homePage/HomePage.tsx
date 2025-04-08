@@ -1,11 +1,10 @@
 import { Box } from "@mui/material";
 import { useContext } from "react";
-import DetailsCarousel from "../../../common/components/DetailsCarousel/DetailsCarousel";
 import { ThemeContext } from "../../../context/ThemeWrapper";
+import LandingPage from "../../landing/LandingPage";
 import Footer from "../footer/Footer";
 import Header from "./Header/Header";
 import { homePageStyles } from "./homePageStyles";
-import LandingPage from "../../landing/LandingPage";
 
 const HomePage = () => {
   const { colors } = useContext(ThemeContext);
@@ -13,9 +12,8 @@ const HomePage = () => {
   return (
     <Box sx={style.container}>
       <Header />
-      <LandingPage/>
+      <LandingPage />
       <Footer />
-      <DetailsCarousel />
     </Box>
   );
 };

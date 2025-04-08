@@ -1,32 +1,12 @@
 import { SxProps } from "@mui/material";
 
 export const carouselStyles = {
-  outerContainer: {
-    width: "100%",
-    height: "100%",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#f5f5f5",
-  } as SxProps,
-
-  container: {
-    position: "relative",
-    width: { xs: "100%", md: "90%", lg: "85%" },
-    overflow: "hidden",
-    backgroundColor: "#f5f5f5",
-    border: "3px solid red",
-    height: { xs: "480px", md: "700px", lg: "550px" },
-  } as SxProps,
-
   carouselContainer: {
     position: "relative",
     display: "flex",
     justifyContent: "flex-start",
     height: { xs: "400px", md: "700px", lg: "550px" },
-    width: { xs: "100%", md: "65%" },
     overflow: "hidden",
-    border: "3px solid orange",
   } as SxProps,
 
   favoriteIconStyles: {
@@ -62,7 +42,6 @@ export const carouselStyles = {
     boxSizing: "border-box",
     padding: 0,
     margin: 0,
-    border: "3px solid violet",
   } as SxProps,
 
   mobileItemWrapper: {
@@ -93,7 +72,7 @@ export const carouselStyles = {
   } as SxProps,
 
   paginationDot: {
-    width: "10px", // Bigger dots
+    width: "10px",
     height: "10px",
     borderRadius: "50%",
     backgroundColor: "#fff",
@@ -101,7 +80,6 @@ export const carouselStyles = {
     border: "1px solid #8b6f4d",
     "&.active": {
       backgroundColor: "#8b6f4d",
-      // transform: "scale(1.5)", // Enlarged active dot
     },
   } as SxProps,
 
@@ -111,7 +89,6 @@ export const carouselStyles = {
     left: "50%",
     transform: "translateX(-50%)",
     fontSize: "14px",
-    // color: "#666",
     padding: "2px 15px",
     backgroundColor: "#fff",
     borderRadius: "5px",
