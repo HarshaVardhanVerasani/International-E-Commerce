@@ -6,6 +6,7 @@ import { ThemeContext } from "../../context/ThemeWrapper";
 import { Box, Typography } from "@mui/material";
 import CommonButton from "../commonButton/CommonButton";
 import { InStoreComponentStyles } from "./InStoreComponentStyles";
+import { Link, useNavigate } from "react-router-dom";
 
 const data = [
   {
@@ -25,6 +26,15 @@ const data = [
 const InStoreComponent = () => {
   const { colors } = useContext(ThemeContext);
   const style = InStoreComponentStyles(colors);
+  const navigate = useNavigate();
+
+  const handleLinkClick = (event: React.MouseEvent<HTMLAnchorElement>, path: string) => {
+    event.preventDefault(); 
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setTimeout(() => {
+      navigate(path); 
+    }, 500); 
+  };
 
   return (
    <Box sx={style.mainContainer}>
@@ -46,7 +56,9 @@ const InStoreComponent = () => {
         ))}
          
       </Box>
+      <Link to='visit' style={{ textDecoration: 'underline',color:colors.darkBrown }} onClick={(e) => handleLinkClick(e, '/visit')}>
       <CommonButton title="Plan Your Visit" color={colors.darkBrown} bgColor={colors.black} authButton mainBgColor='#304835' />
+      </Link>
    </Box>
      
   

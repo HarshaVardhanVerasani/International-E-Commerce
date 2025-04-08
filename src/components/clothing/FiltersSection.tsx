@@ -1,8 +1,9 @@
 import React from "react";
 import { Filters } from "../../utils/productsDataTypes";
 import FilterGroup from "./FilterGroup";
-import { Box, Typography } from "@mui/material";
+import { Accordion, AccordionDetails, AccordionSummary, Box, Typography } from "@mui/material";
 import PriceRangeSlider from "./PriceRangeSlider";
+import { ExpandMore } from "@mui/icons-material";
 
 
 interface FiltersSectionProps {
@@ -23,7 +24,7 @@ const FiltersSection: React.FC<FiltersSectionProps> = ({
   onPriceRangeChange,
 }) => {
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
+    <Box sx={{ display: 'flex', flexDirection: 'column' }}>
  
       <FilterGroup
         title="CATEGORIES"
@@ -66,14 +67,31 @@ const FiltersSection: React.FC<FiltersSectionProps> = ({
         onChange={(id, checked) => onFilterChange("patterns", id, checked)}
       />
       
+      <Accordion defaultExpanded>
+        <AccordionSummary
+          expandIcon={<ExpandMore />}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+          sx={{
+            backgroundColor: 'transparent',
+            fontWeight: '500',
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+          }}
+        >
+          <Typography variant="body1">Price Range</Typography>
+        </AccordionSummary>
+        <AccordionDetails sx={{ paddingTop: 0 }}>
+          <PriceRangeSlider
+            priceRange={filters.priceRange}
+            maxPrice={maxPrice}
+            onChange={onPriceRangeChange}
+          />
+        </AccordionDetails>
+      </Accordion>
     
-    
-        <PriceRangeSlider
-          priceRange={filters.priceRange}
-          maxPrice={maxPrice}
-          onChange={onPriceRangeChange}
-        />
-   
+       
     </Box>
   );
 };

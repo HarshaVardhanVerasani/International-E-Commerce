@@ -5,9 +5,9 @@ import { commonInputFieldStyles } from "../commonInputFieldStyles";
 
 interface IProps {
   label: string;
-  handleChange: (event: ChangeEvent<HTMLInputElement>) => void;
-  name: string;
-  value: string;
+  handleChange?: (event: ChangeEvent<HTMLInputElement>) => void;
+  name?: string;
+  value?: string;
 }
 const CommonInputField = (props: IProps) => {
   const { colors } = useContext(ThemeContext);
