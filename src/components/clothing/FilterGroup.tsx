@@ -1,9 +1,10 @@
 import React from "react";
 
-import { Accordion, AccordionSummary, AccordionDetails, Box } from "@mui/material";
+import { Accordion, AccordionSummary, AccordionDetails, Typography } from "@mui/material";
 import { FilterOption } from "../../utils/productsDataTypes";
-import { ExpandMore } from "@mui/icons-material";
+import { Add} from "@mui/icons-material";
 import FilterCheckbox from "./FilterCheckbox";
+import { lightTheme } from "../../config/colorPalette";
 
 interface FilterGroupProps {
   title: string;
@@ -20,9 +21,11 @@ const FilterGroup: React.FC<FilterGroupProps> = ({
 
   return (
     < >
-      <Accordion expanded={isExpanded} onChange={() => setIsExpanded(!isExpanded)}>
+      <Accordion expanded={isExpanded} onChange={() => setIsExpanded(!isExpanded)}  sx={{
+        borderBottom: `1px solid ${lightTheme.darkBrown}`,  
+      }}>
         <AccordionSummary
-          expandIcon={<ExpandMore />}
+          expandIcon={<Add sx={{ color: lightTheme.darkBrown }} />}
           aria-controls="panel1a-content"
           id="panel1a-header"
           sx={{
@@ -33,7 +36,7 @@ const FilterGroup: React.FC<FilterGroupProps> = ({
             alignItems: 'center',
           }}
         >
-          <span>{title}</span>
+          <Typography sx={{fontSize:'14px'}}>{title.toUpperCase()}</Typography>
         </AccordionSummary>
         <AccordionDetails sx={{ paddingTop: 0 }}>
           <>

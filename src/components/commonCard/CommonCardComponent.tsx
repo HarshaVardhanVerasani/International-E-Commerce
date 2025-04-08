@@ -4,7 +4,7 @@ import { useContext, useState } from "react";
 
 import { ThemeContext } from "../../context/ThemeWrapper";
 import { CommonCardComponentStyles } from "./CommonCardComponentStyles";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 interface CommonCardProps {
   title: string;
@@ -41,6 +41,16 @@ const CommonCardComponent = ({
   
   const handleMouseEnter = () => setHovered(true);
   const handleMouseLeave = () => setHovered(false);
+  const navigate = useNavigate();
+
+  const handleLinkClick = (event: React.MouseEvent<HTMLAnchorElement>, path: string) => {
+    event.preventDefault(); 
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setTimeout(() => {
+      navigate(path); 
+    }, 500);
+  };
+
 
   // const currentImage = hovered ? images[1] : images[0];
 console.log(isBgActive,'aASasASs')
@@ -49,7 +59,6 @@ console.log(isBgActive,'aASasASs')
       sx={style.mainContainer}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      // onClick={onClick}
     >
       {isIconHas && (
         <Box sx={style.iconContainer}>
@@ -76,7 +85,7 @@ console.log(isBgActive,'aASasASs')
             isLargeText?{textTransform:'uppercase',fontSize:'1.5rem', textAlign: "center",fontFamily:'miller-light'}:{}
           ]}
         >
-          {isTitleHasUnderline? <Link to='women-clothing' style={{ textDecoration: 'underline',color:colors.darkBrown }}>{title.toLocaleUpperCase()}</Link>:title.toLocaleUpperCase()}
+          {isTitleHasUnderline? <Link to='women-clothing' style={{ textDecoration: 'underline',color:colors.darkBrown }}  onClick={(e) => handleLinkClick(e, '/women-clothing')}>{title.toLocaleUpperCase()}</Link>:title.toLocaleUpperCase()}
          
          
         </Typography>
