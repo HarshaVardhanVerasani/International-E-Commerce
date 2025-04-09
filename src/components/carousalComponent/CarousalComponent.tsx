@@ -37,6 +37,7 @@ interface CarousalComponentProps {
   isTitleHasUnderline?: boolean;
   isLargeText?: boolean;
   isDescHasLink?: boolean;
+  isActive?: boolean;
 }
 
 const CarousalComponent: React.FC<CarousalComponentProps> = ({
@@ -48,6 +49,7 @@ const CarousalComponent: React.FC<CarousalComponentProps> = ({
   isTitleHasUnderline,
   isLargeText,
   isDescHasLink,
+  isActive,
 }) => {
   const [progress, setProgress] = useState(0);
   const swiperRef = useRef<SwiperRef | null>(null);
@@ -121,6 +123,7 @@ const CarousalComponent: React.FC<CarousalComponentProps> = ({
                 isNew={product.isNew}
                 name={product.name}
                 size={product.size}
+                isActive={isActive}
               />
             </Box>
           </SwiperSlide>

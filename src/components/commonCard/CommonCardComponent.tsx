@@ -28,7 +28,7 @@ interface CommonCardProps {
   color: string;
   size: string;
   isNew: boolean;
-  isActive?:boolean;
+  isActive?: boolean;
 }
 
 const CommonCardComponent = ({
@@ -105,16 +105,13 @@ const CommonCardComponent = ({
       )}
 
       <Box sx={[style.imageContainer, isBgActive ? { backgroundColor: "#f5f5f5", height: "350px", width: "80%", margin: "0 auto" } : {}]}>
-      {isActive?
-      <Link to={`productDetails/${id}`}>
-        <Box component="img" src={images[0]} alt={title} sx={{ width: "100%", height: "100%", objectFit: "cover" }} />
-      </Link>:<Box
-      component="img"
-      src={images[0]}
-      alt={title}
-      sx={{ width: "100%", height: "100%", objectFit: "cover" }}
-    />}
-        
+        {isActive ? (
+          <Link to={`productDetails/${id}`}>
+            <Box component="img" src={images[0]} alt={title} sx={{ width: "100%", height: "100%", objectFit: "cover" }} />
+          </Link>
+        ) : (
+          <Box component="img" src={images[0]} alt={title} sx={{ width: "100%", height: "100%", objectFit: "cover" }} />
+        )}
       </Box>
 
       <Box sx={style.textContainer}>
