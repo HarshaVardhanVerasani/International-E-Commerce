@@ -1,9 +1,11 @@
-import { FavoriteBorder } from "@mui/icons-material";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { Box } from "@mui/material";
 import Alert from "@mui/material/Alert";
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../redux/cartReducer/CartSlice";
+import { RootState } from "../../redux/Store";
 
 interface FavoriteItemProps {
   item: {
@@ -24,7 +26,9 @@ const FavoriteItem: React.FC<FavoriteItemProps> = ({ item, onRemove }) => {
   const [size, setSize] = useState(item.size);
 
   const dispatch = useDispatch();
+  const favorites = useSelector((state: RootState) => state.favoritesSlice.items);
 
+  const isFavorited = favorites.some(item => item.id === item.id);
   const handleAddToBag = () => {
     dispatch(
       addToCart({
@@ -58,7 +62,7 @@ const FavoriteItem: React.FC<FavoriteItemProps> = ({ item, onRemove }) => {
         onClick={onRemove}
         className="absolute top-0 right-0 p-2 text-brown-500 hover:text-brown-700"
         aria-label="Remove from favorites">
-        <FavoriteBorder />
+        {isFavorited ? <FavoriteIcon sx={{ color: "red" }} /> : <FavoriteBorderIcon />}{" "}
       </button>
       {item.isNew && (
         <div className="absolute top-0 right-12">
