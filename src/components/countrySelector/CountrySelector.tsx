@@ -3,6 +3,7 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { Box, List, ListItem, ListItemText, TextField, Typography } from "@mui/material";
 import React, { useContext, useEffect, useRef, useState } from "react";
 
+import { useLocation } from "react-router-dom";
 import { ThemeContext } from "../../context/ThemeWrapper";
 import { headerStyles } from "../../pages/customer/homePage/Header/headerStyles";
 
@@ -15,6 +16,7 @@ interface Country {
 const CountrySelector: React.FC = () => {
   const { colors } = useContext(ThemeContext);
   const styles = headerStyles(colors);
+  const location = useLocation();
 
   const [search, setSearch] = useState<string>("");
   const [selectedCountry, setSelectedCountry] = useState<string>("India");
@@ -61,12 +63,12 @@ const CountrySelector: React.FC = () => {
             )}
           </React.Fragment>
         ))}
-        <Typography variant="body1" sx={{ color: open ? "#000" : "#fff", fontSize: "12px" }}>
+        <Typography variant="body1" sx={{ color: location.pathname === "/" ? (open ? "#000" : "#fff") : "#000", fontSize: "12px" }}>
           {selectedCountry}
         </Typography>{" "}
         <KeyboardArrowDownIcon
           sx={{
-            color: open ? "#000" : "#fff",
+            color: location.pathname === "/" ? (open ? "#000" : "#fff") : "#000",
             transform: open ? "rotate(180deg)" : "rotate(0deg)",
             transition: "transform 0.3s ease-in-out",
           }}

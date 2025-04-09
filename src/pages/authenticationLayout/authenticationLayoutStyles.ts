@@ -36,7 +36,8 @@ export const authenticationPageStyles = (color: ColorScheme) => {
       alignItems: "center",
       width:{xs:"90%",sm:"62%",lg:"37%"},
       color: color.darkBrown,
-      gap:"5px"
+      gap:"5px",
+      cursor: "pointer",
     },
     backContainer1: {
       display: "flex",
@@ -44,7 +45,8 @@ export const authenticationPageStyles = (color: ColorScheme) => {
       alignItems: "center",
       width:{xs:"90%",sm:"92%",lg:"92%"},
       color: color.darkBrown,
-      gap:"5px"
+      gap:"5px",
+      cursor: "pointer",
     },
     backBtn: {
       fontSize: "11px",

@@ -10,6 +10,9 @@ import PlanYourVisitPage from "../../pages/customer/planYourVisit/PlanYourVisit"
 import LoginPage from "../../pages/loginPage/LoginPage";
 import ProductDetails from "../../pages/productDetails/ProductDetails";
 import Register from "../../pages/register/Register";
+import CheckoutLayout from "../../pages/checkoutLayout/CheckoutLayout";
+import CheckoutSelection from "../../components/checkoutSelection/CheckoutSelection";
+import CheckoutDetails from "../../components/checkoutDetails/CheckoutDetails";
 
 const AppRoutes = () => {
   return (
@@ -26,6 +29,10 @@ const AppRoutes = () => {
       <Route path="/auth" element={<AuthenticationLayout />}>
         <Route path="LoginPage" element={<LoginPage />} />
         <Route path="Register" element={<Register />} />
+      </Route>
+      <Route path="/checkout" element={<CheckoutLayout />}>
+        <Route path="selection" element={<CheckoutSelection />} />
+        <Route path="details" element={<CheckoutDetails />} />
       </Route>
     </Routes>
   );
