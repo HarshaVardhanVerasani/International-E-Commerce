@@ -35,6 +35,15 @@ import imageTwo from '../images/imageTwo.jpg'
 import imageFour from '../images/imgFour.jpg'
 import imageFive from '../images/imgFive.jpg'
 
+import rolexDeskTop from "../images/rolexDeskTop.jpg"
+import rokexMobile from '../images/rokexMobile.jpg'
+import rolexBottomDescImg from '../images/rolexBottomDescImg.jpg'
+import rolexBottomMobileImg from '../images/rolexBottomMobileImg.jpg'
+import rolexOne from '../images/rolexOne.jpg'
+import rolexTwo from '../images/rolexTwo.jpg'
+import rolexThree from '../images/rolexThree.jpg'
+import rolexFour from '../images/rolexFour.jpg'
+import rolexFive from '../images/rolexFive.jpg'
 
 export {
   bannerImg,
@@ -53,5 +62,14 @@ export {
   valentinoGaravani,
   vivienneWestwood,
   imageOne,imageTwo,imageThree,imageFour,imageFive,
-  favoriteIcon
+  favoriteIcon,
+  rolexDeskTop,
+  rokexMobile,
+  rolexBottomDescImg,
+  rolexBottomMobileImg,
+  rolexOne,
+  rolexTwo,
+  rolexThree,
+  rolexFour,
+  rolexFive
 };

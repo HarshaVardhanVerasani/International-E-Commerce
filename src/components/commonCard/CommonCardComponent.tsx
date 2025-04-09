@@ -85,15 +85,12 @@ console.log(isBgActive,'aASasASs')
             isLargeText?{textTransform:'uppercase',fontSize:'1.5rem', textAlign: "center",fontFamily:'miller-light'}:{}
           ]}
         >
-          {isTitleHasUnderline? <Link to='women-clothing' style={{ textDecoration: 'underline',color:colors.darkBrown }}  onClick={(e) => handleLinkClick(e, '/women-clothing')}>{title.toLocaleUpperCase()}</Link>:title.toLocaleUpperCase()}
-         
-         
+          {isTitleHasUnderline? <Link to='women-clothing' style={{ textDecoration: 'underline',color:colors.darkBrown }}  onClick={(e) => handleLinkClick(e, '/women-clothing')}>{title.toLocaleUpperCase()}</Link>:title.toLocaleUpperCase()}  
         </Typography>
         {isDescHasLink&&<Typography
-       
          sx={style.linkText}
         >
-         Read & Shop
+          <Link to='read-shop' style={{ textDecoration: 'underline',color:colors.darkBrown }}  onClick={(e) => handleLinkClick(e, 'read-shop')}> Read & Shop</Link>
         </Typography>}
         {isDescriptionHas && (
           <Typography  sx={style.descriptionText}>

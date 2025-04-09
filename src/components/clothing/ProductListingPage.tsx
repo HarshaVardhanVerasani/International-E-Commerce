@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Box, Typography, Button, Select, MenuItem, SelectChangeEvent, FormControl, InputLabel } from "@mui/material";
+import { Box, Typography, Button, Select, MenuItem, SelectChangeEvent, FormControl, InputLabel, Pagination } from "@mui/material";
 import { KeyboardArrowDown, ChevronRight, Close, FilterList } from "@mui/icons-material";
 import { products, initialFilters, sortOptions } from "../../utils/mockData";
 import { Filters, Product, SortOption } from "../../utils/productsDataTypes";
@@ -9,6 +9,7 @@ import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import Drawer from "@mui/material/Drawer";
 import { lightTheme } from "../../config/colorPalette";
+import CommonButton from "../commonButton/CommonButton";
 
 const ProductListingPage: React.FC = () => {
   const theme = useTheme();
@@ -18,6 +19,8 @@ const ProductListingPage: React.FC = () => {
   const [favorites, setFavorites] = useState<string[]>([]);
   const [filteredProducts, setFilteredProducts] = useState<Product[]>(products);
   const [isFilterDrawerOpen, setIsFilterDrawerOpen] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1); // Add state for pagination
+  const productsPerPage = 10;
   const maxPrice = Math.max(...products.map(product => product.price));
   const handleFilterChange = (filterType: keyof Omit<Filters, "priceRange">, id: string, checked: boolean) => {
     setFilters(prevFilters => {
@@ -56,7 +59,10 @@ const ProductListingPage: React.FC = () => {
 
   useEffect(() => {
     let result = [...products];
+    const startIndex = (currentPage - 1) * productsPerPage;
+    const endIndex = startIndex + productsPerPage;
 
+   
     // Filter by categories
     const selectedCategories = filters.categories.filter(category => category.checked).map(category => category.id);
     if (selectedCategories.length > 0) {
@@ -110,9 +116,8 @@ const ProductListingPage: React.FC = () => {
       // For this example, we'll just shuffle the results
       result.sort(() => Math.random() - 0.5);
     }
-
-    setFilteredProducts(result);
-  }, [filters, sort]);
+    setFilteredProducts(result.slice(startIndex, endIndex));;
+  }, [filters, sort,currentPage]);
 
   // Count the number of active filters
   const countActiveFilters = () => {
@@ -144,7 +149,9 @@ const ProductListingPage: React.FC = () => {
   const FilterContent = () => (
     <FiltersSection filters={filters} maxPrice={maxPrice} onFilterChange={handleFilterChange} onPriceRangeChange={handlePriceRangeChange} />
   );
-
+  const handlePageChange = (_: React.ChangeEvent<unknown>, page: number) => {
+    setCurrentPage(page);
+  };
   return (
     <Box sx={{ width: { xs: "90%", sm: "90%" }, display: "flex", justifyContent: "center", flexDirection: "column", margin: "20px" }}>
       <Box sx={{ display: "flex", alignItems: "center", fontSize: "0.875rem", marginBottom: 3, color: "text.secondary" }}>
@@ -239,7 +246,9 @@ const ProductListingPage: React.FC = () => {
                   overflowX: "hidden",
                 }}>
                 <FilterContent />
+                
               </Box>
+             
             </Box>
           </Box>
         )}
@@ -313,6 +322,14 @@ const ProductListingPage: React.FC = () => {
             </Box>
           )}
         </Box>
+      </Box>
+      <Box sx={{ display: "flex", justifyContent: "center", marginTop: 3 }}>
+        <Pagination
+          count={Math.ceil(products.length / productsPerPage)}
+          page={currentPage}
+          onChange={handlePageChange}
+          color="primary"
+        />
       </Box>
     </Box>
   );

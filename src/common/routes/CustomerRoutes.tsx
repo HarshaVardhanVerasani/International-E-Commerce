@@ -9,6 +9,7 @@ import Register from "../../pages/register/Register";
 import ProductListingPage from "../../components/clothing/ProductListingPage";
 import ShoppingBag from "../../pages/customer/cart/Cart";
 import { PlanYourVisitPage } from "../../pages/customer/planYourVisit/PlanYourVisit";
+import ReadShopComponent from "../../components/readShopComponent/readShopComponent";
 
 const AppRoutes = () => {
   return (
@@ -19,6 +20,7 @@ const AppRoutes = () => {
         <Route path="favorite" element={<FavoritePage />} />
         <Route path="cart" element={<ShoppingBag />} />
         <Route path="visit" element={<PlanYourVisitPage />} />
+        <Route path='read-shop' element={<ReadShopComponent/>}/>
       </Route>
 
       <Route path="/auth" element={<AuthenticationLayout />}>
