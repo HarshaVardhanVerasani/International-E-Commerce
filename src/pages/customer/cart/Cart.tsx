@@ -216,7 +216,7 @@ const ShoppingBag = () => {
 if(products.length===0){
   return <CartPage/>
 }
-  return (
+  return  (
     <Container maxWidth="md">
       <Typography variant="h4" component="h1" align="center" gutterBottom sx={{ mb: 4 }}>
         Shopping Bag

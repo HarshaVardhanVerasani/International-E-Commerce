@@ -9,63 +9,42 @@ import {
   rolexTwo,
 } from "../../common/assets/images/imageFile";
 import { lightTheme } from "../../config/colorPalette";
+import { useContext } from "react";
+
+import { ReadShopComponentStyles } from "./ReadShopComponentStyles";
+import { ThemeContext } from "../../context/ThemeWrapper";
 
 const ReadShopComponent = () => {
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-
+ const { colors } = useContext(ThemeContext);
+  const style = ReadShopComponentStyles(colors);
   return (
     <Box
-      sx={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: "#f5f5f5",
-        flexDirection: "column",
-        padding: { xs: 1, sm: 2 },
-        minHeight: "100vh",
-      }}>
+      sx={style.mainContainer}>
       {/* Hero Image */}
-      <Box sx={{ width: "100%", height: { xs: 250, sm: 350, md: 450, lg: 500 }, mb: { xs: 2, sm: 3 } }}>
+      <Box sx={style.heroImage}>
         <Box
           component="img"
           loading="lazy"
-          sx={{
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-          }}
+          sx={style.heroImageContent}
           alt="Rolex"
           src={rolexDeskTop}
         />
       </Box>
 
       <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: { xs: "flex-start", md: "center" },
-          width: { xs: "95%", sm: "90%", md: "80%" },
-          mb: { xs: 3, sm: 4 },
-        }}>
+        sx={style.sectionContent}>
         <Typography
           variant="h3"
-          sx={{
-            width: { xs: "100%", md: "60%" },
-            textAlign: { xs: "left", md: "justify" },
-            mb: 2,
-            fontSize: { xs: "1.75rem", sm: "2.25rem", md: "3rem" },
-            fontFamily: "miller-light",
-          }}>
+          sx={style.title}>
           Rolex: New Watch Releases 2025
         </Typography>
-        <Typography sx={{ width: { xs: "100%", md: "90%" }, textAlign: "left", mb: 2, color: lightTheme.textGrey }}>
-          Words by{" "}
-          <Typography component={"span"} sx={{ fontWeight: "bold" }}>
+        <Typography sx={style.subtitle}>
+          Words by 
+          <Typography component={"span"} sx={style.span}>
             Robin Swithinbank
           </Typography>
         </Typography>
-        <Typography sx={{ width: { xs: "100%", md: "90%" }, textAlign: "left", color: lightTheme.textGrey, fontSize: ".8rem" }}>
+        <Typography sx={style.text}>
           Rolex introduces new watches just once a year, and that is at Watches and Wonders Geneva – the major annual watch fair taking
           place in Switzerland this week. Speculation about these releases is always rife, but now the story is finally out, and the watches
           are here. Introducing the latest creations from the brand often known simply as 'the Crown'.
@@ -74,66 +53,36 @@ const ReadShopComponent = () => {
 
       {/* Rolex Image Section 1 */}
       <Box
-        sx={{
-          display: "flex",
-          flexDirection: { xs: "column", sm: "row" },
-          gap: { xs: 1, sm: 2 },
-          justifyContent: "center",
-          width: "100%",
-          mb: { xs: 3, sm: 4 },
-        }}>
+        sx={style.imageSection}>
         <Box
-          sx={{
-            width: { xs: "95%", sm: "45%", md: "40%" },
-            height: { xs: 250, sm: 350, md: 450 },
-            overflow: "hidden",
-            borderRadius: 2,
-            boxShadow: 3,
-            alignSelf: "center",
-            mb: { xs: 1, sm: 0 },
-          }}>
+          sx={style.imageBox}>
           <Box
             component="img"
             src={rolexOne}
             alt="Rolex One"
             loading="lazy"
-            sx={{
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-            }}
+            sx={style.heroImageContent}
           />
         </Box>
 
         <Box
-          sx={{
-            width: { xs: "95%", sm: "45%", md: "40%" },
-            height: { xs: 250, sm: 350, md: 450 },
-            overflow: "hidden",
-            borderRadius: 2,
-            boxShadow: 3,
-            alignSelf: "center",
-          }}>
+          sx={style.imageBox}>
           <Box
             component="img"
             src={rolexTwo}
             alt="Rolex Two"
             loading="lazy"
-            sx={{
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-            }}
+            sx={style.heroImageContent}
           />
         </Box>
       </Box>
 
       {/* Watch Description Section */}
-      <Box sx={{ width: { xs: "95%", sm: "90%", md: "80%" }, textAlign: "left", mb: { xs: 3, sm: 4 } }}>
-        <Typography variant="h5" sx={{ mb: 2, fontSize: { xs: "1.25rem", sm: "1.5rem", md: "1.75rem" }, textAlign: "center" }}>
+      <Box sx={style.watchDescriptionSection}>
+        <Typography variant="h5" sx={style.watchTitle}>
           Oyster Perpetual Land-Dweller
         </Typography>
-        <Typography sx={{ mb: 2, color: lightTheme.textGrey, fontSize: ".8rem" }}>
+        <Typography sx={style.watchSubTitle}>
           The new watches from Rolex will always make headlines and here comes another. Meet the Land-Dweller, which has a new case shape
           and a new movement, which Rolex describes as 'the beginning of the future of Rolex watchmaking'. It's backed by seven years of
           research, 32 patent applications, and a raft of aesthetic and technical leaps that clearly signal what Rolex has in mind for next
@@ -142,7 +91,7 @@ const ReadShopComponent = () => {
           Datejust, so the watch sits even more comfortably on the wrist. The dial has a repeating honeycomb motif, created using Rolex's
           femtosecond laser technique, as seen on the 'palm' dial that was released in 2021.
         </Typography>
-        <Typography sx={{ mb: 2, color: lightTheme.textGrey, fontSize: ".8rem" }}>
+        <Typography sx={style.watchSubTitle}>
           So far, so cool. Then comes the new Calibre 7135, a high-frequency automatic beating at 5hz or 36,000vph (4hz or 28,800vph is
           normal), and featuring Rolex's new Dynapulse escapement – a silicon component that improves the movement's efficiency by 30%
           offering exceptional performance. The result? Sustained accuracy to +/-2 seconds per day, a 66-hour power reserve, and high
@@ -153,50 +102,33 @@ const ReadShopComponent = () => {
       </Box>
 
       {/* Rolex Image Section 2 */}
-      <Container maxWidth="lg" sx={{ mt: { xs: 2, sm: 3, md: 4 }, mb: { xs: 2, sm: 3, md: 4 }, px: { xs: 1, sm: 2, md: 3 } }}>
+      <Container maxWidth="lg" sx={style.containerStyle}>
         <Box
-          sx={{
-            display: "flex",
-            flexDirection: { xs: "column", md: "row" },
-            gap: { xs: 2, md: 4 },
-            justifyContent: "center",
-            alignItems: "center",
-          }}>
-          <Box sx={{ width: { xs: "100%", md: "40%" } }}>
+          sx={style.boxStyle}>
+          <Box sx={style.boxContentContainer}>
             <Box
               component="img"
               src={rolexThree}
               alt="Rolex GMT-Master II"
               loading="lazy"
-              sx={{
-                width: "100%",
-                borderRadius: 1,
-                backgroundColor: "#025a5a",
-                objectFit: "contain",
-              }}
+              sx={style.boxContentImg}
             />
-            <Typography sx={{ display: "block", mt: 1, fontSize: "0.8rem", fontFamily: "miller-light" }}>
+            <Typography sx={style.boxContentHeading}>
               Rolex Oyster Perpetual GMT-Master II
             </Typography>
           </Box>
 
           <Box
-            sx={{
-              width: { xs: "100%", md: "40%" },
-              justifyContent: "center",
-              alignItems: { xs: "flex-start", md: "center" },
-              display: "flex",
-              flexDirection: "column",
-            }}>
+            sx={style.subContainerStyles}>
             <Typography
               variant="h3"
               component="h1"
               gutterBottom
-              sx={{ fontFamily: "serif", fontWeight: "normal", fontSize: { xs: "1.75rem", sm: "2rem", md: "2.5rem" } }}>
+              sx={style.subContainerHeading}>
               Oyster Perpetual GMT-Master II
             </Typography>
 
-            <Typography sx={{ fontSize: "0.8rem", fontFamily: "miller-light" }}>
+            <Typography sx={style.subContainerSubText}>
               This new version of the GMT-Master II features a green dial made of Rolex's Cerachrom, in a shade that matches the Cerachrom
               used to illustrate daylight hours on the watch's 24-hour rotating bezel.
               <Typography component="span" fontWeight="medium">
@@ -213,7 +145,7 @@ const ReadShopComponent = () => {
         </Box>
       </Container>
 
-      <Container maxWidth="lg" sx={{ mt: { xs: 2, sm: 3, md: 4 }, mb: { xs: 2, sm: 3, md: 4 }, px: { xs: 1, sm: 2, md: 3 } }}>
+      <Container maxWidth="lg"  sx={style.containerStyle}>
         <Box sx={{ display: "flex", flexDirection: { xs: "column", sm: "row" }, gap: { xs: 2, md: 4 }, justifyContent: "center" }}>
           <Box sx={{ width: { xs: "100%", sm: "48%", md: "40%" } }}>
             <Box
@@ -228,7 +160,7 @@ const ReadShopComponent = () => {
                 objectFit: "contain",
               }}
             />
-            <Typography variant="caption" color="text.secondary" sx={{ display: "block", mt: 1 }}>
+            <Typography variant="caption" color="text.secondary" sx={{ display: "block", mt: 1 ,fontFamily: "miller-light",}}>
               Rolex Oyster Perpetual GMT-Master II
             </Typography>
           </Box>
@@ -246,7 +178,7 @@ const ReadShopComponent = () => {
                 objectFit: "contain",
               }}
             />
-            <Typography variant="caption" color="text.secondary" sx={{ display: "block", mt: 1 }}>
+            <Typography variant="caption" color="text.secondary" sx={{ display: "block", mt: 1,fontFamily: "miller-light", }}>
               Rolex Oyster Perpetual GMT-Master II Details
             </Typography>
           </Box>
@@ -254,10 +186,10 @@ const ReadShopComponent = () => {
       </Container>
 
       <Box sx={{ width: { xs: "95%", sm: "90%", md: "80%" }, textAlign: "left", mb: { xs: 3, sm: 4 } }}>
-        <Typography variant="h5" sx={{ mb: 2, fontSize: { xs: "1.25rem", sm: "1.5rem", md: "1.75rem" } }}>
+        <Typography variant="h5" sx={{ mb: 2, fontSize: { xs: "1.25rem", sm: "1.5rem", md: "1.75rem" },fontFamily: "miller-light",textAlign:'center' }}>
           Oyster Perpetual
         </Typography>
-        <Typography sx={{ mb: 2 }}>
+        <Typography sx={{ mb: 2,fontFamily: "miller-light", fontSize:'0.8rem'}}>
           Rolex's evergreen Oyster Perpetual has been a springboard into the brand for countless watch buyers through the years. For 2025,
           Rolex has added a trio of matte lacquered dials in pastel colours to the range. A muted lavender, a warm sandy beige and a fresh
           pistachio green. The 28mm version – equipped with Calibre 2232 – is now available with a soft lavender dial, while the Calibre
@@ -267,7 +199,7 @@ const ReadShopComponent = () => {
         </Typography>
       </Box>
 
-      <Container maxWidth="lg" sx={{ mt: { xs: 2, sm: 3, md: 4 }, mb: { xs: 2, sm: 3, md: 4 }, px: { xs: 1, sm: 2, md: 3 } }}>
+      <Container maxWidth="lg"  sx={style.containerStyle}>
         <Box
           sx={{
             display: "flex",
@@ -289,7 +221,7 @@ const ReadShopComponent = () => {
                 objectFit: "contain",
               }}
             />
-            <Typography variant="caption" color="text.secondary" sx={{ display: "block", mt: 1 }}>
+            <Typography variant="caption" color="text.secondary" sx={{ display: "block", mt: 1,fontFamily: "miller-light", }}>
               Rolex Perpetual 1908
             </Typography>
           </Box>
@@ -306,11 +238,11 @@ const ReadShopComponent = () => {
               variant="h3"
               component="h1"
               gutterBottom
-              sx={{ fontFamily: "serif", fontWeight: "normal", fontSize: { xs: "1.75rem", sm: "2rem", md: "2.5rem" } }}>
+              sx={{  fontWeight: "normal", fontSize: { xs: "1.75rem", sm: "2rem", md: "2.5rem" },fontFamily: "miller-light", }}>
               Perpetual 1908
             </Typography>
 
-            <Typography>
+            <Typography  sx={{ fontFamily: "miller-light", fontSize:'0.8rem'}}>
               As its name suggests, the 1908 is as vintage in look as any watch in the Rolex collection – a reference to the year founder
               Hans Wilsdorf came up with the name Rolex and registered it in Switzerland. In 2025, its aesthetic is made more ageless by the
               addition of a seven-link solid 18-karat yellow gold bracelet that reverberates with old-world charm. Rolex has elegantly
@@ -323,10 +255,10 @@ const ReadShopComponent = () => {
       </Container>
 
       <Box sx={{ width: { xs: "95%", sm: "90%", md: "80%" }, textAlign: "left", mb: { xs: 3, sm: 4 } }}>
-        <Typography variant="h5" sx={{ mb: 2, fontSize: { xs: "1.25rem", sm: "1.5rem", md: "1.75rem" } }}>
+        <Typography variant="h5" sx={{ mb: 2, fontSize: { xs: "1.25rem", sm: "1.5rem", md: "1.75rem" },fontFamily: "miller-light",textAlign:'center' }}>
           Exclusive Dials
         </Typography>
-        <Typography sx={{ mb: 2 }}>
+        <Typography sx={{ fontFamily: "miller-light", fontSize:'0.8rem'}}>
           New dials typically don't inspire many column inches – but, as ever, Rolex isn't typical. This year, exclusive new dials are
           introduced into three of its most celebrated models. The 18-karat yellow gold Sky-Dweller gets a bright green sunray dial; the
           18-karat Everose gold GMT Master-II gets a dial made from a material called 'tiger iron' that mixes tiger's eye and red jasper
@@ -335,73 +267,29 @@ const ReadShopComponent = () => {
       </Box>
 
       {/* Bottom Banner */}
+      <Box sx={style.bottomBanner}>
       <Box
-        sx={{
-          position: "relative",
-          height: { xs: 250, sm: 300, md: 350 },
-          backgroundImage: `url(${rolexBottomDescImg})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-          color: "white",
-          textAlign: "center",
-          "&::before": {
-            content: '""',
-            position: "absolute",
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            backgroundColor: "rgba(0,0,0,0.4)",
-            zIndex: 1,
-          },
-          width: "100%",
-          mt: { xs: 2, sm: 3 },
-        }}>
-        <Box sx={{ zIndex: 2, px: { xs: 2, sm: 3, md: 4 }, maxWidth: "100%" }}>
+        sx={style.bottomBannerImage}>
+        <Box sx={style.bottomBannerContent}>
           <Typography
             variant="overline"
-            sx={{
-              display: "block",
-              fontSize: { xs: "12px", sm: "14px" },
-              letterSpacing: 2,
-              mb: { xs: 1, sm: 2 },
-            }}>
+            sx={style.bottomBannerContentHeading}>
             FINE WATCHES
           </Typography>
 
           <Typography
             variant="h2"
-            sx={{
-              fontFamily: '"Playfair Display", serif',
-              fontWeight: 400,
-              mb: { xs: 2, sm: 3, md: 4 },
-              fontSize: { xs: "1.5rem", sm: "2rem", md: "2.5rem" },
-              px: { xs: 1, sm: 2, md: 4 },
-            }}>
+            sx={style.bottomBannerTitle}>
             Exclusive timepieces meet extraordinary novelties, unparalleled expertise and more
           </Typography>
 
           <Button
             variant="outlined"
-            sx={{
-              borderColor: "white",
-              color: "white",
-              borderWidth: "1px",
-              borderRadius: 0,
-              px: { xs: 3, sm: 4 },
-              py: { xs: 1, sm: 1.5 },
-              "&:hover": {
-                borderColor: "white",
-                backgroundColor: "rgba(255,255,255,0.1)",
-              },
-            }}>
+            sx={style.bottomBannerButton}>
             Discover Fine Watches at Harrods
           </Button>
         </Box>
+      </Box>
       </Box>
     </Box>
   );

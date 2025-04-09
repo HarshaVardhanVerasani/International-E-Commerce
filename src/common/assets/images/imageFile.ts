@@ -34,7 +34,21 @@ import imageTwo from '../images/imageTwo.jpg'
 
 import imageFour from '../images/imgFour.jpg'
 import imageFive from '../images/imgFive.jpg'
+import checkoutIcon from '../images/checkouticon.png'
 
+
+const detailsCarouselOne =
+  "https://hrd-live.cdn.scayle.cloud/images/50ef40acc7cc068dc08af69266624a5d.jpg?brightness=1&width=922&height=1230&quality=75&bg=ffffff";
+const detailsCarouselTwo =
+  "https://hrd-live.cdn.scayle.cloud/images/642a7b76e11e3446ef01f9dade68e80d.jpg?brightness=1&width=922&height=1230&quality=75&bg=ffffff";
+const detailsCarouselThree =
+  "https://hrd-live.cdn.scayle.cloud/images/f8ab63edaae86c0b69c6349609a4e859.jpg?brightness=1&width=922&height=1230&quality=75&bg=ffffff";
+const detailsCarouselFour =
+  "https://hrd-live.cdn.scayle.cloud/images/0a13c6346513efedbd0d5c85f8105654.jpg?brightness=1&width=922&height=1230&quality=75&bg=ffffff";
+const detailsCarouselFive =
+  "https://hrd-live.cdn.scayle.cloud/images/77d2d7b4f8410da388137e37d194880b.jpg?brightness=1&width=922&height=1230&quality=75&bg=ffffff";
+const detailsCarouselSix =
+  "https://hrd-live.cdn.scayle.cloud/images/1dd482e86b054f18cd512089bb677716.jpg?brightness=1&width=922&height=1230&quality=75&bg=ffffff";
 import rolexDeskTop from "../images/rolexDeskTop.jpg"
 import rokexMobile from '../images/rokexMobile.jpg'
 import rolexBottomDescImg from '../images/rolexBottomDescImg.jpg'
@@ -50,6 +64,12 @@ export {
   bottegaVeneta,
   chole,
   christianLouboutin,
+  detailsCarouselFive,
+  detailsCarouselFour,
+  detailsCarouselOne,
+  detailsCarouselSix,
+  detailsCarouselThree,
+  detailsCarouselTwo,
   jackuemus,
   leMondeBeryl,
   leoLin,
@@ -63,6 +83,7 @@ export {
   vivienneWestwood,
   imageOne,imageTwo,imageThree,imageFour,imageFive,
   favoriteIcon,
+  checkoutIcon,
   rolexDeskTop,
   rokexMobile,
   rolexBottomDescImg,

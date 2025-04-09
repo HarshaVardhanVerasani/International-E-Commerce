@@ -1,4 +1,3 @@
-import { mobileBannerImg } from "../../../../common/assets/images/imageFile";
 import { ColorScheme } from "../../../../config/colorPalette";
 
 export const headerStyles = (color: ColorScheme) => {
@@ -16,10 +15,9 @@ export const headerStyles = (color: ColorScheme) => {
       padding: { md: "0px 10px", lg: "0px 125px" },
     },
     mobileBannerImageStyles: {
-      backgroundImage: `url(${mobileBannerImg})`,
       backgroundSize: "cover",
       backgroundPosition: "center",
-      height: { xs: "75vh", sm: "130vh" },
+
       boxShadow: "none",
       backgroundRepeat: "no-repeat",
     },
