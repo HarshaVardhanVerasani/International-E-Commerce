@@ -1,4 +1,4 @@
-import { Heart } from "lucide-react";
+import { FavoriteBorder } from "@mui/icons-material";
 import React, { useState } from "react";
 
 interface FavoriteItemProps {
@@ -18,9 +18,7 @@ interface FavoriteItemProps {
 const FavoriteItem: React.FC<FavoriteItemProps> = ({ item, onRemove }) => {
   const [size, setSize] = useState(item.size);
 
-  const handleAddToBag = () => {
-    // toast.success(`Added ${item.name} to your bag`);
-  };
+  const handleAddToBag = () => {};
 
   return (
     <div className="relative">
@@ -28,7 +26,7 @@ const FavoriteItem: React.FC<FavoriteItemProps> = ({ item, onRemove }) => {
         onClick={onRemove}
         className="absolute top-0 right-0 p-2 text-brown-500 hover:text-brown-700"
         aria-label="Remove from favorites">
-        <Heart className="h-5 w-5 fill-amber-950/60" />
+        <FavoriteBorder />
       </button>
 
       {item.isNew && (

@@ -6,7 +6,7 @@ import Layout from "../../components/layout/Layout";
 import AuthenticationLayout from "../../pages/authenticationLayout/AuthenticationLayout";
 import ShoppingBag from "../../pages/customer/cart/Cart";
 import HomePage from "../../pages/customer/homePage/HomePage";
-import { PlanYourVisitPage } from "../../pages/customer/planYourVisit/PlanYourVisit";
+import PlanYourVisitPage from "../../pages/customer/planYourVisit/PlanYourVisit";
 import LoginPage from "../../pages/loginPage/LoginPage";
 import ProductDetails from "../../pages/productDetails/ProductDetails";
 import Register from "../../pages/register/Register";
@@ -24,8 +24,8 @@ const AppRoutes = () => {
         <Route path="favorite" element={<FavoritePage />} />
         <Route path="cart" element={<ShoppingBag />} />
         <Route path="visit" element={<PlanYourVisitPage />} />
-        <Route path='read-shop' element={<ReadShopComponent/>}/>
-        <Route path="productDetails" element={<ProductDetails />} />
+        <Route path="read-shop" element={<ReadShopComponent />} />
+        <Route path="productDetails/:id" element={<ProductDetails />} />
       </Route>
 
       <Route path="/auth" element={<AuthenticationLayout />}>

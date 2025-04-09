@@ -44,7 +44,7 @@ const BottomComponent = () => {
         </Typography>
         <CommonButton title="Shop Dresses" color={colors.darkBrown} bgColor={colors.darkBrown} mainBgColor=''/>
       </Box>
-      <CarousalComponent products={carousalProducts} isDescriptionHas isIconHas isPriceHas />
+      <CarousalComponent products={carousalProducts} isDescriptionHas isIconHas isPriceHas isActive/>
       <BagsComponent />
       <TrendingComponent products={carousalTwoProducts} isBgActive isTitleHasUnderline />
       <ShopNewComponent/>
