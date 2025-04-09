@@ -49,6 +49,15 @@ const detailsCarouselFive =
   "https://hrd-live.cdn.scayle.cloud/images/77d2d7b4f8410da388137e37d194880b.jpg?brightness=1&width=922&height=1230&quality=75&bg=ffffff";
 const detailsCarouselSix =
   "https://hrd-live.cdn.scayle.cloud/images/1dd482e86b054f18cd512089bb677716.jpg?brightness=1&width=922&height=1230&quality=75&bg=ffffff";
+import rolexDeskTop from "../images/rolexDeskTop.jpg"
+import rokexMobile from '../images/rokexMobile.jpg'
+import rolexBottomDescImg from '../images/rolexBottomDescImg.jpg'
+import rolexBottomMobileImg from '../images/rolexBottomMobileImg.jpg'
+import rolexOne from '../images/rolexOne.jpg'
+import rolexTwo from '../images/rolexTwo.jpg'
+import rolexThree from '../images/rolexThree.jpg'
+import rolexFour from '../images/rolexFour.jpg'
+import rolexFive from '../images/rolexFive.jpg'
 
 export {
   bannerImg,
@@ -74,5 +83,14 @@ export {
   vivienneWestwood,
   imageOne,imageTwo,imageThree,imageFour,imageFive,
   favoriteIcon,
-  checkoutIcon
+  checkoutIcon,
+  rolexDeskTop,
+  rokexMobile,
+  rolexBottomDescImg,
+  rolexBottomMobileImg,
+  rolexOne,
+  rolexTwo,
+  rolexThree,
+  rolexFour,
+  rolexFive
 };

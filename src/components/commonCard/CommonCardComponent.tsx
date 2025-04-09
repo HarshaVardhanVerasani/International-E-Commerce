@@ -8,6 +8,7 @@ import { ThemeContext } from "../../context/ThemeWrapper";
 import { addToFavorites, removeFromFavorites } from "../../redux/favoritesReducer/FavoritesSlice";
 import { RootState } from "../../redux/Store";
 import { CommonCardComponentStyles } from "./CommonCardComponentStyles";
+import { lightTheme } from "../../config/colorPalette";
 
 interface CommonCardProps {
   title: string;
@@ -68,7 +69,6 @@ const CommonCardComponent = ({
       navigate(path);
     }, 500);
   };
-
   // const currentImage = hovered ? images[1] : images[0];
   console.log(isBgActive, "aASasASs");
 
@@ -99,7 +99,7 @@ const CommonCardComponent = ({
       {isIconHas && (
         <Box sx={style.iconContainer}>
           <IconButton onClick={toggleFavorite}>
-            {isFavorited ? <FavoriteIcon sx={{ color: "red" }} /> : <FavoriteBorderIcon sx={style.icon} />}{" "}
+            {isFavorited ? <FavoriteIcon sx={{ color: lightTheme.darkBrown }} /> : <FavoriteBorderIcon sx={style.icon} />}
           </IconButton>
         </Box>
       )}
@@ -132,7 +132,12 @@ const CommonCardComponent = ({
             title.toLocaleUpperCase()
           )}
         </Typography>
-        {isDescHasLink && <Typography sx={style.linkText}>Read & Shop</Typography>}
+        {isDescHasLink &&  <Link
+              to="read-shop"
+              style={{ textDecoration: "underline", color: colors.darkBrown }}
+              onClick={e => handleLinkClick(e, "/read-shop")}>
+             Read & Shop
+            </Link>}
         {isDescriptionHas && <Typography sx={style.descriptionText}>{description}</Typography>}
 
         {isPriceHas && <Typography sx={style.priceText}>${price.toFixed(2)}</Typography>}
