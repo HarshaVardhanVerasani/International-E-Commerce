@@ -49,7 +49,8 @@ const CarousalComponent: React.FC<CarousalComponentProps> = ({
   isTitleHasUnderline,
   isLargeText,
   isDescHasLink,
-  isActive
+  isActive,
+
 }) => {
   const [progress, setProgress] = useState(0);
   const swiperRef = useRef<SwiperRef | null>(null);
