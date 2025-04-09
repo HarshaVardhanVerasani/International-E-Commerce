@@ -13,7 +13,7 @@ export const carouselStyles = {
     position: "absolute",
     top: "20px",
     right: "20px",
-    zIndex: 10,
+    zIndex: 1,
     width: "30px",
     height: "30px",
     color: "rgb(140 113 82);",
