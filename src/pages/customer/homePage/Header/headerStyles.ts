@@ -50,10 +50,7 @@ export const headerStyles = (color: ColorScheme) => {
         },
       },
     },
-    iconStyles: {
-      mt: -5,
-      cursor: "pointer",
-    },
+    iconStyles: { cursor: "pointer" },
     logoContainer: {
       display: "flex",
       justifyContent: "center",

@@ -9,18 +9,19 @@ import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import Drawer from "@mui/material/Drawer";
 import { lightTheme } from "../../config/colorPalette";
-import CommonButton from "../commonButton/CommonButton";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../redux/Store";
 
 const ProductListingPage: React.FC = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const [filters, setFilters] = useState<Filters>(initialFilters);
   const [sort, setSort] = useState<SortOption>("newest");
-  const [favorites, setFavorites] = useState<string[]>([]);
   const [filteredProducts, setFilteredProducts] = useState<Product[]>(products);
   const [isFilterDrawerOpen, setIsFilterDrawerOpen] = useState(false);
-  const [currentPage, setCurrentPage] = useState(1); // Add state for pagination
+  const [currentPage, setCurrentPage] = useState(1); 
   const productsPerPage = 10;
+  
   const maxPrice = Math.max(...products.map(product => product.price));
   const handleFilterChange = (filterType: keyof Omit<Filters, "priceRange">, id: string, checked: boolean) => {
     setFilters(prevFilters => {
@@ -47,16 +48,7 @@ const ProductListingPage: React.FC = () => {
     setSort(event.target.value as SortOption);
   };
 
-  const handleFavoriteToggle = (productId: string) => {
-    setFavorites(prevFavorites => {
-      if (prevFavorites.includes(productId)) {
-        return prevFavorites.filter(id => id !== productId);
-      } else {
-        return [...prevFavorites, productId];
-      }
-    });
-  };
-
+ 
   useEffect(() => {
     let result = [...products];
     const startIndex = (currentPage - 1) * productsPerPage;
@@ -304,8 +296,8 @@ const ProductListingPage: React.FC = () => {
               <ProductCard
                 key={product.id}
                 product={product}
-                onFavoriteToggle={handleFavoriteToggle}
-                isFavorite={favorites.includes(product.id)}
+             
+               
               />
             ))}
           </Box>

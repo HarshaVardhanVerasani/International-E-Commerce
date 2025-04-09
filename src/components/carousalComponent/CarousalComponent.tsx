@@ -1,19 +1,19 @@
-import React, { useState, useRef } from "react";
 import { Box } from "@mui/material";
-import { Navigation, Pagination, Scrollbar, A11y, Mousewheel } from "swiper/modules";
+import React, { useRef, useState } from "react";
+import { A11y, Mousewheel, Navigation, Pagination, Scrollbar } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-//@ts-ignore
+//@ts-expect-error jhjhjhj
 import "swiper/css";
-//@ts-ignore
+//@ts-expect-error jhjhjhj
 import "swiper/css/navigation";
-//@ts-ignore
+//@ts-expect-error jhjhjhj
 import "swiper/css/pagination";
-//@ts-ignore
+//@ts-expect-error jhjhjhj
 import "swiper/css/scrollbar";
 import "./SwiperCustomStyles.css";
 
-import CommonCardComponent from "../commonCard/CommonCardComponent";
 import { SwiperRef } from "swiper/react";
+import CommonCardComponent from "../commonCard/CommonCardComponent";
 
 interface Product {
   id: number;
@@ -21,6 +21,11 @@ interface Product {
   description: string;
   price: number;
   images: string[];
+  brand: string;
+  color: string;
+  size: string;
+  isNew: boolean;
+  name: string;
 }
 
 interface CarousalComponentProps {
@@ -92,7 +97,6 @@ const CarousalComponent: React.FC<CarousalComponentProps> = ({
           },
         }}
         modules={[Navigation, Pagination, Scrollbar, A11y, Mousewheel]}
-
         onSlideChange={swiper => {
           setProgress(((swiper.realIndex + 1) / swiper.slides.length) * 100);
         }}>
@@ -100,6 +104,8 @@ const CarousalComponent: React.FC<CarousalComponentProps> = ({
           <SwiperSlide key={product.id}>
             <Box sx={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
               <CommonCardComponent
+                key={product.id}
+                id={product.id}
                 title={product.title}
                 description={product.description}
                 price={product.price}
@@ -112,7 +118,11 @@ const CarousalComponent: React.FC<CarousalComponentProps> = ({
                 isTitleHasUnderline={isTitleHasUnderline}
                 isDescHasLink={isDescHasLink}
                 isLargeText={isLargeText}
-                id={product.id}
+                brand={product.brand}
+                color={product.color}
+                isNew={product.isNew}
+                name={product.name}
+                size={product.size}
                 isActive={isActive}
               />
             </Box>
