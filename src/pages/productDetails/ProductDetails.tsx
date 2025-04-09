@@ -1,20 +1,33 @@
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { Box, Button, IconButton, Stack, Typography } from "@mui/material";
+import { useState } from "react";
 import CustomDropdown from "../../common/components/CustomDropdown/CustomDropdown";
 import Carousel from "../../common/components/DetailsCarousel/DetailsCarousel";
+import ImageModal from "../../common/components/ModalCarousel/ModalCarousel";
 import QuantityDropdown from "../../common/components/QuantityDropdown/QuantityDropdown";
 import SizeDropdown from "../../common/components/SizeDropdown/SizeDropdown";
+import { detailsCarousel } from "../../common/sampleData/sampleData";
 import AccordionDetails from "../../components/customAccordion/CustomAccordion";
 import Footer from "../customer/footer/Footer";
 import productDetailsStyles from "./ProductDetailsStyles";
 
 const ProductDetails = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [carouselImgId, setCarouselImgId] = useState<number>(0);
+
+  const handleModalOpen = (carouselImgId: number) => {
+    setIsModalOpen(true);
+    setCarouselImgId(carouselImgId);
+  };
+  const handleModalClose = () => {
+    setIsModalOpen(false);
+  };
   return (
     <>
       <Box sx={productDetailsStyles.bodyCont}>
         <Box sx={productDetailsStyles.commonCont}>
           <Box sx={productDetailsStyles.container}>
-            <Carousel />
+            <Carousel handleModalOpen={handleModalOpen} handleModalClose={handleModalClose} />
           </Box>
           <Box sx={productDetailsStyles.rightCont}>
             <Box sx={productDetailsStyles.gapCont}>
@@ -26,12 +39,10 @@ const ProductDetails = () => {
               <Typography sx={productDetailsStyles.colourText}>colour</Typography>
               <CustomDropdown />
             </Box>
-
             <Box sx={productDetailsStyles.dropdownCont}>
               <Typography sx={productDetailsStyles.colourText}>Size</Typography>
               <SizeDropdown />
             </Box>
-
             <Box sx={productDetailsStyles.dropdownCont}>
               <Typography sx={productDetailsStyles.colourText}>Quantity</Typography>
               <QuantityDropdown />
@@ -75,6 +86,7 @@ const ProductDetails = () => {
         </Box>
       </Box>
       <Footer />
+      {isModalOpen && <ImageModal images={detailsCarousel} open={isModalOpen} onClose={handleModalClose} initialIndex={carouselImgId} />}
     </>
   );
 };

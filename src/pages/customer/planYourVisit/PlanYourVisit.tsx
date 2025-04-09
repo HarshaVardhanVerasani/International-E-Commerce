@@ -16,7 +16,7 @@ const StoreImage = styled("img")(({ theme }) => ({
   },
 }));
 
-const GuideButton = styled(Button)(({ theme }) => ({
+const GuideButton = styled(Button)(() => ({
   color: "#8A7252",
   border: "none",
   width: "fit-content",
@@ -46,7 +46,7 @@ const webThumbnail = "https://d2wd7685k000to.cloudfront.net/image/306683987547/i
 const mobileThumbnail =
   "https://d1c96hlcey6qkb.cloudfront.net/b460d838-2f28-4ead-8832-f90e7ce67346/w-555b3704694245d8acd06f08a19c9152/da460a6201e4405f96673ee5e6e9f816?response-content-disposition=inline%3B%20filename%2A%3DUTF-8%27%27m-contact-us-plan-your-visit.jpg&response-content-type=image%2Fjpeg%3B%20time%3D20250407093226&Expires=1744113600&Signature=K4FgpQbfyMBk2IIBhnEd1mZvuugwE2oPJFtikokY2onKVO4PttzQ9lR3SdOBLROfpTEhIpx1IE3gv91y0WLkdu7SEmhlRs8ccpEuSys9e-BxPm7D31S7WIcz3hajYCMdCXcL6CGzu-pQVx47gbEUXT3T4N5RYcX4u3Pos7IuQa0CvUyAo6Oij~ktciH772ivu5Cte19YRiQWDz1e7s0fZ-UmxNEiDxz5vhi45eH-zhVguoRqOkZtrXTosntbM7YIXgyv2fKNPzfFTyviHVZo45botj~pofSVkVLd8Wx2Bgna2faVUaHG4Vz2tPEhjf12lPKnonf98PijQvNKzu3skA__&Key-Pair-Id=APKAI33AGAEAYCXFBDTA";
 
-export const PlanYourVisitPage: React.FC = () => {
+const PlanYourVisitPage: React.FC = () => {
   const theme = useTheme();
   const { colors } = useContext(ThemeContext);
   const style = planYourVisitStyles(colors);
@@ -429,3 +429,5 @@ export const PlanYourVisitPage: React.FC = () => {
     </>
   );
 };
+
+export default PlanYourVisitPage;

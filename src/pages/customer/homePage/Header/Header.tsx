@@ -19,27 +19,27 @@ import {
 } from "@mui/material";
 import { useContext, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { bannerImg, logo } from "../../../../common/assets/images/imageFile";
+import { bannerImg, logo, mobileBannerImg } from "../../../../common/assets/images/imageFile";
 import { dataMap } from "../../../../common/sampleData/sampleData";
 import CountrySelector from "../../../../components/countrySelector/CountrySelector";
 import TopBar from "../../../../components/topBar/TopBar";
 import { ThemeContext } from "../../../../context/ThemeWrapper";
 import { headerStyles } from "./headerStyles";
+import CommonSearch from "../../../../components/commonSearch/CommonSearch";
 
 type MenuKey = keyof typeof dataMap;
-
 
 const Header: React.FC = () => {
   const { colors } = useContext(ThemeContext);
   const navigate = useNavigate();
-  const location = useLocation(); 
+  const location = useLocation();
 
   const styles = headerStyles(colors);
 
   const [showContent, setShowContent] = useState<boolean>(false);
   const [selectedMenu, setSelectedMenu] = useState<MenuKey | "">("");
   const [drawerOpen, setDrawerOpen] = useState<boolean>(false);
-
+  const [searchDrawer,setSearchDrawer] = useState<boolean>(false)
   let closeTimeout: ReturnType<typeof setTimeout>;
 
   const handleMouseEnter = (item: MenuKey) => {
@@ -69,6 +69,12 @@ const Header: React.FC = () => {
   const handleNavigateHome = () => {
     navigate("/");
   };
+  const handleOpen = () => {
+    setSearchDrawer(true)
+  }
+  const handleClose = () => {
+    setSearchDrawer(false)
+  }
 
   const isDesktop = useMediaQuery("(min-width:1023px)");
 
@@ -77,8 +83,9 @@ const Header: React.FC = () => {
       {isDesktop ? (
         <Box>
           <TopBar />
+      <CommonSearch searchDrawer={searchDrawer} handleClose={handleClose}/>
           <Box
-         // @ts-expect-error: TS2339: Property 'sx' does not exist on type 'IntrinsicAttributes & { children?: ReactNode; }'.
+            // @ts-expect-error: TS2339: Property 'sx' does not exist on type 'IntrinsicAttributes & { children?: ReactNode; }'.
             sx={{
               ...styles.bannerImageStyles,
               backgroundImage: `url(${location.pathname === "/" && bannerImg})`,
@@ -104,7 +111,7 @@ const Header: React.FC = () => {
               <Box component="img" src={logo} sx={styles.logo} onClick={handleNavigateHome} />
             </Box>
             <Box sx={styles.iconContainer}>
-              <SearchIcon sx={{ ...styles.iconStyles, color: location.pathname === "/" ? colors.white : colors.darkBeige }} />
+              <SearchIcon sx={{ ...styles.iconStyles, color: location.pathname === "/" ? colors.white : colors.darkBeige }} onClick= {handleOpen}/>
               <FavoriteBorderIcon
                 sx={{ ...styles.iconStyles, color: location.pathname === "/" ? colors.white : colors.darkBeige }}
                 onClick={() => navigate("/favorite")}
@@ -149,7 +156,14 @@ const Header: React.FC = () => {
       ) : (
         <>
           <Divider sx={styles.hr} />
-          <AppBar position="static" sx={styles.mobileBannerImageStyles}>
+          <AppBar
+            position="static"
+            // @ts-expect-error: TS2339: Property 'sx' does not exist on type 'IntrinsicAttributes & { children?: ReactNode; }'.
+            sx={{
+              ...styles.mobileBannerImageStyles,
+              backgroundImage: `url(${location.pathname === "/" && mobileBannerImg})`,
+              height: location.pathname === "/" && { xs: "75vh", sm: "130vh" },
+            }}>
             <Toolbar sx={styles.mobileToolbarStyles}>
               <Box sx={styles.mobileIconContainer}>
                 <IconButton onClick={toggleDrawer(true)}>

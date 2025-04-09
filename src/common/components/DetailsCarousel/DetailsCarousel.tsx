@@ -6,7 +6,11 @@ import React, { useEffect, useRef, useState } from "react";
 import { detailsCarousel } from "../../sampleData/sampleData";
 import { carouselStyles } from "./DetailsCarouselStyles";
 
-const Carousel = () => {
+interface CarouselInterface {
+  handleModalOpen: (imageId: number) => void;
+  handleModalClose: () => void;
+}
+const Carousel: React.FC<CarouselInterface> = ({ handleModalOpen, handleModalClose }) => {
   const isMobile = useMediaQuery("(max-width:767px)");
   const isDesktop = useMediaQuery("(min-width:1024px)");
   const [activeIndex, setActiveIndex] = useState(0);
@@ -15,6 +19,9 @@ const Carousel = () => {
   const [touchStartX, setTouchStartX] = useState(0);
   const [touchEndX, setTouchEndX] = useState(0);
   const trackRef = useRef<HTMLDivElement>(null);
+
+
+
 
   const items = detailsCarousel;
 
@@ -75,6 +82,8 @@ const Carousel = () => {
     updateArrows(activeIndex);
   }, [activeIndex, updateArrows]);
 
+  
+
   const calculateTransform = () => {
     if (isMobile) {
       return `translateX(-${activeIndex * 100}%)`;
@@ -84,6 +93,11 @@ const Carousel = () => {
       }
       return `translateX(-${activeIndex * 75}%)`;
     }
+  };
+
+  const onClickCarouselImage = (carouselImgId: number) => {
+    handleModalOpen(carouselImgId);
+    console.log(carouselImgId);
   };
 
   return (
@@ -115,6 +129,7 @@ const Carousel = () => {
             <Box
               key={`${item.id}-${index}`}
               sx={isMobile ? carouselStyles.mobileItemWrapper : carouselStyles.itemWrapper}
+              onClick={() => onClickCarouselImage(item.id)}
               style={{
                 minWidth: isMobile ? "100%" : "75%",
                 width: isMobile ? "100%" : "75%",
