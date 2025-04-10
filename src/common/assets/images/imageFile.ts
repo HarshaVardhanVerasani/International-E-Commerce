@@ -35,6 +35,7 @@ import imageTwo from '../images/imageTwo.jpg'
 import imageFour from '../images/imgFour.jpg'
 import imageFive from '../images/imgFive.jpg'
 import checkoutIcon from '../images/checkouticon.png'
+import letter from '../images/alogo.png'
 
 
 const detailsCarouselOne =
@@ -84,6 +85,7 @@ export {
   imageOne,imageTwo,imageThree,imageFour,imageFive,
   favoriteIcon,
   checkoutIcon,
+  letter,
   rolexDeskTop,
   rokexMobile,
   rolexBottomDescImg,
