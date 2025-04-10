@@ -27,7 +27,6 @@ const AppRoutes = () => {
         <Route path="read-shop" element={<ReadShopComponent />} />
         <Route path="productDetails/:id" element={<ProductDetails />} />
       </Route>
-
       <Route path="/auth" element={<AuthenticationLayout />}>
         <Route path="LoginPage" element={<LoginPage />} />
         <Route path="Register" element={<Register />} />

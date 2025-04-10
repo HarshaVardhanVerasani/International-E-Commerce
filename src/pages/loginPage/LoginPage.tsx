@@ -6,7 +6,7 @@ import { ChangeEvent, lazy, useContext, useState } from "react";
 import { ThemeContext } from "../../context/ThemeWrapper";
 import { loginPageStyles } from "./loginPageStyles";
 import { authenticationLayoutPageData } from "../../common/sampleData/sampleData";
-
+import { useTranslation } from 'react-i18next';
 import CommonButton from "../../components/commonButton/CommonButton";
 import { useNavigate } from "react-router-dom";
 const CommonInputField = lazy(() => import("../../components/commonInputField/CommonInputField"));
@@ -41,10 +41,11 @@ const LoginPage = () => {
   const { colors } = useContext(ThemeContext);
   const styles = loginPageStyles(colors);
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const [user, setUser] = useState<UserDetails>({ email: "", password: "" });
   const [remember, setRemember] = useState(false);
 
-  const { signin, rememberMe, forgottenYourPassword, doNotHaveAccount, registerNow } = authenticationLayoutPageData;
+  const { rememberMe, forgottenYourPassword, doNotHaveAccount, registerNow } = authenticationLayoutPageData;
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -52,7 +53,7 @@ const LoginPage = () => {
   };
   const handleSubmit = () => {
     localStorage.setItem("userDetails", JSON.stringify(user))
-    navigate(-1);
+    navigate("/");
     setUser({ email: "", password: "" })
   }
 
@@ -65,7 +66,9 @@ const LoginPage = () => {
 
   return (
     <Stack sx={styles.container}>
-      <Typography sx={styles.title}>{signin}</Typography>
+
+
+      <Typography sx={styles.title}>{t("signin")}</Typography>
 
       <Stack sx={styles.inputContainer}>
         {loginFieldsData.map(({ id, name, label }) => (

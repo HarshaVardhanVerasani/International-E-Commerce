@@ -59,7 +59,7 @@ import rolexTwo from '../images/rolexTwo.jpg'
 import rolexThree from '../images/rolexThree.jpg'
 import rolexFour from '../images/rolexFour.jpg'
 import rolexFive from '../images/rolexFive.jpg'
-
+import lang from '../images/lang.png'
 export {
   bannerImg,
   bottegaVeneta,
@@ -94,5 +94,6 @@ export {
   rolexTwo,
   rolexThree,
   rolexFour,
-  rolexFive
+  rolexFive,
+  lang
 };
