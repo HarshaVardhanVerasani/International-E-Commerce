@@ -1,5 +1,5 @@
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import { Box, Button, IconButton, Stack, Typography } from "@mui/material";
+import { Box, Button, IconButton, Stack, Typography, Alert } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -33,6 +33,7 @@ const ProductDetails = () => {
   const [carouselImgId, setCarouselImgId] = useState<number>(0);
   const { id } = useParams<{ id: string }>();
   const dispatch = useDispatch<AppDispatch>();
+  const [showAlert, setShowAlert] = useState(false);
   const { singleProductDetailsSuccess } = useSelector((state: RootState) => state.singleProductSlice);
 
   const handleModalOpen = (carouselImgId: number) => {
@@ -46,9 +47,6 @@ const ProductDetails = () => {
   useEffect(() => {
     dispatch(fetchSingleProduct(Number(id)));
   }, [dispatch, id]);
-
-  const [showAlert, setShowAlert] = useState(false);
-  const dispatch = useDispatch();
 
   const handleAddToBag = () => {
     dispatch(addToCart(product));
