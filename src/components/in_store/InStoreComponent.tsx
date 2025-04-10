@@ -33,7 +33,7 @@ const InStoreComponent = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
     setTimeout(() => {
       navigate(path); 
-    }, 500); 
+    }, 300); 
   };
 
   return (
