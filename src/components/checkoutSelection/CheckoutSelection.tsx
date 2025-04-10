@@ -1,6 +1,7 @@
 import { Box, Stack, Typography } from "@mui/material";
 import DoneIcon from "@mui/icons-material/Done";
 import CommonButton from "../commonButton/CommonButton";
+import { useNavigate } from "react-router-dom";
 const styles = {
     container: {
         width: "100%",
@@ -72,6 +73,13 @@ const styles = {
     }
 };
 const CheckoutSelection = () => {
+    const navigate = useNavigate()
+    const handleNavigate = () => {
+        navigate("/checkout/details")
+    }
+    const handleRegister = () => {
+        navigate("/auth/register")
+    }
     return (
         <Stack sx={styles.container}>
             <Typography sx={styles.title}>Start Checkout</Typography>
@@ -93,11 +101,15 @@ const CheckoutSelection = () => {
                             Track your order in your account
                         </Typography>
                     </Stack>
+                    <Box onClick = {handleRegister}>
                     <CommonButton bgColor="#304835" color="#FFFFFF" mainBgColor="#304835" title="Sign in" authButton={true} />
+                    </Box>
                 </Stack>
                 <Stack sx={styles.guestContainer}>
                     <Typography sx={styles.mainTittle}>Guest Checkout</Typography>
+                    <Box onClick={handleNavigate}>
                     <CommonButton bgColor="#304835" color="#FFFFFF" mainBgColor="#304835" title="New Customer" authButton={true} />
+                    </Box>
                 </Stack>
             </Box>
         </Stack>

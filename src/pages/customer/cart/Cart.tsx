@@ -20,6 +20,7 @@ import { useDispatch, useSelector } from "react-redux";
 import CartPage from "../../../components/cartPage/CartPage";
 import { RootState } from "../../../redux/Store";
 import { removeFromCart, updateQuantity } from "../../../redux/cartReducer/CartSlice";
+import { useNavigate } from "react-router-dom";
 
 const ProductImage = styled("img")(({ theme }) => ({
   width: "120px",
@@ -34,6 +35,7 @@ const ShoppingBag = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const dispatch = useDispatch();
+  const navigate = useNavigate()
   const cart = useSelector((state: RootState) => state.cartSlice);
 
   const handleQuantityChange = (id: number, newQuantity: number) => {
@@ -52,7 +54,9 @@ const ShoppingBag = () => {
     },
     { subtotal: 0, delivery: 0, total: 0 }
   );
-
+const handleCheckout = () => {
+  navigate('/checkout/selection');
+}
   return (
     <Container maxWidth="md">
       <Typography variant="h4" component="h1" align="center" gutterBottom sx={{ mb: 4 }}>
@@ -190,7 +194,7 @@ const ShoppingBag = () => {
                   "&:hover": {
                     bgcolor: "#203329",
                   },
-                }}>
+                }} onClick={handleCheckout}>
                 Secure Checkout Now
               </Button>
 
