@@ -1,5 +1,5 @@
 import { Box, Stack, Typography } from "@mui/material";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import { checkoutIcon, logo } from "../../common/assets/images/imageFile";
 const styles = {
     text: {
@@ -34,6 +34,9 @@ const styles = {
     iconContainer: { width: "70px", height: "70px" },
 };
 const CheckoutLayout = () => {
+    const path = useLocation();
+    const isValidPath = path.pathname.split("/").includes('details');
+
     return (
         <Stack sx={styles.container}>
             <Box sx={styles.navbar}>
@@ -47,7 +50,7 @@ const CheckoutLayout = () => {
             </Box>
             <Outlet />
             <Stack
-                sx={{ width: "100%", display: "flex", justifyContent: "center", alignItems: "center", background: "#F5F5F5", padding: "30px 0px", gap: "10px" }}>
+                sx={{ width: "100%", display: "flex", justifyContent: "center", alignItems: "center", background: isValidPath ? "#FFFFFF" :"#F5F5F5", padding: "30px 0px", gap: "10px" }}>
                 <Box sx={styles.main}>
                     <Box component={"img"} src={logo} sx={styles.image} />
                 </Box>
