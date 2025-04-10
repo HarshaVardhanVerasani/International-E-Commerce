@@ -41,10 +41,8 @@ const cartSlice = createSlice({
       }
       state.totalQuantity += 1;
       state.totalPrice += action.payload.price;
-
       saveCartToStorage(state);
     },
-
     removeFromCart: (state, action: PayloadAction<number>) => {
       const itemIndex = state.items.findIndex(item => item.id === action.payload);
       if (itemIndex !== -1) {
@@ -52,10 +50,8 @@ const cartSlice = createSlice({
         state.totalPrice -= state.items[itemIndex].price * state.items[itemIndex].quantity;
         state.items.splice(itemIndex, 1);
       }
-
       saveCartToStorage(state);
     },
-
     updateQuantity: (state, action: PayloadAction<{ id: number; quantity: number }>) => {
       const item = state.items.find(item => item.id === action.payload.id);
       if (item) {
@@ -64,15 +60,12 @@ const cartSlice = createSlice({
         state.totalQuantity += quantityDifference;
         state.totalPrice += quantityDifference * item.price;
       }
-
       saveCartToStorage(state);
     },
-
     clearCart: state => {
       state.items = [];
       state.totalQuantity = 0;
       state.totalPrice = 0;
-
       localStorage.removeItem("cart");
     },
   },

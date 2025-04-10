@@ -5,11 +5,15 @@ import { Box, IconButton, useMediaQuery } from "@mui/material";
 import React, { useEffect, useRef, useState } from "react";
 import { detailsCarousel } from "../../sampleData/sampleData";
 import { carouselStyles } from "./DetailsCarouselStyles";
+import { UseSelector, useDispatch } from "react-redux";
+import { AppDispatch } from "../../../redux/Store";
 
 interface CarouselInterface {
   handleModalOpen: (imageId: number) => void;
   handleModalClose: () => void;
 }
+
+
 const Carousel: React.FC<CarouselInterface> = ({ handleModalOpen, handleModalClose }) => {
   const isMobile = useMediaQuery("(max-width:767px)");
   const isDesktop = useMediaQuery("(min-width:1024px)");
@@ -19,9 +23,10 @@ const Carousel: React.FC<CarouselInterface> = ({ handleModalOpen, handleModalClo
   const [touchStartX, setTouchStartX] = useState(0);
   const [touchEndX, setTouchEndX] = useState(0);
   const trackRef = useRef<HTMLDivElement>(null);
+  const dispatch = useDispatch<AppDispatch>();
 
 
-
+  
 
   const items = detailsCarousel;
 

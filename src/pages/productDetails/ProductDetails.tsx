@@ -1,6 +1,8 @@
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { Box, Button, IconButton, Stack, Typography } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 import CustomDropdown from "../../common/components/CustomDropdown/CustomDropdown";
 import Carousel from "../../common/components/DetailsCarousel/DetailsCarousel";
 import ImageModal from "../../common/components/ModalCarousel/ModalCarousel";
@@ -8,12 +10,17 @@ import QuantityDropdown from "../../common/components/QuantityDropdown/QuantityD
 import SizeDropdown from "../../common/components/SizeDropdown/SizeDropdown";
 import { detailsCarousel } from "../../common/sampleData/sampleData";
 import AccordionDetails from "../../components/customAccordion/CustomAccordion";
+import { fetchSingleProduct } from "../../redux/singleProductReducer/SingleProductReducer";
+import { AppDispatch, RootState } from "../../redux/Store";
 import Footer from "../customer/footer/Footer";
 import productDetailsStyles from "./ProductDetailsStyles";
 
 const ProductDetails = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [carouselImgId, setCarouselImgId] = useState<number>(0);
+  const { id } = useParams<{ id: string }>();
+  const dispatch = useDispatch<AppDispatch>();
+  const { singleProductDetailsSuccess } = useSelector((state: RootState) => state.singleProductSlice);
 
   const handleModalOpen = (carouselImgId: number) => {
     setIsModalOpen(true);
@@ -22,6 +29,11 @@ const ProductDetails = () => {
   const handleModalClose = () => {
     setIsModalOpen(false);
   };
+
+  useEffect(() => {
+    dispatch(fetchSingleProduct(Number(id)));
+  }, [dispatch, id]);
+
   return (
     <>
       <Box sx={productDetailsStyles.bodyCont}>
@@ -31,9 +43,9 @@ const ProductDetails = () => {
           </Box>
           <Box sx={productDetailsStyles.rightCont}>
             <Box sx={productDetailsStyles.gapCont}>
-              <Typography sx={productDetailsStyles.productName}>CAMILLA</Typography>
-              <Typography sx={productDetailsStyles.commonStyle}>Jardim Party Strappy Maxi Dress</Typography>
-              <Typography sx={productDetailsStyles.commonStyle}>$53.00</Typography>
+              <Typography sx={productDetailsStyles.productName}>{singleProductDetailsSuccess?.title}</Typography>
+              <Typography sx={productDetailsStyles.commonStyle}>{singleProductDetailsSuccess?.description}</Typography>
+              <Typography sx={productDetailsStyles.commonStyle}>{singleProductDetailsSuccess?.price}</Typography>
             </Box>
             <Box sx={productDetailsStyles.dropdownCont}>
               <Typography sx={productDetailsStyles.colourText}>colour</Typography>

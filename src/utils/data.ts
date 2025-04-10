@@ -18,7 +18,7 @@ export interface Product {
     label: string;
   }
 
-  export const products: Product[] = [
+  export const products: Omit<Product, 'title' | 'discountPercentage' | 'rating' | 'stock' | 'tags' | 'sku' | 'weight' | 'dimensions' | 'warrantyInformation' | 'shippingInformation' | 'availabilityStatus' | 'reviews' | 'returnPolicy' | 'minimumOrderQuantity' | 'meta' | 'thumbnail' | 'images'>[] = [
     {
       id: 1,
       name: "Stretch-Silk Rose-Detail Asymmetric Top",
@@ -119,4 +119,47 @@ export interface Product {
     { value: "newest", label: "Newest" },
     { value: "popular", label: "Popular" },
   ];
+  
+
+  export interface DetailedProduct {
+      id: number;
+      title: string;
+      description: string;
+      category?: string;
+      price: number;
+      discountPercentage: number;
+      rating: number;
+      stock: number;
+      tags: string[];
+      brand: string;
+      sku: string;
+      weight: number;
+      dimensions: {
+        width: number;
+        height: number;
+        depth: number;
+      };
+      warrantyInformation: string;
+      shippingInformation: string;
+      availabilityStatus: string;
+      reviews: Review[];
+      returnPolicy: string;
+      minimumOrderQuantity: number;
+      meta: {
+        createdAt: string;
+        updatedAt: string;
+        barcode: string;
+        qrCode: string;
+      };
+      thumbnail: string;
+      images: string[];
+    }
+  
+  export interface Review {
+    rating: number;
+    comment: string;
+    date: string; // ISO string date
+    reviewerName: string;
+    reviewerEmail: string;
+  }
   
