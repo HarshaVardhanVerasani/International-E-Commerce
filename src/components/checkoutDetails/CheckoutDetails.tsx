@@ -2,7 +2,6 @@ import { Box, FormControl, MenuItem, Select, Stack, Typography } from "@mui/mate
 import { letter } from "../../common/assets/images/imageFile";
 import { ChangeEvent, lazy, useState } from "react";
 import DeliveryOptions from "../../common/components/commonRadio/CommonRadio";
-import { useNavigate } from "react-router-dom";
 const SecurePayment = lazy(() => import("../../common/components/securepayment/SecurePayment"))
 const CommonButton = lazy(() => import("../commonButton/CommonButton"));
 const CommonInputField = lazy(() => import("../commonInputField/CommonInputField"));

@@ -17,7 +17,7 @@ const styles = {
         fontWeight: "300px",
         color: "#8a7252",
         marginLeft: "5px",
-        cursor:"pointer"
+        cursor: "pointer"
     },
     container: { width: "100%", boxSizing: "border-box", overflow: "scrollY" },
     navbar: {
@@ -26,12 +26,12 @@ const styles = {
         padding: "20px 20px",
         boxSizing: "border-box",
         display: "flex",
-        justifyContent: "space-between",
+        justifyContent: { xs: "center", sm: "space-between" },
         alignItems: "center",
     },
     main: { width: "100px", height: "100px" },
     image: { width: "100%", height: "100%", objectFit: "contain" },
-    iconContainer: { width: "70px", height: "70px" },
+    iconContainer: { width: "70px", height: "70px", display: { xs: "none", sm: "block" } },
 };
 const CheckoutLayout = () => {
     const path = useLocation();
@@ -40,7 +40,7 @@ const CheckoutLayout = () => {
     return (
         <Stack sx={styles.container}>
             <Box sx={styles.navbar}>
-                <Typography>Secure Checkout</Typography>
+                <Typography sx={{ display: { xs: "none", sm: "block" } }}>Secure Checkout</Typography>
                 <Box sx={styles.main}>
                     <Box component={"img"} src={logo} sx={styles.image} />
                 </Box>
@@ -50,7 +50,7 @@ const CheckoutLayout = () => {
             </Box>
             <Outlet />
             <Stack
-                sx={{ width: "100%", display: "flex", justifyContent: "center", alignItems: "center", background: isValidPath ? "#FFFFFF" :"#F5F5F5", padding: "30px 0px", gap: "10px" }}>
+                sx={{ width: "100%", display: "flex", justifyContent: "center", alignItems: "center", background: isValidPath ? "#FFFFFF" : "#F5F5F5", padding: "30px 0px", gap: "10px" }}>
                 <Box sx={styles.main}>
                     <Box component={"img"} src={logo} sx={styles.image} />
                 </Box>
