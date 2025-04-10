@@ -5,6 +5,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 import {
   AppBar,
+  Badge,
   Box,
   Divider,
   Drawer,
@@ -26,6 +27,9 @@ import TopBar from "../../../../components/topBar/TopBar";
 import { ThemeContext } from "../../../../context/ThemeWrapper";
 import { headerStyles } from "./headerStyles";
 import CommonSearch from "../../../../components/commonSearch/CommonSearch";
+import { useSelector } from "react-redux";
+import { RootState } from "../../../../redux/Store";
+
 
 type MenuKey = keyof typeof dataMap;
 
@@ -33,7 +37,8 @@ const Header: React.FC = () => {
   const { colors } = useContext(ThemeContext);
   const navigate = useNavigate();
   const location = useLocation();
-
+  const cart = useSelector((state: RootState) => state.cartSlice);
+  const favorite = useSelector((state: RootState) => state.favoritesSlice);
   const styles = headerStyles(colors);
 
   const [showContent, setShowContent] = useState<boolean>(false);
@@ -112,14 +117,19 @@ const Header: React.FC = () => {
             </Box>
             <Box sx={styles.iconContainer}>
               <SearchIcon sx={{ ...styles.iconStyles, color: location.pathname === "/" ? colors.white : colors.darkBeige }} onClick= {handleOpen}/>
+              <Badge badgeContent={favorite.items.length} color="success">
               <FavoriteBorderIcon
                 sx={{ ...styles.iconStyles, color: location.pathname === "/" ? colors.white : colors.darkBeige }}
                 onClick={() => navigate("/favorite")}
               />
+              </Badge>
+              <Badge badgeContent={cart.items.length} color="success">
               <ShoppingBagOutlinedIcon
                 sx={{ ...styles.iconStyles, color: location.pathname === "/" ? colors.white : colors.darkBeige }}
                 onClick={() => navigate("/cart")}
               />
+              </Badge>
+            
             </Box>
             <Box sx={styles.menuContainer}>
               {Object.keys(dataMap).map(item => (

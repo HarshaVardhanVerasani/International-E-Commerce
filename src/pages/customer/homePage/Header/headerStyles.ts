@@ -50,10 +50,7 @@ export const headerStyles = (color: ColorScheme) => {
         },
       },
     },
-    iconStyles: {
-      mt: -5,
-      cursor: "pointer",
-    },
+    iconStyles: { cursor: "pointer" },
     logoContainer: {
       display: "flex",
       justifyContent: "center",
@@ -69,6 +66,8 @@ export const headerStyles = (color: ColorScheme) => {
       justifyContent: "end",
       alignItems: "center",
       gap: 3,
+      mt:-3,
+      mb:1
     },
     menuContainer: {
       display: "flex",

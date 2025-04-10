@@ -1,21 +1,46 @@
-import { Favorite as FavoriteIcon } from "@mui/icons-material";
+import { FavoriteBorder, Favorite as FavoriteIcon } from "@mui/icons-material";
 import { Box, IconButton, Typography } from "@mui/material";
 import React from "react";
 import { Product } from "../../utils/productsDataTypes";
+import { lightTheme } from "../../config/colorPalette";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../redux/Store";
+import { removeFromFavorites, addToFavorites } from "../../redux/favoritesReducer/FavoritesSlice";
 
 interface ProductCardProps {
   product: Product;
-  onFavoriteToggle: (productId: string) => void;
-  isFavorite: boolean;
+
 }
 
-const ProductCard: React.FC<ProductCardProps> = ({ product, onFavoriteToggle, isFavorite }) => {
-  const { id, brand, name, price, image, isNew } = product;
-
+const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
+  const { id, brand, name, price, image, isNew ,color,size} = product;
+  const dispatch = useDispatch();
+  const favorites = useSelector((state: RootState) => state.favoritesSlice.items);
+  const isFavorited = favorites.some(item => item.id === Number(id));
   const formatPrice = (price: number) => {
     return `$${price.toLocaleString()}`;
   };
-
+const toggleFavorite = () => {
+    console.log("Toggling Favorite for ID:", id);
+    if (isFavorited) {
+      dispatch(removeFromFavorites(Number(id)));
+    } else {
+      dispatch(
+        addToFavorites({
+          id:Number(id),
+          title:name,
+          description:'',
+          price,
+          image,
+          brand,
+          name,
+          color:'',
+          size:'',
+          isNew:isNew!,
+        })
+      );
+    }
+  };
   return (
     <Box sx={{ position: "relative", display: "flex", flexDirection: "column" }}>
       <Box
@@ -30,7 +55,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onFavoriteToggle, is
           src={image}
           alt={name}
           style={{
-            objectFit: "cover",
+            objectFit: "contain",
             width: "100%",
             height: "100%",
             transition: "transform 300ms",
@@ -41,42 +66,34 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onFavoriteToggle, is
           <Box
             sx={{
               position: "absolute",
-              top: 2,
-              left: 2,
+              top: 35,
+              right: 2,
               backgroundColor: "white",
-              paddingX: 2,
+              paddingX: 1.5,
               paddingY: 1,
-              fontSize: "0.75rem",
+              fontSize: "0.55rem",
               textTransform: "uppercase",
               letterSpacing: "0.5px",
               fontWeight: 600,
+              border:'1px solid ',
+              borderRadius:1
             }}>
             New
           </Box>
         )}
         <IconButton
-          onClick={e => {
-            e.preventDefault();
-            onFavoriteToggle(String(id));
-          }}
+          onClick={toggleFavorite}
           sx={{
             position: "absolute",
             top: 2,
             right: 2,
-            backgroundColor: "white",
-            borderRadius: "50%",
-            padding: 1,
-            boxShadow: 1,
+           
             "&:hover": {
               backgroundColor: "rgba(0, 0, 0, 0.1)",
             },
           }}>
-          <FavoriteIcon
-            sx={{
-              color: isFavorite ? "red.500" : "text.secondary",
-              transition: "color 200ms",
-            }}
-          />
+              {isFavorited ? <FavoriteIcon sx={{ color: lightTheme.darkBrown }} /> : <FavoriteBorder sx={{color: lightTheme.lightBrown}} />}
+
         </IconButton>
       </Box>
 

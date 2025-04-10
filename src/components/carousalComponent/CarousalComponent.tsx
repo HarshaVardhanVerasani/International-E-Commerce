@@ -124,6 +124,7 @@ const CarousalComponent: React.FC<CarousalComponentProps> = ({
                 isNew={product.isNew}
                 name={product.name}
                 size={product.size}
+                isActive={isActive}
               />
             </Box>
           </SwiperSlide>
