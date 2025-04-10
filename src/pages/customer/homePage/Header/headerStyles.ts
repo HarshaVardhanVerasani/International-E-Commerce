@@ -66,6 +66,8 @@ export const headerStyles = (color: ColorScheme) => {
       justifyContent: "end",
       alignItems: "center",
       gap: 3,
+      mt:-3,
+      mb:1
     },
     menuContainer: {
       display: "flex",
