@@ -60,7 +60,6 @@ const ShoppingBag = () => {
         Shopping Bag
       </Typography>
       <Box sx={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: 3 }}>
-        {/* Product List Section */}
         <Box sx={{ flex: "1 1 40%", minWidth: 320 }}>
           {cart.items.length === 0 ? (
             <CartPage />
@@ -151,8 +150,6 @@ const ShoppingBag = () => {
             ))
           )}
         </Box>
-
-        {/* Order Summary Section */}
         <Box sx={{ flex: "1 1 40%", minWidth: 320 }}>
           {cart.items.length !== 0 && (
             <Paper elevation={0} sx={{ p: 3, border: "1px solid #eee" }}>
