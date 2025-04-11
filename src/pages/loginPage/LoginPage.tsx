@@ -9,6 +9,9 @@ import { authenticationLayoutPageData } from "../../common/sampleData/sampleData
 import { useTranslation } from 'react-i18next';
 import CommonButton from "../../components/commonButton/CommonButton";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "../../redux/Store";
+import { saveUser } from "../../redux/profileReducer/ProfileSlice";
 const CommonInputField = lazy(() => import("../../components/commonInputField/CommonInputField"));
 
 interface UserDetails {
@@ -46,13 +49,14 @@ const LoginPage = () => {
   const [remember, setRemember] = useState(false);
 
   const { rememberMe, forgottenYourPassword, doNotHaveAccount, registerNow } = authenticationLayoutPageData;
-
+ const dispatch = useDispatch<AppDispatch>()
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     setUser(prev => ({ ...prev, [name]: value }));
   };
   const handleSubmit = () => {
-    localStorage.setItem("userDetails", JSON.stringify(user))
+    // localStorage.setItem("userDetails", JSON.stringify(user))
+    dispatch(saveUser(user))
     navigate("/");
     setUser({ email: "", password: "" })
   }

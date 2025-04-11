@@ -5,6 +5,9 @@ import { Box, Button, Card, CardContent, Container, List, ListItem, ListItemIcon
 import { useContext } from "react";
 import { ThemeContext } from "../../../context/ThemeWrapper";
 import { accountDetailsStyles } from "./AccountDetailsStyles";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { signOut } from "../../../redux/profileReducer/ProfileSlice";
 
 const accountDetailsList = [
   {
@@ -46,8 +49,14 @@ const accountDetailsList = [
 ];
 
 const AccountDetailsDb = () => {
+  const navigate = useNavigate()
   const { colors } = useContext(ThemeContext);
   const style = accountDetailsStyles(colors);
+  const dispatch = useDispatch()
+  const handleSubmit = () => {
+  dispatch(signOut())
+    navigate('/',{replace:true})
+  }
   return (
     <Box
       sx={{
@@ -89,7 +98,7 @@ const AccountDetailsDb = () => {
                   "&:hover": {
                     backgroundColor: "rgba(255, 255, 255, 0.1)",
                   },
-                }}>
+                }} onClick={handleSubmit}>
                 Sign out
               </Button>
             </Box>

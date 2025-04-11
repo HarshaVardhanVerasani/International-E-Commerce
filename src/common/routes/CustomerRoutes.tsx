@@ -14,6 +14,7 @@ import CheckoutLayout from "../../pages/checkoutLayout/CheckoutLayout";
 import CheckoutSelection from "../../components/checkoutSelection/CheckoutSelection";
 import CheckoutDetails from "../../components/checkoutDetails/CheckoutDetails";
 import ReadShopComponent from "../../components/readShopComponent/ReadShopComponent";
+import AccountDetailsDb from "../../pages/customer/accountDetails/AccountDetailsDb";
 
 const AppRoutes = () => {
   return (
@@ -23,6 +24,7 @@ const AppRoutes = () => {
         <Route index element={<HomePage />} />
         <Route path="favorite" element={<FavoritePage />} />
         <Route path="cart" element={<ShoppingBag />} />
+        <Route path="accountDetails" element={<AccountDetailsDb />} />
         <Route path="visit" element={<PlanYourVisitPage />} />
         <Route path="read-shop" element={<ReadShopComponent />} />
         <Route path="productDetails/:id" element={<ProductDetails />} />

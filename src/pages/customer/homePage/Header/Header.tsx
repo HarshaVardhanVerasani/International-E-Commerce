@@ -27,9 +27,11 @@ import TopBar from "../../../../components/topBar/TopBar";
 import { ThemeContext } from "../../../../context/ThemeWrapper";
 import { headerStyles } from "./headerStyles";
 import CommonSearch from "../../../../components/commonSearch/CommonSearch";
-import { useSelector } from "react-redux";
-import { RootState } from "../../../../redux/Store";
+import {useSelector } from "react-redux";
+import {RootState } from "../../../../redux/Store";
 import { useTranslation } from 'react-i18next';
+import { getCurrentUser } from "../../../../redux/profileReducer/ProfileSlice";
+import { store } from './../../../../redux/Store';
 
 
 type MenuKey = keyof typeof dataMap;
@@ -49,6 +51,8 @@ const Header: React.FC = () => {
   const [searchDrawer, setSearchDrawer] = useState<boolean>(false)
   let closeTimeout: ReturnType<typeof setTimeout>;
 
+const profileData = useSelector((store:RootState) => store.ProfileSlice)
+console.log(profileData)
   const handleMouseEnter = (item: MenuKey) => {
     clearTimeout(closeTimeout);
     setSelectedMenu(item);
@@ -64,14 +68,7 @@ const Header: React.FC = () => {
   const toggleDrawer = (open: boolean) => () => {
     setDrawerOpen(open);
   };
-  const handleNavigate = (path: string) => {
-    if (path === "LoginPage") {
-      navigate(`auth/${path}`);
-    }
-    if (path === "Register") {
-      navigate(`auth/${path}`);
-    }
-  };
+
 
   const handleNavigateHome = () => {
     navigate("/");
@@ -87,12 +84,19 @@ const Header: React.FC = () => {
     const currentUser = user ? JSON.parse(user) : { email: "", password: "" };
    setCurrentUser(currentUser.email)
   }
-
+  const handleProfile = () => {
+    navigate('accountDetails')
+  }
+  const handleLogin = () =>{
+    navigate("/auth/LoginPage")
+  }
+const handleRegister = () => {
+  navigate("/auth/Register")
+}
   const isDesktop = useMediaQuery("(min-width:1023px)");
   useEffect(() => {
-    getUserName();
+
   }, [])
-  console.log(currentUser)
   return (
     <>
       {isDesktop ? (
@@ -109,19 +113,19 @@ const Header: React.FC = () => {
             <Box sx={styles.bannerImageBox}>
               <CountrySelector />
               {
-                !currentUser ? <Box sx={styles.signContainer}>
+                !profileData.email ? <Box sx={styles.signContainer} >
                 <Typography
                   sx={{ ...styles.signStyles, color: location.pathname === "/" ? colors.white : colors.black }}
-                  onClick={() => handleNavigate("LoginPage")}>
+                  onClick={handleLogin}>
                   Sign In
                 </Typography>
                 <Typography sx={{ ...styles.signStyles, color: location.pathname === "/" ? colors.white : colors.black }}>/</Typography>
                 <Typography
                   sx={{ ...styles.signStyles, color: location.pathname === "/" ? colors.white : colors.black }}
-                  onClick={() => handleNavigate("Register")}>
+                  onClick={handleRegister}>
                   Register
                 </Typography>
-              </Box> :<Typography sx={{ ...styles.signStyles, color: location.pathname === "/" ? colors.white : colors.black }}>{currentUser}</Typography>
+              </Box> :<Typography sx={{ ...styles.signStyles, color: location.pathname === "/" ? colors.white : colors.black }} onClick = {handleProfile}>{profileData.email}</Typography>
               }
             
             </Box>
