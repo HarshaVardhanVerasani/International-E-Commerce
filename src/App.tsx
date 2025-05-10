@@ -10,7 +10,7 @@ const App = () => {
 
   return (
     <ThemeProvider theme={baseTheme}>
-      <AppRoutes />
+      <AppRoutes />  {/* No need to pass Layout here */}
     </ThemeProvider>
   );
 };

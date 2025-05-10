@@ -1,0 +1,244 @@
+import CloseIcon from "@mui/icons-material/Close";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import MenuIcon from "@mui/icons-material/Menu";
+import SearchIcon from "@mui/icons-material/Search";
+import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
+import {
+  AppBar,
+  Badge,
+  Box,
+  Divider,
+  Drawer,
+  Grid,
+  IconButton,
+  List,
+  ListItem,
+  ListItemText,
+  Toolbar,
+  Typography,
+  useMediaQuery,
+} from "@mui/material";
+import { useContext, useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { bannerImg, logo, mobileBannerImg } from "../../../../common/assets/images/imageFile";
+import { dataMap } from "../../../../common/sampleData/sampleData";
+import CountrySelector from "../../../../components/countrySelector/CountrySelector";
+import TopBar from "../../../../components/topBar/TopBar";
+import { ThemeContext } from "../../../../context/ThemeWrapper";
+import { headerStyles } from "./headerStyles";
+import CommonSearch from "../../../../components/commonSearch/CommonSearch";
+import {useSelector } from "react-redux";
+import {RootState } from "../../../../redux/Store";
+import { useTranslation } from 'react-i18next';
+import { getCurrentUser } from "../../../../redux/profileReducer/ProfileSlice";
+import { store } from './../../../../redux/Store';
+
+
+type MenuKey = keyof typeof dataMap;
+
+const Header: React.FC = () => {
+  const { t } = useTranslation()
+  const { colors } = useContext(ThemeContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const cart = useSelector((state: RootState) => state.cartSlice);
+  const favorite = useSelector((state: RootState) => state.favoritesSlice);
+  const styles = headerStyles(colors);
+  const [currentUser,setCurrentUser] = useState<string>("")
+  const [showContent, setShowContent] = useState<boolean>(false);
+  const [selectedMenu, setSelectedMenu] = useState<MenuKey | "">("");
+  const [drawerOpen, setDrawerOpen] = useState<boolean>(false);
+  const [searchDrawer, setSearchDrawer] = useState<boolean>(false)
+  let closeTimeout: ReturnType<typeof setTimeout>;
+
+const profileData = useSelector((store:RootState) => store.ProfileSlice)
+console.log(profileData)
+  const handleMouseEnter = (item: MenuKey) => {
+    clearTimeout(closeTimeout);
+    setSelectedMenu(item);
+    setShowContent(true);
+  };
+
+  const handleMouseLeave = () => {
+    closeTimeout = setTimeout(() => {
+      setShowContent(false);
+    }, 300);
+  };
+
+  const toggleDrawer = (open: boolean) => () => {
+    setDrawerOpen(open);
+  };
+
+
+  const handleNavigateHome = () => {
+    navigate("/");
+  };
+  const handleOpen = () => {
+    setSearchDrawer(true)
+  }
+  const handleClose = () => {
+    setSearchDrawer(false)
+  }
+  const getUserName = () => {
+    const user = localStorage.getItem('userDetails');
+    const currentUser = user ? JSON.parse(user) : { email: "", password: "" };
+   setCurrentUser(currentUser.email)
+  }
+  const handleProfile = () => {
+    navigate('accountDetails')
+  }
+  const handleLogin = () =>{
+    navigate("/auth/LoginPage")
+  }
+const handleRegister = () => {
+  navigate("/auth/Register")
+}
+  const isDesktop = useMediaQuery("(min-width:1023px)");
+  useEffect(() => {
+
+  }, [])
+  return (
+    <>
+      {isDesktop ? (
+        <Box>
+          <TopBar />
+          <CommonSearch searchDrawer={searchDrawer} handleClose={handleClose} />
+          <Box
+            // @ts-expect-error: TS2339: Property 'sx' does not exist on type 'IntrinsicAttributes & { children?: ReactNode; }'.
+            sx={{
+              ...styles.bannerImageStyles,
+              backgroundImage: `url(${location.pathname === "/" && bannerImg})`,
+              height: location.pathname === "/" && "100vh",
+            }}>
+            <Box sx={styles.bannerImageBox}>
+              <CountrySelector />
+              {
+                !profileData.email ? <Box sx={styles.signContainer} >
+                <Typography
+                  sx={{ ...styles.signStyles, color: location.pathname === "/" ? colors.white : colors.black }}
+                  onClick={handleLogin}>
+                  Sign In
+                </Typography>
+                <Typography sx={{ ...styles.signStyles, color: location.pathname === "/" ? colors.white : colors.black }}>/</Typography>
+                <Typography
+                  sx={{ ...styles.signStyles, color: location.pathname === "/" ? colors.white : colors.black }}
+                  onClick={handleRegister}>
+                  Register
+                </Typography>
+              </Box> :<Typography sx={{ ...styles.signStyles, color: location.pathname === "/" ? colors.white : colors.black }} onClick = {handleProfile}>{profileData.email}</Typography>
+              }
+            
+            </Box>
+            <Box sx={styles.logoContainer}>
+              <Box component="img" src={logo} sx={styles.logo} onClick={handleNavigateHome} />
+            </Box>
+            <Box sx={styles.iconContainer}>
+              <SearchIcon sx={{ ...styles.iconStyles, color: location.pathname === "/" ? colors.white : colors.darkBeige }} onClick={handleOpen} />
+              <Badge badgeContent={favorite.items.length} color="success">
+                <FavoriteBorderIcon
+                  sx={{ ...styles.iconStyles, color: location.pathname === "/" ? colors.white : colors.darkBeige }}
+                  onClick={() => navigate("/favorite")}
+                />
+              </Badge>
+              <Badge badgeContent={cart.items.length} color="success">
+                <ShoppingBagOutlinedIcon
+                  sx={{ ...styles.iconStyles, color: location.pathname === "/" ? colors.white : colors.darkBeige }}
+                  onClick={() => navigate("/cart")}
+                />
+              </Badge>
+
+            </Box>
+            <Box sx={styles.menuContainer}>
+              {Object.keys(dataMap).map(item => (
+                <Box key={item} onMouseEnter={() => handleMouseEnter(item as MenuKey)} onMouseLeave={handleMouseLeave}>
+                  <Typography variant="body1" sx={{ ...styles.menuStyle, color: location.pathname === "/" ? colors.white : colors.black }}>
+                    {t(item)}
+                  </Typography>
+                  <Divider sx={styles.itemHr} />
+                </Box>
+              ))}
+            </Box>
+          </Box>
+          <Divider sx={{ width: "100%", display: "" }} />
+          {showContent && selectedMenu && dataMap[selectedMenu] && (
+            <Box sx={styles.drawerStyle} onMouseEnter={() => clearTimeout(closeTimeout)} onMouseLeave={handleMouseLeave}>
+              <Grid container spacing={4} sx={styles.drawerContainer}>
+                {dataMap[selectedMenu].map((category, index) => (
+                  // @ts-expect-error: Grid type mismatch in MUI, workaround applied
+                  <Grid item xs={12} sm={6} md={3} key={index}>
+                    <Typography variant="h6" sx={styles.drawerTitle}>
+                      {category.title}
+                    </Typography>
+                    {category.subNames.map((sub, idx) => (
+                      <Typography key={idx} variant="body2" sx={styles.drawerCategory}>
+                        {sub}
+                      </Typography>
+                    ))}
+                  </Grid>
+                ))}
+              </Grid>
+            </Box>
+          )}
+        </Box>
+      ) : (
+        <>
+          <Divider sx={styles.hr} />
+          <AppBar
+            position="static"
+            // @ts-expect-error: TS2339: Property 'sx' does not exist on type 'IntrinsicAttributes & { children?: ReactNode; }'.
+            sx={{
+              ...styles.mobileBannerImageStyles,
+              backgroundImage: `url(${location.pathname === "/" && mobileBannerImg})`,
+              height: location.pathname === "/" && { xs: "75vh", sm: "130vh" },
+            }}>
+            <Toolbar sx={styles.mobileToolbarStyles}>
+              <Box sx={styles.mobileIconContainer}>
+                <IconButton onClick={toggleDrawer(true)}>
+                  <MenuIcon sx={styles.menuIcon} />
+                </IconButton>
+                <IconButton>
+                  <SearchIcon sx={styles.menuIcon} />
+                </IconButton>
+              </Box>
+              <Box sx={styles.mobileLogoStyles}>
+                <img src={logo} alt="Logo" style={{ height: 80 }} />
+              </Box>
+              <Box sx={styles.mobileIconContainer}>
+                <IconButton>
+                  <FavoriteBorderIcon sx={styles.menuIcon} onClick={() => navigate("/favorite")} />
+                </IconButton>
+                <IconButton>
+                  <ShoppingBagOutlinedIcon sx={styles.menuIcon} />
+                </IconButton>
+              </Box>
+            </Toolbar>
+          </AppBar>
+          <Drawer anchor="left" open={drawerOpen} onClose={toggleDrawer(false)} sx={styles.mobileDrawerStyles}>
+            <Box sx={styles.mobileDrawerContent}>
+              <Box sx={styles.mobileLogoStyles}>
+                <img src={logo} alt="Logo" style={{ height: 80 }} />
+              </Box>
+              <IconButton onClick={toggleDrawer(false)}>
+                <CloseIcon sx={styles.closeIocnStyle} />
+              </IconButton>
+            </Box>
+            <Box sx={styles.mobileDrawerList}>
+              <Typography variant="h6" mb={2}>
+                Menu
+              </Typography>
+              <List>
+                {Object.keys(dataMap).map((text, index) => (
+                  <ListItem key={index}>
+                    <ListItemText primary={text} />
+                  </ListItem>
+                ))}
+              </List>
+            </Box>
+          </Drawer>
+        </>
+      )}
+    </>
+  );
+};
+
+export default Header;

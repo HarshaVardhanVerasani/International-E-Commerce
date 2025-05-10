@@ -1,0 +1,21 @@
+{
+    "welcome": "Welcome",
+    "login": "Log In",
+    "signin":"Sign In",
+    "emailAddress":"Email Address",
+    "password":"Password",
+    "rememberMe":"Remember me",
+    "forgottenYourPassword?":"Forgotten your password?",
+    "don’tHaveAnOnlineAccount?":"Don’t have an online account?",
+    "registerNow":"Register now",
+    "Men":"Men",
+    "Women":"Women",
+    "Beauty":"Beauty",
+    "Kids":"Kids",
+    "Gifts":"Gifts",
+    "Designers":"Designers",
+    "Jewellery & Watches":"Jewellery & Watches",
+    "Home & Furniture":"Home & Furniture",
+    "Food & Wine":"Food & Wine",
+    "Visit Our Stores":"Visit Our Stores"
+  }
