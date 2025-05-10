@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+@import "tailwindcss";
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   font-synthesis: none;
@@ -8,4 +10,24 @@
 
 body {
   margin: 0;
+}
+
+@font-face {
+  font-family: "grotesk-light";
+  src: url("./common/assets/fonts/FoundersGroteskWeb-Light.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "grotesk-medium";
+  src: url("./common/assets/fonts/FoundersGroteskWeb-Medium.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "grotesk-regular";
+  src: url("./common/assets/fonts/FoundersGroteskWeb-Regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "miller-light";
+  src: url("./common/assets/fonts/MillerBanner-Light.woff2") format("woff2");
 }
